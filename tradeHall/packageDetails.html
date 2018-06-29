@@ -36,15 +36,56 @@
                                 <span class="btn btn-samll bg-blue">资产包</span>北京市大屯路电站资产包</h3>
                             <div class="line"></div>
                         </div>
+                        <div class="con-box">
+                            <div class="con-box-top">
+                                <dl>
+                                    <dt class="color-blue">12.5% ~ 18.2%</dt>
+                                    <dd>预期年化收益率</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="color-blue">12</dt>
+                                    <dd>
+                                        <img src="../images/common/userfull-dz.png"> 可购电站数
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt class="color-blue">￥1,223.038.00</dt>
+                                    <dd>
+                                        <img src="../images/common/total-price.png"> 总价格
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="con-box-bot cleart">
+                                <div class="pull-left">
+                                    <div class="progress">
+                                        <div class="progress-icon">
+                                            <span>总电站数目：</span>
+                                            <span class="num color-blue">3,000</span>
+                                            <img src="../images/common/jindu1.png">
+                                            <span class="color-blue sold">已售：60%</span>
+                                        </div>
+                                        <div class="progress-line">
+                                            <span style="width: 60%"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn dib">打包购买</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="hot-icon">
+                            <img src="../images/common/hot.png">
+                        </span>
                     </div>
                 </div>
             </div>
             <!-- 资产包内包含电站 -->
             <div class="details-bot">
                 <div class="main-w">
-                    <div class="title title-noLine">
-                        <h2>所有转让</h2>
-                        <p>ALL TRANSFER</p>
+                    <div class="tit">
+                        <h3>资产包内包含电站</h3>
+                        <div class="line"></div>
                     </div>
                     <div class="article-con">
                         <ul class="article-list">
@@ -56,7 +97,7 @@
                                 </dl>
                                 <dl>
                                     <div class="btn-groups">
-                                        <button class="btn">立即购买</button>
+                                        <button class="btn">查看详情</button>
                                     </div>
                                 </dl>
                                 <dl>
@@ -82,7 +123,7 @@
                                 </dl>
                                 <dl>
                                     <div class="btn-groups">
-                                        <button class="btn">立即购买</button>
+                                        <button class="btn">查看详情</button>
                                     </div>
                                 </dl>
                                 <dl>
@@ -108,14 +149,14 @@
                                 </dl>
                                 <dl>
                                     <div class="btn-groups">
-                                        <button class="btn">立即购买</button>
+                                        <button class="btn">已交易</button>
                                     </div>
                                 </dl>
                                 <dl>
                                     <dt>
-                                        <img src="../images/common/ykj_disable.png">
+                                        <img src="../images/common/jingjiahuise.png">
                                     </dt>
-                                    <dd>一口价</dd>
+                                    <dd>最终价格</dd>
                                 </dl>
                                 <dl>
                                     <dt>26,000.00</dt>
@@ -134,7 +175,7 @@
                                 </dl>
                                 <dl>
                                     <div class="btn-groups">
-                                        <button class="btn">立即购买</button>
+                                        <button class="btn">查看详情</button>
                                     </div>
                                 </dl>
                                 <dl>
@@ -186,207 +227,53 @@
         </div>
         <script src="../js/footer.js"></script>
     </div>
-</body>
-
-</html>
-<script>
-    showHeader(); // 显示头部
-    showNav(true); //显示导航
-</script>
-<div class="main packageDetails">
-    <!-- 资产包详情 -->
-    <div class="details-top">
-        <div class="main-w">
-            <div class="title title-noLine">
-                <h2>资产包详情</h2>
-                <p>NEW TRANSFER</p>
-            </div>
-            <div class="details-top-con">
-                <div class="tit">
-                    <h3>
-                        <span class="btn btn-samll bg-blue">资产包</span>北京市大屯路电站资产包</h3>
-                    <div class="line"></div>
+    <!-- 购买资产包 -->
+    <div class="modal buyPackageModal" style="display: none">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h4 class="modal-title">购买资产包</h4>
                 </div>
-                <div class="con-box">
-                    <div class="con-box-top">
-                        <dl>
-                            <dt>12.5% ~ 18.2%</dt>
-                            <dd>预期年化收益率</dd>
-                        </dl>
-                        <dl>
-                            <dt>12</dt>
-                            <dd>可购电站数</dd>
-                        </dl>
-                        <dl>
-                            <dt>￥1,223.038.00</dt>
-                            <dd>总价格</dd>
-                        </dl>
+                <div class="modal-body">
+                    <div class="tit">
+                        <h3><span class="btn btn-samll bg-blue">资产包</span>北京市大屯路电站资产包<span class="subtit"><img src="../images/common/userfull-dz.png">包含 12 个电站</span></h3>
+                        <div class="line"></div>
                     </div>
-                    <div class="con-box-bot">
-                        <div class="progress">
-                            <div class="progress-icon">
-                                <p>
-                                    总电站数目：<span class="color-blue">3,000
-                                    <img src="../images/common/jindu1.png">
-                                    <span class="color-blue">已售：60%</spa>
-                                </p>
-                            </div>
-                            <div class="progress-line">
-                                <span style="width: 60%"></span>
-                            </div>
-                        </div>
+                    <div class="modal-body-con">
+                        <p>需要支付价格：<span class="color-blue">¥ 30,000.00</span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p>我的余额<span class="color-green price">¥ 12,834.00</span><span class="btn btn-samll">充值</span></p>
+                    <div class="btn-groups">
+                        <button class="btn bg-blue">确定购买</button>
+                    </div>
+                    <div class="tips">
+                        <input type="checkbox" class="agreeCheck" value="true">
+                        阅读并同意<a href="">《电站资产转让协议》</a><a href="">《电站托管协议》</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- 资产包内包含电站 -->
-    <div class="details-bot">
-        <div class="main-w">
-            <div class="title title-noLine">
-                <h2>所有转让</h2>
-                <p>ALL TRANSFER</p>
-            </div>
-            <div class="article-con">
-                <ul class="article-list">
-                    <li class="dz">
-                        <dl>
-                            <dt class="color-green">江苏响水县渔光互补电站</dt>
-                            <dd>
-                                <span class="btn btn-samll bg-green">电站</span>电站名称</dd>
-                        </dl>
-                        <dl>
-                            <div class="btn-groups">
-                                <button class="btn">立即购买</button>
-                            </div>
-                        </dl>
-                        <dl>
-                            <dt>
-                                <img src="../images/common/ykj.png">
-                            </dt>
-                            <dd>一口价</dd>
-                        </dl>
-                        <dl>
-                            <dt class="color-green">26,000.00</dt>
-                            <dd>当前价格</dd>
-                        </dl>
-                        <dl>
-                            <dt class="color-green">12.78%</dt>
-                            <dd>预期年化收益</dd>
-                        </dl>
-                    </li>
-                    <li class="dz">
-                        <dl>
-                            <dt class="color-green">江苏响水县渔光互补电站</dt>
-                            <dd>
-                                <span class="btn btn-samll bg-green">电站</span>电站名称</dd>
-                        </dl>
-                        <dl>
-                            <div class="btn-groups">
-                                <button class="btn">立即购买</button>
-                            </div>
-                        </dl>
-                        <dl>
-                            <dt>
-                                <img src="../images/common/jingjia.png">
-                            </dt>
-                            <dd>竞价出售</dd>
-                        </dl>
-                        <dl>
-                            <dt class="color-green">26,000.00</dt>
-                            <dd>当前价格</dd>
-                        </dl>
-                        <dl>
-                            <dt class="color-green">12.78%</dt>
-                            <dd>预期年化收益</dd>
-                        </dl>
-                    </li>
-                    <li class="dz color-disabled">
-                        <dl>
-                            <dt>江苏响水县渔光互补电站</dt>
-                            <dd>
-                                <span class="btn btn-samll">电站</span>电站名称</dd>
-                        </dl>
-                        <dl>
-                            <div class="btn-groups">
-                                <button class="btn">立即购买</button>
-                            </div>
-                        </dl>
-                        <dl>
-                            <dt>
-                                <img src="../images/common/ykj_disable.png">
-                            </dt>
-                            <dd>一口价</dd>
-                        </dl>
-                        <dl>
-                            <dt>26,000.00</dt>
-                            <dd>当前价格</dd>
-                        </dl>
-                        <dl>
-                            <dt>12.78%</dt>
-                            <dd>预期年化收益</dd>
-                        </dl>
-                    </li>
-                    <li class="dz">
-                        <dl>
-                            <dt class="color-green">江苏响水县渔光互补电站</dt>
-                            <dd>
-                                <span class="btn btn-samll bg-green">电站</span>电站名称</dd>
-                        </dl>
-                        <dl>
-                            <div class="btn-groups">
-                                <button class="btn">立即购买</button>
-                            </div>
-                        </dl>
-                        <dl>
-                            <dt>
-                                <img src="../images/common/jingjia.png">
-                            </dt>
-                            <dd>竞价出售</dd>
-                        </dl>
-                        <dl>
-                            <dt class="color-green">26,000.00</dt>
-                            <dd>当前价格</dd>
-                        </dl>
-                        <dl>
-                            <dt class="color-green">12.78%</dt>
-                            <dd>预期年化收益</dd>
-                        </dl>
-                    </li>
-                </ul>
-                <div class="page-navigation">
-                    <ul>
-                        <li class="first-page">
-                            <img src="../images/common/page-navigation-first.png">
-                        </li>
-                        <li class="prev">
-                            <img src="../images/common/page-navigation-prev.png">
-                        </li>
-                        <li class="current">1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li class="next">
-                            <img src="../images/common/page-navigation-next.png">
-                        </li>
-                        <li class="last-page">
-                            <img src="../images/common/page-navigation-last.png">
-                        </li>
-                        <li class="total-num">
-                            <span>共120条</span>
-                            <em>到第</em>
-                            <input type="text" />
-                            <em>页</em>
-                            <a class="btn btn-samll">确定</a>
-                        </li>
-                    </ul>
+    <!-- 无法打包购买 -->
+    <div class="modal unpackModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="../images/common/unpack.png"/>
+                    <h3>无法打包购买</h3>
+                </div>
+                <div class="modal-footer">
+                    <p>当前资产包内有需要竞价的电站</p>
+                    <div class="btn-groups">
+                        <button class="btn bg-blue">确定</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="../js/footer.js"></script>
-</div>
 </body>
 
 </html>

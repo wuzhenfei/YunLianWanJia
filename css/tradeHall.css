@@ -136,3 +136,190 @@
 .main .all-product .article-con .article-list li {
   margin: 0;
 }
+.packageDetails {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+}
+.packageDetails .details-top {
+  padding: 25px 0;
+}
+.packageDetails .details-top .main-w .tit h3 {
+  font-weight: bold;
+}
+.packageDetails .details-top .main-w .details-top-con {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
+  padding: 20px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box {
+  padding: 45px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-top {
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-top dl {
+  float: left;
+  width: 33.333%;
+  text-align: center;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-top dl dt {
+  font-size: 30px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-top dl dd {
+  font-size: 12px;
+  color: #666;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-top dl dd img {
+  display: inline-block;
+  vertical-align: middle;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-top dl:nth-child(1) {
+  text-align: left;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot {
+  font-size: 14px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot .pull-left {
+  width: 50%;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot .pull-left .progress .progress-icon {
+  margin-bottom: 15px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot .pull-left .progress .progress-icon .sold {
+  font-size: 12px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot .pull-left .progress .progress-icon img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 25px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot .pull-left .progress .progress-line {
+  height: 4px;
+  background: #eee;
+  border-radius: 100px;
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot .pull-left .progress .progress-line span {
+  display: block;
+  height: 4px;
+  border-radius: 100px;
+  background: -webkit-linear-gradient(to left, #0396D6, #00C3BF);
+  background: -o-linear-gradient(to left, #0396D6, #00C3BF);
+  background: -moz-linear-gradient(to left, #0396D6, #00C3BF);
+  background: linear-gradient(to left, #0396D6, #00C3BF);
+}
+.packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot .pull-right {
+  width: 240px;
+  text-align: center;
+  padding-right: 40px;
+}
+.packageDetails .details-top .main-w .details-top-con .hot-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.packageDetails .details-bot .main-w {
+  background: #fff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
+  padding: 20px;
+}
+.packageDetails .details-bot .main-w .article-list li {
+  margin: 0;
+  padding: 30px 0;
+}
+.buyPackageModal .modal-body .tit h3 {
+  font-weight: bold;
+}
+.buyPackageModal .modal-body .tit h3 .subtit {
+  font-size: 12px;
+  margin-left: 20px;
+}
+.buyPackageModal .modal-body .tit h3 .subtit img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.buyPackageModal .modal-body .modal-body-con {
+  padding: 20px 0 40px;
+}
+.buyPackageModal .modal-body .modal-body-con p {
+  font-size: 14px;
+}
+.buyPackageModal .modal-body .modal-body-con p span {
+  font-size: 24px;
+  font-weight: bold;
+}
+.buyPackageModal .modal-footer {
+  border-top: 1px solid #eee;
+  margin: 0 -20px;
+  padding: 0 50px;
+}
+.buyPackageModal .modal-footer p {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin: 25px 0;
+}
+.buyPackageModal .modal-footer p .price {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 25px;
+}
+.buyPackageModal .modal-footer p .btn {
+  background: url(../images/common/rectangle.png) no-repeat left center;
+  padding: 4px 11px 4px 20px;
+}
+.buyPackageModal .modal-footer .btn-groups {
+  padding: 0 250px;
+}
+.buyPackageModal .modal-footer .btn-groups .btn {
+  font-size: 16px;
+}
+.buyPackageModal .modal-footer .tips {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 35px;
+}
+.buyPackageModal .modal-footer .tips .agreeCheck {
+  width: 12px;
+  height: 15px;
+  vertical-align: middle;
+}
+.buyPackageModal .modal-footer .tips a {
+  color: #0396D6;
+}
+.unpackModal .modal-dialog .modal-content {
+  width: 500px;
+  margin-left: -250px;
+  height: 400px;
+}
+.unpackModal .modal-dialog .modal-content .modal-body {
+  margin-bottom: 20px;
+}
+.unpackModal .modal-dialog .modal-content .modal-body img {
+  margin: 0 auto;
+}
+.unpackModal .modal-dialog .modal-content .modal-body h3 {
+  font-size: 26px;
+  color: #999;
+  font-weight: bold;
+  text-align: center;
+  line-height: 90px;
+}
+.unpackModal .modal-dialog .modal-content .modal-footer {
+  border-top: 1px solid #eee;
+  margin: 0 -20px;
+  padding: 0 50px;
+}
+.unpackModal .modal-dialog .modal-content .modal-footer p {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  line-height: 70px;
+}
+.unpackModal .modal-dialog .modal-content .modal-footer .btn-groups {
+  padding: 0 100px;
+}
+.unpackModal .modal-dialog .modal-content .modal-footer .btn-groups .btn {
+  font-size: 16px;
+}

@@ -101,6 +101,22 @@
     }
 }
 
+.tit {
+    h3 {
+        font-size: 20px;
+        line-height: 45px;
+        color: #666;
+        span {
+            font-weight: normal;
+            margin-right: 15px;
+        }
+    }
+    .line {
+        width: 400px;
+        height: 2px;
+        background: #eee;
+    }
+}
 // 默认列表展示
 .article-list {
     li {
@@ -215,6 +231,42 @@
                 border-radius: 50%;
                 color: #fff;
                 .bg-blue();
+            }
+        }
+    }
+}
+
+// 模态框
+.modal{
+    background: rgba(0,0,0,0.2);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    .modal-dialog{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .modal-content{
+            width: 840px;
+            min-height: 150px;
+            background: #fff;
+            .center(known-x, 840px);
+            top: 200px;
+            box-shadow: 0 2px 10px 0 rgba(0,0,0,0.06);
+            padding: 20px;
+            .modal-header{
+                font-size: 22px;
+                padding-bottom: 15px;
+                .close{
+                    float: right;
+                    font-size: 50px;
+                    color: @blue;
+                    line-height: 26px;
+                    cursor: pointer;
+                }
+                border-bottom: 1px solid #eee;
             }
         }
     }

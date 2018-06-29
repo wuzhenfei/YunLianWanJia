@@ -66,12 +66,12 @@
                             color: #bbb;
                             margin-bottom: 40px;
                         }
-                        .icon-img{
+                        .icon-img {
                             margin-bottom: 10px;
-                            img{
-                                margin:0 auto;
+                            img {
+                                margin: 0 auto;
                             }
-                            p{
+                            p {
                                 text-align: center;
                                 line-height: 24px;
                             }
@@ -111,13 +111,223 @@
             }
         }
     }
-    .all-product{
-        .article-con{
-            box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+    .all-product {
+        .article-con {
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
             background: #fff;
-            .article-list{
-                li{
+            .article-list {
+                li {
                     margin: 0;
+                }
+            }
+        }
+    }
+}
+
+// 资产包详情
+.packageDetails {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+    .details-top {
+        padding: 25px 0;
+        .main-w {
+            .tit {
+                h3 {
+                    font-weight: bold;
+                }
+            }
+            .details-top-con {
+                position: relative;
+                background: #fff;
+                box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
+                padding: 20px;
+                .con-box {
+                    padding: 45px;
+                    .con-box-top {
+                        overflow: hidden;
+                        margin-bottom: 60px;
+                        dl {
+                            float: left;
+                            width: 33.333%;
+                            text-align: center;
+                            dt {
+                                font-size: 30px;
+                            }
+                            dd {
+                                font-size: 12px;
+                                color: #666;
+                                img {
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                }
+                            }
+                            &:nth-child(1) {
+                                text-align: left;
+                            }
+                        }
+                    }
+                    .con-box-bot {
+                        font-size: 14px;
+                        .pull-left {
+                            width: 50%;
+                            .progress {
+                                .progress-icon {
+                                    margin-bottom: 15px;
+                                    .sold {
+                                        font-size: 12px;
+                                    }
+                                    img {
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        margin-left: 25px;
+                                    }
+                                }
+                                .progress-line {
+                                    height: 4px;
+                                    background: #eee;
+                                    border-radius: 100px;
+                                    span {
+                                        display: block;
+                                        height: 4px;
+                                        border-radius: 100px;
+                                        .bacground-to-left();
+                                    }
+                                }
+                            }
+                        }
+                        .pull-right {
+                            width: 240px;
+                            text-align: center;
+                            padding-right: 40px;
+                        }
+                    }
+                }
+                .hot-icon {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+        }
+    }
+    .details-bot {
+        .main-w {
+            background: #fff;
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
+            padding: 20px;
+            .article-list {
+                li {
+                    margin: 0;
+                    padding: 30px 0;
+                }
+            }
+        }
+    }
+}
+
+// 购买资产包
+.buyPackageModal {
+    .modal-body {
+        .tit {
+            h3 {
+                font-weight: bold;
+                .subtit {
+                    font-size: 12px;
+                    margin-left: 20px;
+                    img {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        .modal-body-con {
+            padding: 20px 0 40px;
+            p {
+                font-size: 14px;
+                span {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .modal-footer {
+        border-top: 1px solid #eee;
+        margin: 0 -20px;
+        padding: 0 50px;
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin: 25px 0;
+            .price {
+                font-size: 16px;
+                font-weight: bold;
+                margin: 0 25px;
+            }
+            .btn {
+                background: url(../images/common/rectangle.png) no-repeat left center;
+                padding: 4px 11px 4px 20px;
+            }
+        }
+        .btn-groups {
+            padding: 0 250px;
+            .btn {
+                font-size: 16px;
+            }
+        }
+        .tips {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 35px;
+            .agreeCheck {
+                width: 12px;
+                height: 15px;
+                vertical-align: middle;
+            }
+            a {
+                color: @blue;
+            }
+        }
+    }
+}
+
+// 无法打包购买
+.unpackModal {
+    .modal-dialog {
+        .modal-content {
+            width: 500px;
+            margin-left: -250px;
+            height: 400px;
+            .modal-body {
+                margin-bottom: 20px;
+                img {
+                    margin: 0 auto;
+                }
+                h3 {
+                    font-size: 26px;
+                    color: #999;
+                    font-weight: bold;
+                    text-align: center;
+                    line-height: 90px;
+                }
+            }
+            .modal-footer {
+                border-top: 1px solid #eee;
+                margin: 0 -20px;
+                padding: 0 50px;
+                p {
+                    font-size: 14px;
+                    color: #999;
+                    text-align: center;
+                    line-height: 70px
+                }
+                .btn-groups {
+                    padding: 0 100px;
+                    .btn {
+                        font-size: 16px;
+                    }
                 }
             }
         }
