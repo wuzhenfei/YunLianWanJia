@@ -1,0 +1,26 @@
+@import "../mixin.less";
+// 导航
+nav {
+    height: 52px;
+    line-height: 52px;
+    .logo {
+        padding-top: 5px;
+    }
+    .nav-list {
+        >li {
+            display: inline-block;
+            margin-left: 80px;
+            a {
+                padding: 7px 0;
+                font-size: 16px;
+                color: #0396D6;
+            }
+            &.current {
+                a {
+                    font-weight: bold;
+                    border-bottom: 2px solid #0396D6;
+                }
+            }
+        }
+    }
+}

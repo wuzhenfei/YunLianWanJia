@@ -1,0 +1,41 @@
+/**
+ *  布局
+ */
+/**
+ *  字体
+ */
+/**
+ *  图像
+ */
+/**
+ *  动效
+ */
+/**
+ *  功能
+ */
+/**
+ *  图形
+ */
+/**
+ *  组件
+ */
+nav {
+  height: 52px;
+  line-height: 52px;
+}
+nav .logo {
+  padding-top: 5px;
+}
+nav .nav-list > li {
+  display: inline-block;
+  margin-left: 80px;
+}
+nav .nav-list > li a {
+  padding: 7px 0;
+  font-size: 16px;
+  color: #0396D6;
+}
+nav .nav-list > li.current a {
+  font-weight: bold;
+  border-bottom: 2px solid #0396D6;
+}

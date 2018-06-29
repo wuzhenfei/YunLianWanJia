@@ -1,0 +1,61 @@
+/**
+ *  布局
+ */
+/**
+ *  字体
+ */
+/**
+ *  图像
+ */
+/**
+ *  动效
+ */
+/**
+ *  功能
+ */
+/**
+ *  图形
+ */
+/**
+ *  组件
+ */
+header {
+  height: 34px;
+  line-height: 34px;
+  color: #fff;
+  background: -webkit-linear-gradient(to right, #0396D6, #00C3BF);
+  background: -o-linear-gradient(to right, #0396D6, #00C3BF);
+  background: -moz-linear-gradient(to right, #0396D6, #00C3BF);
+  background: linear-gradient(to right, #0396D6, #00C3BF);
+}
+header .pull-left span {
+  padding-left: 20px;
+  margin-right: 30px;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+header .pull-left span.phone {
+  background: url(../../images/common/dianhua.png) no-repeat left center;
+}
+header .pull-left span.downLoadApp {
+  background: url(../../images/common/shouji.png) no-repeat left center;
+}
+header .pull-right a {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  color: #fff;
+}
+header .pull-right a.register {
+  margin-right: 35px;
+}
+header .pull-right span {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  margin: 0 15px;
+}
+header .pull-right span.notice {
+  margin-right: 35px;
+}
+header .pull-right span.notice em {
+  font-style: normal;
+}

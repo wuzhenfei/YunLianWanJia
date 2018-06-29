@@ -1,0 +1,80 @@
+/**
+ *  布局
+ */
+/**
+ *  字体
+ */
+/**
+ *  图像
+ */
+/**
+ *  动效
+ */
+/**
+ *  功能
+ */
+/**
+ *  图形
+ */
+/**
+ *  组件
+ */
+footer {
+  padding: 15px 0;
+  color: #fff;
+  background: -webkit-linear-gradient(to right, #0396D6, #00C3BF);
+  background: -o-linear-gradient(to right, #0396D6, #00C3BF);
+  background: -moz-linear-gradient(to right, #0396D6, #00C3BF);
+  background: linear-gradient(to right, #0396D6, #00C3BF);
+}
+footer .footer-top {
+  margin-bottom: 20px;
+}
+footer .footer-top .pull-left {
+  overflow: hidden;
+}
+footer .footer-top .pull-left .item {
+  float: left;
+  margin-right: 100px;
+}
+footer .footer-top .pull-left .item h3 {
+  font-size: 14px;
+  line-height: 50px;
+}
+footer .footer-top .pull-left .item h3 a {
+  color: #fff;
+}
+footer .footer-top .pull-left .item ul li {
+  line-height: 40px;
+  font-size: 12px;
+}
+footer .footer-top .pull-left .item ul li a {
+  color: #fff;
+}
+footer .footer-top .erweima {
+  padding: 25px 0;
+  font-size: 12px;
+  text-align: center;
+  line-height: 20px;
+}
+footer .footer-bot p {
+  text-align: center;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+footer .footer-bot p span {
+  margin-right: 20px;
+}
+footer .footer-bot p span:nth-child(2) {
+  margin-right: 65px;
+}
+footer .footer-bot p span:nth-child(3) {
+  margin-right: 75px;
+}
+footer .footer-bot p span:nth-child(4) {
+  background: url(../../images/common/beian.png) no-repeat left center;
+  padding-left: 20px;
+}
+footer .footer-bot p span:last-child {
+  margin-right: 0;
+}

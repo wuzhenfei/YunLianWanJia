@@ -1,0 +1,40 @@
+@import "../mixin.less";
+// 头部样式
+header {
+    height: 34px;
+    line-height: 34px;
+    color: #fff;
+    .bacground-to-right();
+    .pull-left {
+        span {
+            padding-left: 20px;
+            margin-right: 30px;
+            .opacity(80);
+            &.phone {
+                background: url(../../images/common/dianhua.png) no-repeat left center;
+            }
+            &.downLoadApp {
+                background: url(../../images/common/shouji.png) no-repeat left center;
+            }
+        }
+    }
+    .pull-right {
+        a{
+            .opacity(80);
+            color: #fff;
+            &.register{
+                margin-right: 35px;
+            }
+        }
+        span {
+            .opacity(80);
+            margin: 0 15px;
+            &.notice{
+                margin-right: 35px;
+                em{
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}

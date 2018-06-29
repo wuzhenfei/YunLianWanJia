@@ -1,0 +1,146 @@
+/**
+ *  布局
+ */
+/**
+ *  字体
+ */
+/**
+ *  图像
+ */
+/**
+ *  动效
+ */
+/**
+ *  功能
+ */
+/**
+ *  图形
+ */
+/**
+ *  组件
+ */
+.main {
+  padding: 0;
+}
+.main .banner {
+  padding: 0;
+}
+.main .banner .swiper-banner {
+  width: 100%;
+}
+.main .banner .swiper-banner img {
+  width: 100%;
+}
+.main > div {
+  padding: 35px 0 30px;
+}
+.main .quick-entry {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
+}
+.main .quick-entry ul {
+  overflow: hidden;
+  margin: 0 -15px;
+}
+.main .quick-entry ul li {
+  float: left;
+  width: 25%;
+  height: 130px;
+  padding: 0 15px;
+}
+.main .quick-entry ul li .box {
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 15px 0;
+}
+.main .quick-entry ul li .box img {
+  margin: 0 auto;
+  height: 53px;
+}
+.main .quick-entry ul li .box h3 {
+  font-size: 16px;
+  margin: 5px 0 0;
+}
+.main .quick-entry ul li .box p {
+  line-height: 22px;
+}
+.main .quick-entry ul li:nth-child(1) .box {
+  background: url(../images/home/entry_img__1.png) no-repeat center;
+  background-size: cover;
+}
+.main .quick-entry ul li:nth-child(2) .box {
+  background: url(../images/home/entry_img__2.png) no-repeat center;
+  background-size: cover;
+}
+.main .quick-entry ul li:nth-child(3) .box {
+  background: url(../images/home/entry_img__3.png) no-repeat center;
+  background-size: cover;
+}
+.main .quick-entry ul li:nth-child(4) .box {
+  background: url(../images/home/entry_img__4.png) no-repeat center;
+  background-size: cover;
+}
+.main .hot-recommend {
+  background: #f3f7f9 url(../images/home/hot-recommend__bg.png) no-repeat center bottom;
+  min-height: 600px;
+}
+.main .hot-recommend .main-w {
+  background: #fff;
+  padding: 15px 25px 0;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
+}
+.main .hot-recommend .main-w .tips {
+  text-align: center;
+  line-height: 40px;
+  color: #999;
+}
+.main .add-station {
+  background: url(../images/home/add-station__img.png) no-repeat center;
+  min-height: 295px;
+}
+.main .add-station .main-w {
+  padding: 15px 25px 0;
+}
+.main .add-station .main-w .title h2 {
+  color: #fff;
+}
+.main .add-station .main-w .title p {
+  color: #fff;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.main .add-station .main-w .title:after {
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.main .add-station .main-w .add-station__text {
+  font-size: 36px;
+  color: #fff;
+  line-height: 46px;
+  margin-top: 15px;
+  font-weight: lighter;
+}
+.main .about-us {
+  background: url(../images/home/about-us__bg.png) no-repeat center;
+  background-size: cover;
+  min-height: 465px;
+}
+.main .about-us .main-w {
+  background: #fff;
+  padding: 15px 25px 30px;
+}
+.main .about-us .main-w .about-us__con .pull-left {
+  width: 50%;
+}
+.main .about-us .main-w .about-us__con .pull-left .text-p p {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 15px;
+  text-indent: 2em;
+  line-height: 20px;
+}
+.main .about-us .main-w .about-us__con .pull-left .text-p .details {
+  font-size: 12px;
+  color: #0396D6;
+  line-height: 15px;
+}

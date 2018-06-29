@@ -1,0 +1,125 @@
+@import "./mixin.less";
+.main {
+    .tab-header {
+        height: 80px;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        ul {
+            overflow: hidden;
+            padding-top: 33px;
+            li {
+                float: left;
+                width: 25%;
+                text-align: center;
+                padding: 0 2px;
+                a {
+                    padding: 10px 0;
+                    font-size: 16px;
+                    display: block;
+                    color: #666666;
+                    border-bottom: 4px solid #eee;
+                }
+                &.current {
+                    a {
+                        font-weight: bold;
+                        border-bottom: 4px solid;
+                        border-image: linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+                        border-image: -webkit-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+                        border-image: -moz-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+                    }
+                }
+            }
+        }
+    }
+    .hot-product {
+        .main-w {
+            padding: 25px 0;
+            .hot-product-list {
+                overflow: hidden;
+                margin: 0 -5px;
+                li {
+                    float: left;
+                    width: 25%;
+                    padding: 0 5px 5px;
+                    .hot-product-box {
+                        background: #fff;
+                        text-align: center;
+                        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
+                        padding: 15px 15px;
+                        position: relative;
+                        h3 {
+                            font-size: 14px;
+                            color: #333;
+                            margin: 15px 0;
+                        }
+                        .line {
+                            height: 2px;
+                            width: 100px;
+                            margin: 20px auto 30px;
+                            background: #eee;
+                        }
+                        h2 {
+                            font-size: 28px;
+                            line-height: 45px;
+                        }
+                        .tips {
+                            color: #bbb;
+                            margin-bottom: 40px;
+                        }
+                        .icon-img{
+                            margin-bottom: 10px;
+                            img{
+                                margin:0 auto;
+                            }
+                            p{
+                                text-align: center;
+                                line-height: 24px;
+                            }
+                        }
+                        .num {
+                            color: #666;
+                            margin-bottom: 20px;
+                            font-size: 14px;
+                        }
+                        .progress {
+                            margin-bottom: 25px;
+                            .progress-line {
+                                height: 4px;
+                                background: #eee;
+                                border-radius: 100px;
+                                span {
+                                    display: block;
+                                    height: 4px;
+                                    border-radius: 100px;
+                                    .bacground-to-left();
+                                }
+                            }
+                            .progress-icon {
+                                margin-top: 10px;
+                                img {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                        .hot-icon {
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .all-product{
+        .article-con{
+            box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+            background: #fff;
+            .article-list{
+                li{
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

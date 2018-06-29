@@ -1,0 +1,138 @@
+/**
+ *  布局
+ */
+/**
+ *  字体
+ */
+/**
+ *  图像
+ */
+/**
+ *  动效
+ */
+/**
+ *  功能
+ */
+/**
+ *  图形
+ */
+/**
+ *  组件
+ */
+.main .tab-header {
+  height: 80px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.main .tab-header ul {
+  overflow: hidden;
+  padding-top: 33px;
+}
+.main .tab-header ul li {
+  float: left;
+  width: 25%;
+  text-align: center;
+  padding: 0 2px;
+}
+.main .tab-header ul li a {
+  padding: 10px 0;
+  font-size: 16px;
+  display: block;
+  color: #666666;
+  border-bottom: 4px solid #eee;
+}
+.main .tab-header ul li.current a {
+  font-weight: bold;
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+  border-image: -webkit-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+  border-image: -moz-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+}
+.main .hot-product .main-w {
+  padding: 25px 0;
+}
+.main .hot-product .main-w .hot-product-list {
+  overflow: hidden;
+  margin: 0 -5px;
+}
+.main .hot-product .main-w .hot-product-list li {
+  float: left;
+  width: 25%;
+  padding: 0 5px 5px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box {
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.02);
+  padding: 15px 15px;
+  position: relative;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box h3 {
+  font-size: 14px;
+  color: #333;
+  margin: 15px 0;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .line {
+  height: 2px;
+  width: 100px;
+  margin: 20px auto 30px;
+  background: #eee;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box h2 {
+  font-size: 28px;
+  line-height: 45px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .tips {
+  color: #bbb;
+  margin-bottom: 40px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .icon-img {
+  margin-bottom: 10px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .icon-img img {
+  margin: 0 auto;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .icon-img p {
+  text-align: center;
+  line-height: 24px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .num {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .progress {
+  margin-bottom: 25px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .progress .progress-line {
+  height: 4px;
+  background: #eee;
+  border-radius: 100px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .progress .progress-line span {
+  display: block;
+  height: 4px;
+  border-radius: 100px;
+  background: -webkit-linear-gradient(to left, #0396D6, #00C3BF);
+  background: -o-linear-gradient(to left, #0396D6, #00C3BF);
+  background: -moz-linear-gradient(to left, #0396D6, #00C3BF);
+  background: linear-gradient(to left, #0396D6, #00C3BF);
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .progress .progress-icon {
+  margin-top: 10px;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .progress .progress-icon img {
+  display: inline-block;
+}
+.main .hot-product .main-w .hot-product-list li .hot-product-box .hot-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.main .all-product .article-con {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
+  background: #fff;
+}
+.main .all-product .article-con .article-list li {
+  margin: 0;
+}

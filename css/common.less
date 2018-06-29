@@ -1,0 +1,221 @@
+@import "./mixin.less";
+.dib{
+    .dib();
+}
+// 按钮样式
+.btn{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    .bacground-to-right();
+    border-radius: 100px;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    &:focus{
+        outline: none;
+    }
+    &.btn-samll{
+        padding: 2px 6px;
+        border-radius: 12px;
+        font-size: 12px;
+        height: 22px;
+        line-height: 22px;
+    }
+}
+// 颜色样式
+.color-green{
+    color: @green;
+}
+.color-blue{
+    color: @blue;
+}
+// 颜色样式
+.bg-green{
+    background: @green;
+}
+.bg-blue{
+    background: @blue;
+}
+// 浮动
+.cleart{
+    .clearfix();
+}
+.pull-left{
+    .fl();
+}
+.pull-right{
+    .fr();
+}
+
+// 主体宽度
+.main{
+    background: #fafafa;
+    padding-bottom: 60px;
+}
+.main-w {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+// 公用标题
+.title {
+    position: relative;
+    padding-bottom: 20px;
+    h2 {
+        font-size: 22px;
+        line-height: 28px;
+        span {
+            &:nth-child(1) {
+                margin-left: 25px;
+            }
+        }
+        em {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #E9E9E9;
+            margin: 0 5px;
+        }
+    }
+    p {
+        color: #999;
+        font-size: 12px;
+    }
+    &:after {
+        content: '';
+        display: block;
+        width: 44px;
+        border: 2px solid #EEEEEE;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    &.title-noLine{
+        &:after {
+            display: none;
+        }
+    }
+}
+
+// 默认列表展示
+.article-list {
+    li {
+        overflow: hidden;
+        padding:30px 20px;
+        margin: 0 -25px;
+        border-bottom:1px solid #eee;
+        dl {
+            display: block;
+            text-align: center;
+            float: right;
+            dt {
+                font-size: 18px;
+                line-height: 40px;
+                img{
+                    margin: 9px auto;
+                }
+            }
+            dd {
+                line-height: 22px;
+                color: #666;
+                .btn {
+                    margin-right: 10px;
+                }
+            }
+            &:nth-child(1) {
+                text-align: left;
+                float: left;
+            }
+            &:nth-child(3) {
+                width: 300px;
+            }
+            &:nth-child(4) {
+                width: 120px;
+            }
+            &:nth-child(5) {
+                width: 200px;
+            }
+            .btn {
+                width: 110px;
+                margin-top: 15px;
+            }
+        }
+        &:hover{
+            background: #F7F7F7;
+        }
+        &.dz{
+            dt {
+                img{
+                    margin: 5px auto;
+                }
+            }
+        }
+        &.color-disabled{
+            color: #999;
+            dd{
+                color: #999;
+            }
+            .btn{
+                background: #bbb;
+            }
+        }
+    }
+}
+
+// 分页
+.page-navigation{
+    height: 70px;
+    text-align: right;
+    ul{
+        overflow: hidden;
+        padding: 25px;
+        text-align: right;
+        display: inline-block;
+        li{
+            float: left;
+            width: 21px;
+            height: 21px;
+            line-height: 21px;
+            text-align: center;
+            margin-left: 15px;
+            cursor: pointer;
+            .color-blue();
+            &.total-num{
+                width: auto;
+                color: #999;
+                span{
+                    float: left;
+                    margin-right: 25px;
+                }
+                em{
+                    float: left;
+                    font-style: normal;
+                }
+                input{
+                    float: left;
+                    width: 30px;
+                    border-radius: 10px;
+                    height: 20px;
+                    border: 1px solid #bbb;
+                    margin: 0 5px;
+                }
+                .btn{
+                    background: none;
+                    color: #999;
+                    border: 1px solid #bbb;
+                    margin-left: 10px;
+                    padding: 1px 6px;
+                }
+            }
+            &.current{
+                border-radius: 50%;
+                color: #fff;
+                .bg-blue();
+            }
+        }
+    }
+}
