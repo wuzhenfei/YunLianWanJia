@@ -27,10 +27,10 @@
                 <div class="main-w">
                     <ul>
                         <li class="current">
-                            <a href="">新品中心</a>
+                            <a href="newProducts.html">新品中心</a>
                         </li>
                         <li>
-                            <a href="">转让中心</a>
+                            <a href="transferCenter.html">转让中心</a>
                         </li>
                         <li>
                             <a href="">竞价电站</a>
@@ -316,5 +316,93 @@
         <script src="../js/footer.js"></script>
     </div>
 </body>
-
+<script src="../js/api.js"></script>
+<script>
+    $.post(getOnSaleAssetPackageList, {pageNumber: 1, limit:10} ,function(res){
+        console.log(res);
+        var recommendInfo = JSON.parse(res);
+        var data = recommendInfo.result.data;
+        var str = '';
+        var imgSrc = '';
+        var soldType = '';  // 一口价和竞价
+        $.each(data, function(index, item){
+            if(item.type == 1) {    //资产包
+                var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
+                if (0 <= soldNum <= 30) {
+                    imgSrc = '../images/common/icon-jd__10.png'
+                } else if(soldNum <= 50) {
+                    imgSrc = '../images/common/icon-jd__30.png'
+                } else if(soldNum <= 70) {
+                    imgSrc = '../images/common/icon-jd__50.png'
+                } else if (soldNum <= 90) {
+                    imgSrc = '../images/common/icon-jd__70.png'
+                } else if (soldNum <= 100) {
+                    imgSrc = '../images/common/icon-jd__90.png'
+                } else if(soldNum == 100) {
+                    imgSrc = '../images/common/icon-jd__100.png'
+                }
+                str = str + '<li class="zcb">'+
+                            '<dl>' + 
+                                '<dt class="color-blue">' + item.name + '</dt>' + 
+                                '<dd class="name">' + 
+                                    '<img src="../images/common/hothuo.png">'+
+                                    '<span class="btn btn-samll bg-blue">资产包</span>' + 
+                                        item.name + 
+                                '</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<div class="btn-groups"><button class="btn">立即购买</button></div>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt>' + '<img src='+ imgSrc + '>'+ '</dt>' + 
+                                '<dd>包内已售 '+ soldNum +'%'+ '</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-blue">'+ item.count +'</dt>' + 
+                                '<dd>总电站数</dd>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-blue">'+ item.minRate +'%'+ '~' + item.maxRate +'%' + '</dt>' + 
+                                '<dd>预期年化收益</dd>' +
+                            '</dl>' +   
+                        '</li>';
+            } else {    // 电站
+                if(item.payType == 0) {  // 一口价
+                    soldType = '一口价';
+                    imgSrc = '../images/common/ykj.png'
+                } else{ // 竞价出售
+                    soldType = '竞价出售';
+                    imgSrc = '../images/common/jingjia.png'
+                }
+                str = str + '<li class="dz">'+
+                            '<dl>' + 
+                                '<dt class="color-green">' + item.name + '</dt>' + 
+                                '<dd class="name">' + 
+                                    '<img src="../images/common/hothuo.png">'+
+                                    '<span class="btn btn-samll bg-green">电钻</span>' + 
+                                        item.name + 
+                                '</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<div class="btn-groups"><button class="btn">立即购买</button></div>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt>' + '<img src='+ imgSrc + '>'+ '</dt>' + 
+                                '<dd>'+ soldType +'</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-green">'+ item.price +'</dt>' + 
+                                '<dd>当前价格</dd>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-green">'+ item.rate + '%' +'</dt>' + 
+                                '<dd>预期年化收益</dd>' +
+                            '</dl>' +   
+                        '</li>';
+            }
+            
+        })
+        $('#recommendList').append(str);
+    })
+</script>
 </html>

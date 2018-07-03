@@ -8,40 +8,74 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
     <title>登陆</title>
 </head>
 
 <body>
     <div class="wrap">
-        <script src="../js/header.js"></script>
-        <script src="../js/nav.js"></script>
+        <script>
+            showHeader(true);   // 显示头部
+            showNav();  //显示导航
+        </script>
         <div class="main">
             <div class="login">
                 <div class="login-form main-w">
-                    <form class="form-group">
+                    <div class="form-group">
                         <h2>用户登录</h2>
                         <div class="form-control">
-                            <input type="number" placeholder="请输入手机号" />
+                            <input type="number" name="phone" placeholder="请输入手机号" />
                         </div>
                         <div class="form-control">
-                            <input type="password" placeholder="请输入密码" />
-                            <a class="forget">忘记密码?</a>
+                            <input type="password" name="password" placeholder="请输入密码" />
+                            <a class="forget" href="getPassword.html">忘记密码?</a>
                         </div>
                         <div class="tips cleart">
                             <span class="pull-right">还没有账号？去
-                                <a href="">注册</a>
+                                <a href="register.html">注册</a>
                             </span>
-                            <a href="">验证码登录</a>
+                            <a href="codeLogin.html">验证码登录</a>
                         </div>
                         <div class="btn-groups">
-                            <button class="btn btn-lg btn-defaut">登录</button>
+                            <button class="btn btn-lg btn-defaut btn-login">登录</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
         <script src="../js/footer.js"></script>        
     </div>
 </body>
-
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script>
+    $(function() {
+        var tipsinfo = '';
+        $('.btn-login').click(function() {
+            var phoneNum = $('input[name="phone"]').val();
+            var password = $('input[name="password"]').val();
+            if (phoneNum != '' && password != '') {
+                $.post(loginApi,{
+                    mobile: phoneNum,
+                    password: password
+                },function(res) {
+                    var data = JSON.parse(res);
+                    if(data.result) {
+                        var userInfo = JSON.stringify(data.result);
+                        localStorage.setItem('userInfo', userInfo);
+                        window.location.href = "../home/index.html";
+                    } else {
+                        tipsinfo = data.content;
+                        messageShow(tipsinfo);
+                    }
+                })
+            } else {
+                tipsinfo = '输入信息不完整！';
+                messageShow(tipsinfo);
+            }
+        });
+    })
+</script>
 </html>

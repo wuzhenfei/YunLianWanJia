@@ -8,41 +8,102 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
     <title>注册</title>
 </head>
 
 <body>
     <div class="wrap">
-        <script src="../js/header.js"></script>
-        <script src="../js/nav.js"></script>
+        <script>
+            showHeader(true);   // 显示头部
+            showNav();  //显示导航
+        </script>
         <div class="main">
             <div class="login register">
                 <div class="login-form main-w">
-                    <form class="form-group">
-                        <h2><span class="pull-right">已有账号？去 <a href="">登录</a></span>注册账号</h2>
+                    <div class="form-group">
+                        <h2><span class="pull-right">已有账号？去 <a href="login.html">登录</a></span>注册账号</h2>
                         <div class="form-control">
-                            <input type="number" placeholder="请输入手机号" />
+                            <input type="number" name="phone"  placeholder="请输入手机号" />
                         </div>
                         <div class="form-control">
-                            <input type="text" placeholder="请输入验证码" />
-                            <a class="btn">发送验证码</a>
+                            <input type="text" name="identifyingCode" placeholder="请输入验证码" />
+                            <a class="btn sendCode">发送验证码</a>
                         </div>
                         <div class="form-control">
-                            <input type="password" placeholder="请输入密码" />
+                            <input type="password" name="password"  placeholder="请输入密码" />
                         </div>
                         <div class="btn-groups">
-                            <button class="btn btn-lg btn-defaut">注册并登陆</button>
+                            <button class="btn btn-lg btn-defaut btn-register">注册并登陆</button>
                         </div>
                         <div class="tips">
-                            <input type="checkbox" class="agreeCheck" value="true">
-                            同意<a href="">《云联万家项目》</a>用户协议
+                            <input type="checkbox" checked class="agreeCheck" value="true">
+                            同意<a href="../agreement/userAgreement.html">《云联万家项目》</a>用户协议
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
         <script src="../js/footer.js"></script>        
     </div>
 </body>
-
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script>
+    $(function() {
+        var tipsinfo = '';
+        // 发送验证码
+        $('.sendCode').click(function () {
+            var phoneNum = $('input[name="phone"]').val();
+            $.post(registerMobileCode, {mobile: phoneNum}, function(res) {
+                var data = JSON.parse(res);
+                if (data.result) {
+                    tipsinfo = data.result.message;
+                    var count = 60;
+                    var timer = setInterval(() => {
+                        count--
+                        var codeTitle = count + 's';
+                        $('.sendCode').addClass('active').html(codeTitle);
+                        if (count == 0) {
+                            $('.sendCode').removeClass('active').html('发送验证码');
+                            clearInterval(timer)
+                        }
+                    }, 1000);
+                } else {
+                    tipsinfo = data.content;
+                    messageShow(tipsinfo);
+                }
+            })
+        })
+        // 手机号注册
+        $('.btn-register').click(function() {
+            var phoneNum = $('input[name="phone"]').val();
+            var identifyingCode = $('input[name="identifyingCode"]').val();
+            var password = $('input[name="password"]').val();
+            if (phoneNum != '' && identifyingCode != '' && password != '') {
+                $.post(register, {
+                    mobile: phoneNum,
+                    vericode: identifyingCode,
+                    password: password
+                }, function(res) {
+                    var data = JSON.parse(res);
+                    if (data.result) {
+                        tipsinfo = data.result.message;
+                        localStorage.setItem('userInfo', userInfo);
+                        var userInfo = JSON.stringify(data.result);
+                        window.location.href = "../home/index.html";
+                    } else {
+                        tipsinfo = data.content;
+                        messageShow(tipsinfo);
+                    }
+                })
+            } else {
+                tipsinfo = '输入信息不完整！';
+                messageShow(tipsinfo);
+            }
+        })
+    })
+</script>
 </html>

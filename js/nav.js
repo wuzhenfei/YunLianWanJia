@@ -1,4 +1,4 @@
-function showNav(isCurrent, isLogin) {
+function showNav(notShowMenu) {
     document.writeln("<link href=\'../css/public/nav.css\'  rel=\"stylesheet\" type=\"text/css\" />");
     document.writeln("<nav>");
     document.writeln("    <div class=\"main-w cleart\">");
@@ -9,11 +9,11 @@ function showNav(isCurrent, isLogin) {
     document.writeln("        </div>");
     document.writeln("        <div class=\"pull-right\">");
     document.writeln("            <ul class=\"nav-list\">");
-    if (isLogin) {
-        document.writeln("                <li><a href=\"\">进入首页</a></li>");
+    if (!notShowMenu) {
+        document.writeln("                <li><a href=\"../home/index.html \">进入首页</a></li>");
     } else {
-        document.writeln("                <li class='current'><a href=\"\">首页</a></li>");
-        document.writeln("                <li><a href=\"\">交易大厅</a></li>");
+        document.writeln("                <li class='current'><a href=\"../home/index.html \">首页</a></li>");
+        document.writeln("                <li><a href=\"../tradeHall/newProducts.html \">交易大厅</a></li>");
         document.writeln("                <li><a href=\"\">资产中心</a></li>");
         document.writeln("                <li><a href=\"\">个人中心</a></li>");
     }

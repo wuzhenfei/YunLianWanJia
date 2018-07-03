@@ -11,21 +11,20 @@
     <script src="../js/jquery-1.11.3.min.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/nav.js"></script>
-    <title>找回密码</title>
+    <title>验证码登录</title>
 </head>
 
 <body>
     <div class="wrap">
         <script>
-            showHeader(true); // 显示头部
-            showNav(); //显示导航
+            showHeader(true);   // 显示头部
+            showNav();  //显示导航
         </script>
         <div class="main">
             <div class="login">
                 <div class="login-form main-w">
                     <div class="form-group">
-                        <h2>
-                            <a class="pull-right" href="login.html">返回登录</a>找回密码</h2>
+                        <h2>用户登录</h2>
                         <div class="form-control">
                             <input type="number" name="phone" placeholder="请输入手机号" />
                         </div>
@@ -33,49 +32,58 @@
                             <input type="text" name="identifyingCode" placeholder="请输入验证码" />
                             <a class="btn sendCode">发送验证码</a>
                         </div>
-                        <div class="form-control">
-                            <input type="password" name="password" placeholder="设置新密码" />
+                        <div class="tips cleart">
+                            <span class="pull-right">还没有账号？去
+                                <a href="register.html">注册</a>
+                            </span>
+                            <a href="login.html">密码登录</a>
                         </div>
                         <div class="btn-groups">
-                            <button class="btn btn-lg btn-defaut changeBtn">确认修改</button>
+                            <button class="btn btn-lg btn-defaut btn-login">登录</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="../js/footer.js"></script>
+        <script src="../js/footer.js"></script>        
     </div>
 </body>
 <script src="../js/common.js"></script>
 <script src="../js/api.js"></script>
 <script>
-    $(function () {
+    $(function() {
         var tipsinfo = '';
-        $('.sendCode').click(function () {
+        $('.sendCode').click(function() {
             var phoneNum = $('input[name="phone"]').val();
-            $.post(getPasswordCode, {
+            $.post(loginMobileCode, {
                 mobile: phoneNum
             }, function(res) {
                 var data = JSON.parse(res);
                 if(data.result) {
-                    console.log(data)
+                    var count = 60;
+                    var timer = setInterval(() => {
+                        count--
+                        var codeTitle = count + 's';
+                        $('.sendCode').addClass('active').html(codeTitle);
+                        if (count == 0) {
+                            $('.sendCode').removeClass('active').html('发送验证码');
+                            clearInterval(timer)
+                        }
+                    }, 1000);
                 } else {
-                    console.log(data.content);
                     tipsinfo = data.content;
                     messageShow(tipsinfo);
-                } 
+                }
             })
         });
-        $('.changeBtn').click(function() {
+        $('.btn-login').click(function() {
             var phoneNum = $('input[name="phone"]').val();
             var identifyingCode = $('input[name="identifyingCode"]').val();
-            var password = $('input[name="password"]').val();
-            if (phoneNum != '' && identifyingCode != '' && password != '') {
-                $.post(setPassword,{
+            if (phoneNum != '' && identifyingCode != '') {
+                $.post(codeLogin,{
                     mobile: phoneNum,
-                    vericode: identifyingCode,
-                    password: password
-                }, function(res){
+                    vericode: identifyingCode
+                },function(res) {
                     var data = JSON.parse(res);
                     if(data.result) {
                         var userInfo = JSON.stringify(data.result);
@@ -90,8 +98,7 @@
                 tipsinfo = '输入信息不完整！';
                 messageShow(tipsinfo);
             }
-        })
+        });
     })
 </script>
-
 </html>

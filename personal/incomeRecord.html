@@ -1,0 +1,29 @@
+<div class="incomeRecord">
+    <div class="common-tab">
+        <ul>
+            <li class="active">收入记录</li>
+            <li>支出记录</li>
+        </ul>
+    </div>
+    <div class="tab-container">
+        <ul class="incomeRecord-list"></ul>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        var uesrInfo = localStorage.getItem('userInfo');
+        uesrInfo = JSON.parse(uesrInfo);
+        if(uesrInfo && uesrInfo.userId) {
+            $.post(getUserMoneyRecord, {
+                userId: uesrInfo.userId,
+                token: uesrInfo.token,
+                pageNumber: 1,
+                limit: 20,
+                state: 1
+            }, function(res) {
+                console.log(res);
+            })
+        }
+    })
+</script>

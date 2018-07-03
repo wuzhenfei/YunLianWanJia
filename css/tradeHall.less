@@ -224,7 +224,328 @@
     }
 }
 
-// 购买资产包
+// 竞价购买电站
+.bidpriceBuy{
+    padding: 40px 0;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+    .main-w{
+        box-shadow: 0 2px 6px 0 rgba(0,0,0,0.04);
+        padding: 30px;
+        .tit{
+            margin: 15px 0;
+            h3{
+                font-weight: bold;
+                .subtit{
+                    font-size: 12px;
+                    color: #666;
+                    margin-left: 10px;
+                    img{
+                        display: inline;
+                        vertical-align: middle;
+                        margin: 0 5px;
+                    }
+                }
+            }
+        }
+        .current-price{
+            font-size: 14px;
+            margin: 20px 0;
+            span{
+                color: @blue;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+        .bidpriceBuy-con{
+            text-align: center;
+            p{
+                font-size: 16px;
+                line-height: 32px;
+                color: #666;
+                &.price{
+                    font-size: 36px;
+                    color: @blue;
+                    font-weight: bold;
+                    margin: 20px 0 40px;
+                }
+            }
+            .line{
+                height: 1px;
+                background: #eee;
+                width: 80%;
+                margin: 30px auto 0;
+            }
+        }
+        .bidpriceBuy-bot{
+            p{
+                text-align: center;
+                font-size: 14px;
+                color: #666;
+                margin: 25px 0;
+                .btn{
+                    background: url(../images/common/rectangle.png) no-repeat left center;
+                    padding: 4px 11px 4px 20px;
+                }
+                .price {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin: 0 25px;
+                }
+            }
+            .btn-groups{
+                padding: 0 360px;
+                .btn{
+                    font-size: 16px;
+                }
+            }
+            .tips{
+                font-size: 12px;
+                text-align: center;
+                margin-top: 35px;
+                .agreeCheck {
+                    width: 12px;
+                    height: 15px;
+                    vertical-align: middle;
+                }
+                a{
+                    color: @blue;
+                }
+            }
+        }
+    }
+}
+
+// 正在竞价购买电站
+.biddingStation{
+    .biddingStation-con{
+        text-align: center;
+        padding-top: 30px; 
+        p{
+            font-size: 22px;
+            &.tips{
+                font-size: 12px;
+                color: #999;
+                line-height: 24px;
+            }
+        }
+        .price-con{
+            margin: 45px 0;
+            >div{
+                width: 50%;
+                text-align: center;
+                h4{
+                    font-size: 16px;
+                    line-height: 32px;
+                }
+                p{
+                    font-size: 36px;
+                }
+            }
+        }
+        .line{
+            width: 80%;
+            height: 1px;
+            background: #eee;
+            margin:0 auto;
+        }
+    }
+    .bidpriceBuy-bot{
+        .edit-price{
+            text-align: center;
+            padding: 35px 0 0;
+            span{
+                display: inline-block;
+                &.edit-btn{
+                    font-size: 40px;
+                    line-height: 40px;
+                    margin: 0 15px;
+                }
+            }
+            .price-num{
+                width: 310px;
+                margin: 0 auto;
+                height: 68px;
+                line-height: 68px;
+                border-radius: 8px;
+                background: #F0F0F0;
+                font-size: 36px;
+                padding: 0 15px;
+                font-weight: bold;
+            }
+        }
+        .tips{
+            margin-top: 10px!important;
+        }
+    }
+}
+
+.bidpriceSucess{
+    .main-w{
+        >.line{
+            height: 1px;
+            width: 80%;
+            background: #eee;
+            margin: 20px auto 15px;
+        }
+        .bidpriceSucess-con{
+            .bidpriceSucess-logo{
+                margin: 15px 0 30px;
+                img{
+                    margin:0 auto;
+                }
+                h3{
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-align: center;
+                    line-height: 40px;
+                }
+            }
+            p{
+                font-size: 16px;
+                text-align: center;
+                &.price{
+                    font-size: 36px;
+                    font-weight: bold;
+                    margin-top: 10px;
+                }
+                &.time{
+                    font-size: 22px;
+                    span{
+                        font-weight: bold;
+                    }
+                }
+                &.tips{
+                    font-size: 14px;
+                    font-weight: bold;
+                    line-height: 36px;
+                }
+            }
+            .line{
+                height: 1px;
+                width: 500px;
+                background: #eee;
+                margin: 45px auto 15px;
+            }
+        }
+    }
+}
+
+// 购买成功
+.buySuccess{
+    padding: 40px 0;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+    .main-w{
+        box-shadow: 0 2px 6px 0 rgba(0,0,0,0.04);
+        padding: 30px;
+        .img-logo{
+            img{
+                margin:0 auto;
+            }
+            h2{
+                text-align: center;
+                font-size: 26px;
+                color: @blue;
+                line-height: 60px;
+                font-weight: bold;
+            }
+        }
+        .tit{
+            margin: 15px 0;
+            h3{
+                font-weight: bold;
+                .subtit{
+                    font-size: 12px;
+                    color: #666;
+                    margin-left: 10px;
+                    img{
+                        display: inline;
+                        vertical-align: middle;
+                        margin: 0 5px;
+                    }
+                }
+            }
+        }
+        .btn-groups{
+            width: 240px;
+            margin: 45px auto;
+            .btn{
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+        .buyProcess{
+            ul{
+                li{
+                    position: relative;
+                    font-size: 14px;
+                    color: #999;
+                    padding:0 0 35px 30px;
+                    h3{
+                        line-height: 30px;
+                    }
+                    &:before{
+                        position: absolute;
+                        left: 0;
+                        top: 5px;
+                        content: '';
+                        display: block;
+                        width: 22px;
+                        height: 22px;
+                        background: #D3D3D3;
+                        border-radius: 50%;
+                    }
+                    &:after{
+                        position: absolute;
+                        left: 10px;
+                        top: -15px;
+                        content: '';
+                        display: block;
+                        width: 2px;
+                        height: 120px;
+                        background: #D3D3D3;
+                    }
+                    &.active{
+                        color: #666;
+                        &:before{
+                            background: @blue;
+                        }
+                        &:after{
+                            background: @blue;
+                            top: 20px;
+                            height: 50px;
+                        }
+                    }
+                    &:last-child{
+                        &:after{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 提交成功
+.submitSuccess{
+    .tips{
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-top: 40px;
+    }
+}
+
+// 购买失败
+.buyFail{
+    .img-logo{
+        h2{
+            color: #999!important;
+        }
+    }
+}
+
+// 购买资产包模态框
 .buyPackageModal {
     .modal-body {
         .tit {
@@ -293,7 +614,7 @@
     }
 }
 
-// 无法打包购买
+// 无法打包购买模态框
 .unpackModal {
     .modal-dialog {
         .modal-content {
@@ -333,3 +654,4 @@
         }
     }
 }
+

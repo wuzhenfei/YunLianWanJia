@@ -1,0 +1,102 @@
+<div class="revenueRecord">
+    <div class="tab-header">
+        <ul>
+            <li class="active">
+                <h3>每日收益</h3>
+                <p class="dayPrice">暂无收益</p>
+            </li>
+            <li>
+                <h3>累计收益</h3>
+                <p class="totalPrice">暂无收益</p>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-container">
+        <p class="tips">
+            <a class="color-blue" href="../login/login.html">登录</a>
+            后查看您的收益信息
+        </p>
+    </div>
+    <div class="revenueRecord-bot">
+        <div class="p-text">
+            <p>收益计算说明：本收益依据项目当地的发电收入、电价以及扣除居民收益和托管费用后计算得出的现金流收入，收益仅供参考。</p>
+            <p>其中居民收益为每W每年0.15元人民币；托管费用为每W每年0.2元人民币。</p>
+        </div>
+        <div class="p-text">
+            <p>电站自用统筹收益增加说明：因电站采用自发自用余电上网模式，居民自用电部分金额须在当地供电公司出具电费结算单后进行计算。</p>
+            <p>自用统筹收益的计算方式为：居民自用电量X(居民用电电价-当地脱硫电价)。</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getSelectProfit(apiUrl, uesrInfo, isTotal) {
+        $.post(apiUrl, {
+            userId: uesrInfo.userId,
+            token: uesrInfo.token,
+            limit: 10,
+            pageNumber: 1
+        }, function(res) {
+            var data = JSON.parse(res);
+            var str = '';
+            if(isTotal) {
+                data = data.result.pageData.records
+            } else {
+                data = data.result.data
+            }
+            if (data.length > 0) {
+                $.each(data, function(index, item) {
+                    if (isTotal) {
+                        str = str + '<div class="isTotalClass dzInfo">' +
+                                        '<span class="income">赚取' + ' ' + item.income + ' ' + '元</span>' + 
+                                        '<span class="name">' + ' ' + item.whichDay + ' ' + '</span>' + 
+                                    '</div>';
+                        console.log(index, item)
+                    } else {
+                        str = str + '<div class="dzInfo">' +
+                                        '<span class="income">赚取' + ' ' + item.income + ' ' + '元</span>' + 
+                                        '<span class="name">' + ' ' + item.name + ' ' + '</span>' + 
+                                    '</div>';
+                    }
+                    
+                })
+            } else {
+                str = '<p class="tips">暂无收益</p>';
+            }
+            $('.revenueRecord').find('.tab-container').html(str);
+        });
+    };
+    $(function() {
+        var uesrInfo = localStorage.getItem('userInfo');
+        uesrInfo = JSON.parse(uesrInfo);
+        if(uesrInfo && uesrInfo.userId) {
+            $('.tab-header ul li').each(function(index) {
+                $(this).click(function() {
+                    $(this).addClass('active').siblings().removeClass('active');
+                    if(index == 0) {
+                        getSelectProfit(selectProfitByDay, uesrInfo);
+                    } else {
+                        getSelectProfit(selectProfitGroupByDay, uesrInfo, true);
+                    }
+                })
+            });
+            $.post(selectSumProfit, {
+                userId: uesrInfo.userId,
+                token: uesrInfo.token
+            }, function(res) {
+                var data = JSON.parse(res);
+                var allIncome = '0.00';
+                var yesDayIncome = '0.00';
+                if(data.result.data.allIncome && data.result.data.allIncome != null) {
+                    allIncome = data.result.data.allIncome
+                };
+                if(data.result.data.yesDayIncome && data.result.data.yesDayIncome != null) {
+                    yesDayIncome = data.result.data.yesDayIncome
+                };
+                $('.revenueRecord').find('.dayPrice').addClass('color-green').html(yesDayIncome + ' ' + '元');
+                $('.revenueRecord').find('.totalPrice').addClass('color-blue').html(allIncome + ' ' + '元');
+            });
+            getSelectProfit(selectProfitByDay, uesrInfo);
+        }
+    })
+</script>

@@ -1,4 +1,7 @@
 @import "./mixin.less";
+.main{
+    padding-bottom: 0;
+}
 .login {
     background: url(../images/login/login-bg.png) no-repeat center;
     background-size: cover;
@@ -65,6 +68,10 @@
                         text-align: center;
                         color: #fff;
                         border-radius: 12px;
+                        &.active{
+                            color: #333;
+                            background: #ededed;
+                        }
                     }
                 }
             }
@@ -104,6 +111,12 @@
                     }
                     a{
                         color: #00C3BF;
+                    }
+                }
+                .form-control{
+                    .active{
+                        color: #333;
+                        background: #ededed;
                     }
                 }
             }

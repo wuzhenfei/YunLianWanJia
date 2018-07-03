@@ -227,6 +227,290 @@
   margin: 0;
   padding: 30px 0;
 }
+.bidpriceBuy {
+  padding: 40px 0;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+}
+.bidpriceBuy .main-w {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
+  padding: 30px;
+}
+.bidpriceBuy .main-w .tit {
+  margin: 15px 0;
+}
+.bidpriceBuy .main-w .tit h3 {
+  font-weight: bold;
+}
+.bidpriceBuy .main-w .tit h3 .subtit {
+  font-size: 12px;
+  color: #666;
+  margin-left: 10px;
+}
+.bidpriceBuy .main-w .tit h3 .subtit img {
+  display: inline;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.bidpriceBuy .main-w .current-price {
+  font-size: 14px;
+  margin: 20px 0;
+}
+.bidpriceBuy .main-w .current-price span {
+  color: #0396D6;
+  font-size: 24px;
+  font-weight: bold;
+}
+.bidpriceBuy .main-w .bidpriceBuy-con {
+  text-align: center;
+}
+.bidpriceBuy .main-w .bidpriceBuy-con p {
+  font-size: 16px;
+  line-height: 32px;
+  color: #666;
+}
+.bidpriceBuy .main-w .bidpriceBuy-con p.price {
+  font-size: 36px;
+  color: #0396D6;
+  font-weight: bold;
+  margin: 20px 0 40px;
+}
+.bidpriceBuy .main-w .bidpriceBuy-con .line {
+  height: 1px;
+  background: #eee;
+  width: 80%;
+  margin: 30px auto 0;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot p {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin: 25px 0;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot p .btn {
+  background: url(../images/common/rectangle.png) no-repeat left center;
+  padding: 4px 11px 4px 20px;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot p .price {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 25px;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot .btn-groups {
+  padding: 0 360px;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot .btn-groups .btn {
+  font-size: 16px;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot .tips {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 35px;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot .tips .agreeCheck {
+  width: 12px;
+  height: 15px;
+  vertical-align: middle;
+}
+.bidpriceBuy .main-w .bidpriceBuy-bot .tips a {
+  color: #0396D6;
+}
+.biddingStation .biddingStation-con {
+  text-align: center;
+  padding-top: 30px;
+}
+.biddingStation .biddingStation-con p {
+  font-size: 22px;
+}
+.biddingStation .biddingStation-con p.tips {
+  font-size: 12px;
+  color: #999;
+  line-height: 24px;
+}
+.biddingStation .biddingStation-con .price-con {
+  margin: 45px 0;
+}
+.biddingStation .biddingStation-con .price-con > div {
+  width: 50%;
+  text-align: center;
+}
+.biddingStation .biddingStation-con .price-con > div h4 {
+  font-size: 16px;
+  line-height: 32px;
+}
+.biddingStation .biddingStation-con .price-con > div p {
+  font-size: 36px;
+}
+.biddingStation .biddingStation-con .line {
+  width: 80%;
+  height: 1px;
+  background: #eee;
+  margin: 0 auto;
+}
+.biddingStation .bidpriceBuy-bot .edit-price {
+  text-align: center;
+  padding: 35px 0 0;
+}
+.biddingStation .bidpriceBuy-bot .edit-price span {
+  display: inline-block;
+}
+.biddingStation .bidpriceBuy-bot .edit-price span.edit-btn {
+  font-size: 40px;
+  line-height: 40px;
+  margin: 0 15px;
+}
+.biddingStation .bidpriceBuy-bot .edit-price .price-num {
+  width: 310px;
+  margin: 0 auto;
+  height: 68px;
+  line-height: 68px;
+  border-radius: 8px;
+  background: #F0F0F0;
+  font-size: 36px;
+  padding: 0 15px;
+  font-weight: bold;
+}
+.biddingStation .bidpriceBuy-bot .tips {
+  margin-top: 10px!important;
+}
+.bidpriceSucess .main-w > .line {
+  height: 1px;
+  width: 80%;
+  background: #eee;
+  margin: 20px auto 15px;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con .bidpriceSucess-logo {
+  margin: 15px 0 30px;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con .bidpriceSucess-logo img {
+  margin: 0 auto;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con .bidpriceSucess-logo h3 {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 40px;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con p {
+  font-size: 16px;
+  text-align: center;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con p.price {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con p.time {
+  font-size: 22px;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con p.time span {
+  font-weight: bold;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con p.tips {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 36px;
+}
+.bidpriceSucess .main-w .bidpriceSucess-con .line {
+  height: 1px;
+  width: 500px;
+  background: #eee;
+  margin: 45px auto 15px;
+}
+.buySuccess {
+  padding: 40px 0;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+}
+.buySuccess .main-w {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
+  padding: 30px;
+}
+.buySuccess .main-w .img-logo img {
+  margin: 0 auto;
+}
+.buySuccess .main-w .img-logo h2 {
+  text-align: center;
+  font-size: 26px;
+  color: #0396D6;
+  line-height: 60px;
+  font-weight: bold;
+}
+.buySuccess .main-w .tit {
+  margin: 15px 0;
+}
+.buySuccess .main-w .tit h3 {
+  font-weight: bold;
+}
+.buySuccess .main-w .tit h3 .subtit {
+  font-size: 12px;
+  color: #666;
+  margin-left: 10px;
+}
+.buySuccess .main-w .tit h3 .subtit img {
+  display: inline;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.buySuccess .main-w .btn-groups {
+  width: 240px;
+  margin: 45px auto;
+}
+.buySuccess .main-w .btn-groups .btn {
+  text-align: center;
+  font-size: 16px;
+}
+.buySuccess .main-w .buyProcess ul li {
+  position: relative;
+  font-size: 14px;
+  color: #999;
+  padding: 0 0 35px 30px;
+}
+.buySuccess .main-w .buyProcess ul li h3 {
+  line-height: 30px;
+}
+.buySuccess .main-w .buyProcess ul li:before {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  content: '';
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: #D3D3D3;
+  border-radius: 50%;
+}
+.buySuccess .main-w .buyProcess ul li:after {
+  position: absolute;
+  left: 10px;
+  top: -15px;
+  content: '';
+  display: block;
+  width: 2px;
+  height: 120px;
+  background: #D3D3D3;
+}
+.buySuccess .main-w .buyProcess ul li.active {
+  color: #666;
+}
+.buySuccess .main-w .buyProcess ul li.active:before {
+  background: #0396D6;
+}
+.buySuccess .main-w .buyProcess ul li.active:after {
+  background: #0396D6;
+  top: 20px;
+  height: 50px;
+}
+.buySuccess .main-w .buyProcess ul li:last-child:after {
+  display: none;
+}
+.submitSuccess .tips {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 40px;
+}
+.buyFail .img-logo h2 {
+  color: #999!important;
+}
 .buyPackageModal .modal-body .tit h3 {
   font-weight: bold;
 }

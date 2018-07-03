@@ -82,7 +82,6 @@
 }
 .main .hot-recommend {
   background: #f3f7f9 url(../images/home/hot-recommend__bg.png) no-repeat center bottom;
-  min-height: 600px;
 }
 .main .hot-recommend .main-w {
   background: #fff;
@@ -131,6 +130,9 @@
 }
 .main .about-us .main-w .about-us__con .pull-left {
   width: 50%;
+}
+.main .about-us .main-w .about-us__con .pull-left .logo {
+  margin: 15px 0;
 }
 .main .about-us .main-w .about-us__con .pull-left .text-p p {
   font-size: 12px;

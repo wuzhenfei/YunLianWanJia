@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/personal.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>个人中心-收益记录</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader();   // 显示头部
+            showNav(true);  //显示导航
+        </script>
+        <div class="main personal">
+            <div class="personal-top">
+                <div class="main-w cleart">
+                    <div class="personal-info pull-left">
+                        <div class="personal-img">
+                            <img src="../images/common/default-personal.png"/>
+                        </div>
+                        <h3 class="name">您好，请<a href="../login/login.html">登录</a></h3>
+                        <p class="editInfo"><a class="urlLink">编辑资料</a></p>
+                    </div>
+                    <div class="balance pull-left">
+                        <h4><img class="dib" src="../images/common/balance-icon.png"/>可用余额</h4>
+                        <p class="price"><span>0.00 元</span><a class="btn urlLink record" id="incomeRecord">收支记录</a></p>
+                    </div>
+                    <div class="recharge pull-right">
+                        <div class="btn-groups">
+                            <a class="btn charge-btn urlLink"><span>充值</span></a>
+                            <a class="btn put-btn urlLink"><span>提现</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="personal-bot">
+                <div class="main-w cleart">
+                    <div class="pull-left">
+                        <div class="left-menu">
+                            <ul>
+                                <li class="current" id="revenueRecord"><a class="urlLink">收益记录</a></li>
+                                <li id="bidStation"><a class="urlLink">竞价电站</a></li>
+                                <li><a class="urlLink">我的消息</a></li>
+                                <li><a class="urlLink">联系客服</a></li>
+                                <li><a class="urlLink">账户设置</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="personal-con" id="personalCon">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+</body>
+<script src="../js/api.js"></script>
+<script language="javascript">
+    $(function() {
+        var uesrInfo = localStorage.getItem('userInfo');
+        uesrInfo = JSON.parse(uesrInfo);
+        if(uesrInfo && uesrInfo.userId) {
+            var personalInfo = $('.personal-info');
+            if(uesrInfo.imgUrl != 'url') {
+                personalInfo.find('.personal-img img').prop('src', uesrInfo.imgUrl);
+            }
+            personalInfo.find('.name').html(uesrInfo.name + ', 您好');
+            personalInfo.find('.editInfo').addClass('color-blue');
+            $('.balance').find('.price span').addClass('color-green').html(uesrInfo.userMoney + ' '+'元')
+        } else {
+            $('.personal').find('.urlLink').each(function() {
+                $(this).prop('href', '../login/login.html');
+            })
+        }
+    });
+    $( "#personalCon" ).load( "incomeRecord.html" );
+    // 点击加载收益记录页面
+    $('#revenueRecord').click(function() {
+        $(this).addClass('current').siblings().removeClass('current');
+        document.title = '个人中心-收益记录';
+        $( "#personalCon" ).load( "revenueRecord.html" );
+    });
+    // 点击加载竞价电站页面
+    $('#bidStation').click(function() {
+        $(this).addClass('current').siblings().removeClass('current');
+        document.title = '个人中心-竞价电站';
+        $( "#personalCon" ).load( "bidStation.html" );
+    });
+    // 收支记录
+    $('#incomeRecord').click(function() {
+        $('.left-menu').find('li').removeClass('current');
+        document.title = '个人中心-收支记录';
+        $( "#personalCon" ).load( "incomeRecord.html" );
+    })
+</script>
+</html>
