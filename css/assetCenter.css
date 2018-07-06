@@ -398,20 +398,20 @@
 .editNameModal .modal-dialog .modal-content .btn-groups {
   padding: 0 100px;
 }
-.addStation {
+.addStation-con {
   padding-top: 25px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
 }
-.addStation .main-w {
+.addStation-con .main-w {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
   padding: 10px 40px 20px;
 }
-.addStation .main-w .tit h2 {
+.addStation-con .main-w .tit h2 {
   font-size: 22px;
   border-bottom: 1px solid #eee;
   line-height: 45px;
 }
-.addStation .main-w .form-group .form-control {
+.addStation-con .main-w .form-group .form-control {
   font-size: 14px;
   color: #666;
   border-bottom: 1px solid #eee;
@@ -419,11 +419,11 @@
   display: flex;
   line-height: 40px;
 }
-.addStation .main-w .form-group .form-control label {
+.addStation-con .main-w .form-group .form-control label {
   width: 95px;
   display: inline-block;
 }
-.addStation .main-w .form-group .form-control .input-text {
+.addStation-con .main-w .form-group .form-control .input-text {
   display: inline-block;
   width: 500px;
   height: 36px;
@@ -434,7 +434,7 @@
   font-size: 14px;
   color: #666;
 }
-.addStation .main-w .form-group .form-control .input-text input {
+.addStation-con .main-w .form-group .form-control .input-text input {
   background: none;
   border: none;
   height: 26px;
