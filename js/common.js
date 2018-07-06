@@ -7,7 +7,7 @@ function isPhoneNo(phone) {
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
-    if (r != null) return unescape(r[2]);
+    if (r != null) return decodeURI(r[2]);
     return null;
 };
 
@@ -22,12 +22,13 @@ function userInfoFun() {
 
 // 提示信息
 function messageShow(data, isSuccess) {
+    var str, div
     if(data) {
-        var str = '<p class="info">' + data + '</p>';
+        str = '<p class="info">' + data + '</p>';
         if (isSuccess) {
             str = '<p class="info success">' + data + '</p>';
         }
-        var div = document.createElement("div");
+        div = document.createElement("div");
         div.id = "tipsInfo";
         div.innerHTML = str;
         window.document.body.appendChild(div);
@@ -35,4 +36,16 @@ function messageShow(data, isSuccess) {
             window.document.body.removeChild(div);
         }, 2000);
     }
+}
+
+// 解析时间格式
+function formatTime(secondNum) {
+    var day = Math.floor(secondNum / (60 * 60 * 24)),  // 倒计时天数
+    hour =  Math.floor(secondNum / (60 * 60)) - (day * 24), //倒计时小时
+    minute = Math.floor(secondNum / 60) - (day * 24 * 60) - (hour * 60),	//倒计时分钟
+    second = Math.floor(secondNum) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);	//倒计时秒钟
+    if (hour <= 9) hour = '0' + hour;
+    if (minute <= 9) minute = '0' + minute;
+    if (second <= 9) second = '0' + second;
+    return hour + ":" + minute + ":" + second
 }

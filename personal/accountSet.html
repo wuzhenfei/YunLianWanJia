@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/personal.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/personalTop.js"></script>
+    <script src="../js/personalLeft.js"></script>
+    <title>个人中心-系统消息</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader();   // 显示头部
+            showNav(true, 4);  //显示导航
+        </script>
+        <div class="main personal">
+            <script>
+                personalTop();
+            </script>
+            <div class="personal-bot">
+                <div class="main-w cleart">
+                    <div class="pull-left">
+                        <script>
+                            personalLeft(5);
+                        </script>
+                    </div>
+                    <div class="pull-right">
+                        <div class="personal-con" id="personalCon">
+                            <div class="recharge-con accountSet">
+                                <div class="recharge-tit">
+                                    <h3>
+                                        <span>账户设置</span>
+                                    </h3>
+                                </div>
+                                <div class="recharge-con-container">
+                                    <div class="form-control">
+                                        <label>当前账号</label>
+                                        <span class="phone"></span>
+                                    </div>
+                                    <div class="form-control">
+                                        <a class="btn pull-right"><span id="onEditLogin">修改</span></a>
+                                        <label>账户密码</label>
+                                        <span>********</span>
+                                    </div>
+                                    <div class="form-control" id="editLogin" style="display: none">
+                                    </div>
+                                    <div class="form-control">
+                                        <a class="btn pull-right"><span id="onEditPay">修改</span></a>
+                                        <label>支付密码</label>
+                                        <span>********</span>
+                                    </div>
+                                    <div class="form-control" id="editPay" style="display: none">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script>
+    var uesrInfo, phone, vericode, password, formData, timer;
+    var tipsinfo = '';
+    // 请求发送验证码
+    function postSendCode(data) {
+        $.post(userInfoCode, data, function(res){
+            var data = JSON.parse(res);
+            if(data.result) {
+                var count = 60;
+                timer = setInterval(() => {
+                    count--
+                    var codeTitle = count + 's';
+                    $('.sendCode').addClass('active').html(codeTitle);
+                    if (count == 0) {
+                        $('.sendCode').removeClass('active').html('发送验证码');
+                        clearInterval(timer)
+                    }
+                }, 1000);
+            } else {
+                tipsinfo = data.content;
+                messageShow(tipsinfo);
+            }
+        });
+    };
+    // 修改密码
+    function changePassword(data) {
+        $.post(updateUserPassword, data, function(res){
+            var data = JSON.parse(res);
+            if(data.result) {
+                tipsinfo = data.result.data;
+                messageShow(tipsinfo, true);
+            } else {
+                tipsinfo = data.content;
+                messageShow(tipsinfo);
+            }
+        })
+    };
+    // 获取修改表单
+    function getFormData(className, isPaybtn) {
+        var str = '<div class="form-group">' +
+                        '<div class="form-control'+ ' ' + className +'">' +
+                            '<label>手机号码</label>' +
+                            '<span class="input-text"><input type="text" name="phone" disabled placeholder="请输入手机号码"/></span>' +
+                        '</div>' +
+                        '<div class="form-control'+ ' ' + className +'">' +
+                            '<label>验证码</label>' +
+                            '<span class="input-text input-code"><input type="text" name="vericode" placeholder="请输入验证码"/></span>' +
+                            '<a class="btn sendCode" onclick="sendCode()">发送验证码</a>' +
+                        '</div>' +
+                        '<div class="form-control" style="display: none">' +
+                            '<input type="text" name="vericode"/>' +
+                        '</div>' +
+                        '<div class="form-control">' +
+                            '<label>输入新密码</label>' +
+                            '<span class="input-text"><input type="password" name="password" placeholder="请输入新密码"/></span>' +
+                        '</div>' +
+                        '<div class="btn-groups">' +
+                            '<a class="btn submitBtn" onclick="onSubmit('+ isPaybtn +')">确认修改</a>' +
+                        '</div>' +
+                    '</div>';
+        return str
+    }
+    // 发送验证码
+    function sendCode() {
+        postSendCode({
+            userId: uesrInfo.userId,
+            token: uesrInfo.token,
+            mobile: phone
+        })
+    };
+    // 
+    function onSubmit(isPay) {
+        vericode = $('input[name="vericode"]').val();
+        password = $('input[name="password"]').val();
+        if(isPay) {
+            changePassword({
+                userId: uesrInfo.userId,
+                token: uesrInfo.token,
+                payPassword: password,
+                vericode: vericode,
+                mobile: phone
+            });
+        } else {
+            changePassword({
+                userId: uesrInfo.userId,
+                token: uesrInfo.token,
+                password: password,
+                vericode: vericode,
+                mobile: phone
+            });
+        }
+    };
+    $(function () {
+        uesrInfo = localStorage.getItem('userInfo');
+        uesrInfo = JSON.parse(uesrInfo);
+        formData = getFormData('', false);
+        $('#editLogin').html(formData);
+        if (uesrInfo && uesrInfo.userId) {
+            $('.phone').html(uesrInfo.mobile);
+            $('#onEditLogin').click(function() {
+                clearInterval(timer);
+                $('#editPay').hide();
+                $('#editPay').html('');
+                $('#editLogin').html(formData);
+                $('#onEditPay').removeClass('active').html('修改');
+                if($(this).html() == '取消修改') {
+                    $(this).removeClass('active').html('修改');
+                    $('#editLogin').hide();
+                } else {
+                    $(this).addClass('active').html('取消修改');
+                    $('#editLogin').show();
+                    $('input[name="phone"]').val(uesrInfo.mobile);
+                    phone = $('input[name="phone"]').val();
+                }
+            });
+            $('#onEditPay').click(function() {
+                formData = getFormData('setClass', true);
+                clearInterval(timer);
+                $('#editLogin').hide();
+                $('#editLogin').html('');
+                $('#editPay').html(formData);
+                $('#onEditLogin').removeClass('active').html('修改');
+                if($(this).html() == '取消修改') {
+                    $(this).removeClass('active').html('修改');
+                    $('#editPay').hide();
+                } else {
+                    $(this).addClass('active').html('取消修改');
+                    $('#editPay').show();
+                    $('input[name="phone"]').val(uesrInfo.mobile);
+                    phone = $('input[name="phone"]').val();
+                }
+            });
+            // 如果首次修改支付密码，若修改过则不需要输入手机和验证码
+            if(uesrInfo.isSet) {
+                $('.setClass').each(function() {
+                    $(this).show();
+                });
+            } else {
+                $('.setClass').each(function() {
+                    $(this).hide();
+                });
+            }
+        };
+    })
+</script>
+</html>

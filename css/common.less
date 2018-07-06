@@ -209,54 +209,65 @@
 }
 
 // 分页
-.page-navigation{
-    height: 70px;
+#page-navigation{
     text-align: right;
-    ul{
-        overflow: hidden;
-        padding: 25px;
-        text-align: right;
+    padding: 25px;
+    a{
         display: inline-block;
-        li{
-            float: left;
-            width: 21px;
-            height: 21px;
-            line-height: 21px;
-            text-align: center;
+        width: 21px;
+        height: 21px;
+        font-family: "宋体"; 
+        border-radius: 50%;
+        line-height: 21px;
+        text-align: center;
+        color: @blue;
+        margin-left: 15px;
+        &.first-page, &.prev, &.next, &.last-page{
+            letter-spacing: -2px;
+            border: 1px solid #ccc;
+            color: #ccc;
+            font-weight: bold;
+            padding-right: 3px;
+        }
+        &.active{
+            border-radius: 50%;
+            background: @blue;
+            color: #fff;
+        }
+    }
+    span{
+        display: inline-block;
+        &.total-num{
+            width: auto;
+            color: #999!important;
             margin-left: 15px;
-            cursor: pointer;
-            .color-blue();
-            &.total-num{
-                width: auto;
-                color: #999;
-                span{
-                    float: left;
-                    margin-right: 25px;
-                }
-                em{
-                    float: left;
-                    font-style: normal;
-                }
-                input{
-                    float: left;
-                    width: 30px;
-                    border-radius: 10px;
-                    height: 20px;
-                    border: 1px solid #bbb;
-                    margin: 0 5px;
-                }
-                .btn{
-                    background: none;
-                    color: #999;
-                    border: 1px solid #bbb;
-                    margin-left: 10px;
-                    padding: 1px 6px;
-                }
+            span{
+                margin-right: 25px;
             }
-            &.current{
-                border-radius: 50%;
-                color: #fff;
-                .bg-blue();
+            em{
+                font-style: normal;
+            }
+            .jump-ipt{
+                width: 30px;
+                border-radius: 10px;
+                height: 20px;
+                border: 1px solid #bbb;
+                margin: 0 5px;
+                text-align: center;
+                font-size: 12px;
+                color: #bbb;
+            }
+            .jump-btn{
+                background: none;
+                color: #999;
+                border: 1px solid #bbb;
+                margin-left: 10px;
+                padding: 1px 6px;
+                border-radius: 12px;
+                font-size: 12px;
+                height: 22px;
+                line-height: 18px;
+                width: auto;
             }
         }
     }
@@ -322,6 +333,7 @@
             color: #67c23a;
             border-color: #e1f3d8;
             background:#f0f9eb url(../images/common/info-success.png) no-repeat 15px center;
+            background-size: 16px;
         }
 
     }

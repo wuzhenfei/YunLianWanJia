@@ -38,6 +38,12 @@
   margin-right: 20px;
   width: 100px;
   height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.personal .personal-top .personal-info .personal-img img {
+  width: 100%;
+  height: 100%;
 }
 .personal .personal-top .personal-info h3 {
   margin-top: 15px;
@@ -58,7 +64,7 @@
   background: url(../images/common/edit-active.png) no-repeat left center;
 }
 .personal .personal-top .balance {
-  width: 270px;
+  width: 370px;
   padding: 20px 0 0 35px;
 }
 .personal .personal-top .balance h4 {
@@ -127,6 +133,20 @@
   color: #666;
   display: block;
 }
+.personal .personal-bot .left-menu ul li.hasMessage {
+  position: relative;
+}
+.personal .personal-bot .left-menu ul li.hasMessage:after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00C3BF;
+  position: absolute;
+  top: 8px;
+  right: 25px;
+}
 .personal .personal-bot .left-menu ul li:nth-child(1) a {
   background: url(../images/common/personal-left-icon-1.png) no-repeat 15px center;
 }
@@ -181,7 +201,6 @@
   padding-bottom: 10px;
   border-bottom: 4px solid #eee;
   font-size: 16px;
-  color: #666;
 }
 .personal .personal-con .common-tab ul li.active {
   font-weight: bold;
@@ -189,6 +208,10 @@
   border-image: linear-gradient(to right, #0396D6, #00C3BF) 30 30;
   border-image: -webkit-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
   border-image: -moz-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+}
+.personal .personal-con .common-tab ul li a {
+  color: #666;
+  display: block;
 }
 .personal .personal-con .revenueRecord .tab-header {
   height: 90px;
@@ -269,4 +292,319 @@
 }
 .personal .personal-con .revenueRecord .revenueRecord-bot .p-text p {
   color: #999;
+}
+.personal .personal-con .bidStation .bidStation-list {
+  padding: 0 10px;
+}
+.personal .personal-con .bidStation .bidStation-list li {
+  border-bottom: 1px solid #eee;
+}
+.personal .personal-con .bidStation .bidStation-list li a {
+  overflow: hidden;
+  padding: 30px 20px;
+  display: block;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl {
+  float: left;
+  color: #666;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl dt {
+  font-size: 18px;
+  line-height: 36px;
+  height: 36px;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl dt img {
+  margin: 0 auto;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl dd {
+  height: 24px;
+  line-height: 24px;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl dd .btn {
+  margin-right: 10px;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl:nth-child(1) {
+  width: 310px;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl:nth-child(2) {
+  width: 60px;
+  text-align: center;
+  margin-right: 30px;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl:nth-child(3) {
+  width: 160px;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl:nth-child(3) dt {
+  font-size: 12px;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl:nth-child(3) span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl:nth-child(4) {
+  width: 90px;
+  float: right;
+  text-align: center;
+}
+.personal .personal-con .bidStation .bidStation-list li a dl:nth-child(4) dt {
+  font-weight: bold;
+}
+.personal .personal-con .bidStation .bidStation-list li.isEnd {
+  color: #999!important;
+}
+.personal .personal-con .bidStation .bidStation-list li.isEnd a dl dt {
+  color: #999!important;
+}
+.personal .personal-con .bidStation .bidStation-list li.isEnd a dl dt span {
+  color: #999!important;
+}
+.personal .personal-con .bidStation .bidStation-list li.isEnd a dl dd {
+  color: #999!important;
+}
+.personal .personal-con .bidStation .bidStation-list li.isEnd a dl dd span {
+  color: #999!important;
+}
+.personal .personal-con .bidStation .bidStation-list li.isEnd a dl dd span.btn {
+  background: #bbb!important;
+  color: #fff!important;
+}
+.personal .personal-con .incomeRecord .tab-container .incomeRecord-list {
+  padding: 15px;
+  overflow: hidden;
+}
+.personal .personal-con .incomeRecord .tab-container .incomeRecord-list li {
+  color: #666;
+  line-height: 30px;
+}
+.personal .personal-con .incomeRecord .tab-container .incomeRecord-list li span {
+  display: inline-block;
+}
+.personal .personal-con .incomeRecord .tab-container .incomeRecord-list li span.remark {
+  width: 320px;
+}
+.personal .personal-con .incomeRecord .tab-container .incomeRecord-list li span.createtime {
+  width: 200px;
+}
+.personal .personal-con .incomeRecord .tab-container .incomeRecord-list li span.money {
+  float: right;
+}
+.personal .personal-con .recharge-con .recharge-tit {
+  padding: 0 15px;
+}
+.personal .personal-con .recharge-con .recharge-tit h3 {
+  font-size: 16px;
+  color: #666;
+  line-height: 40px;
+  border-bottom: 1px solid #eee;
+}
+.personal .personal-con .recharge-con .recharge-tit h3 a {
+  font-size: 12px;
+}
+.personal .personal-con .recharge-con .recharge-con-container {
+  padding: 0 25px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control {
+  font-size: 14px;
+  color: #999;
+  border-bottom: 1px solid #eee;
+  padding: 25px 0;
+  display: flex;
+  line-height: 40px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control span {
+  font-size: 24px;
+  margin-left: 25px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control a {
+  margin-left: 25px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control .input-text {
+  display: inline-block;
+  width: 255px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 100px;
+  border: 1px solid #bbb;
+  padding: 0 15px;
+  font-size: 14px;
+  color: #666;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control input {
+  display: inline-block;
+  background: none;
+  border: none;
+  height: 26px;
+  line-height: 26px;
+  width: 200px;
+  color: #999;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control .form-group {
+  display: inline-block;
+  margin-left: 25px;
+  line-height: 28px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control .form-group .input-radio {
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control .form-group .input-radio img {
+  margin: 0 auto;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control .form-group .input-radio h4 {
+  font-size: 16px;
+  color: #666;
+  line-height: 40px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .form-control .form-group .input-radio input {
+  width: 16px;
+  height: 16px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .btn-groups {
+  text-align: center;
+  margin: 30px 0;
+}
+.personal .personal-con .recharge-con .recharge-con-container .btn-groups .btn {
+  display: inline-block;
+  width: 140px;
+  margin: 0 10px;
+  font-size: 16px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .payState {
+  text-align: center;
+  padding: 35px 70px;
+}
+.personal .personal-con .recharge-con .recharge-con-container .payState img {
+  margin: 0 auto;
+}
+.personal .personal-con .recharge-con .recharge-con-container .payState h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 15px 0 70px;
+  color: #999;
+}
+.personal .personal-con .recharge-con .recharge-con-container .payState .tips {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+}
+.personal .personal-con .recharge-con .recharge-con-container .payState .tips span {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.personal .personal-con .systemMessage .recharge-con-container {
+  padding: 0 15px;
+}
+.personal .personal-con .systemMessage .recharge-con-container .messageList li {
+  padding: 28px 0 28px 15px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  cursor: pointer;
+}
+.personal .personal-con .systemMessage .recharge-con-container .messageList li .summary-con {
+  overflow: hidden;
+}
+.personal .personal-con .systemMessage .recharge-con-container .messageList li .summary-con h2 {
+  font-size: 14px;
+}
+.personal .personal-con .systemMessage .recharge-con-container .messageList li .summary-con h2 .time {
+  float: right;
+  font-size: 12px;
+  color: #666;
+}
+.personal .personal-con .systemMessage .recharge-con-container .messageList li .summary-con .content {
+  color: #999;
+  line-height: 24px;
+}
+.personal .personal-con .systemMessage .recharge-con-container .messageList li.isRead:after {
+  background: #bbb;
+}
+.personal .personal-con .systemMessage .recharge-con-container .messageList li:after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 33px;
+  background: #FF482A;
+}
+.personal .personal-con .contactUs-con .recharge-con-container {
+  padding: 35px 0 185px;
+}
+.personal .personal-con .contactUs-con .recharge-con-container p {
+  text-align: center;
+}
+.personal .personal-con .contactUs-con .recharge-con-container .p-tit {
+  color: #666;
+}
+.personal .personal-con .contactUs-con .recharge-con-container .p-tit img {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -2px 5px 0 0;
+}
+.personal .personal-con .contactUs-con .recharge-con-container .p-phone {
+  font-size: 24px;
+  color: #0396D6;
+  font-weight: bold;
+  margin: 15px 0 25px;
+}
+.personal .personal-con .contactUs-con .recharge-con-container .p-onTime {
+  color: #999;
+}
+.personal .personal-con .accountSet {
+  min-height: 470px;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control {
+  display: block;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control span {
+  font-size: 14px;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .btn {
+  width: 110px;
+  padding: 1px;
+  box-sizing: initial;
+  -moz-box-sizing: initial;
+  -webkit-box-sizing: initial;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .btn span {
+  margin-left: 0;
+  display: block;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .btn span.active {
+  background: #fff;
+  color: #0396D6;
+  border-radius: 100px;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group {
+  margin-left: 0;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group .form-control {
+  padding: 10px 0;
+  border: none;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group .form-control .input-code {
+  width: 125px;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group .form-control .input-code input {
+  width: 100%;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group .form-control label {
+  display: inline-block;
+  width: 80px;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group .form-control .btn {
+  width: 110px;
+  font-size: 16px;
+  display: inline-block;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group .form-control .btn.active {
+  color: #333;
+  background: #ededed;
+}
+.personal .personal-con .accountSet .recharge-con-container .form-control .form-group .btn-groups .btn {
+  margin-left: 95px;
 }

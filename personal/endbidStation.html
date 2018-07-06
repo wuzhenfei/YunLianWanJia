@@ -38,8 +38,8 @@
                             <div class="incomeRecord bidStation">
                                 <div class="common-tab">
                                     <ul>
-                                        <li class="active"><a href="bidStation.html">当前竞价</a></li>
-                                        <li><a href="endbidStation.html">已结束竞价</a></li>
+                                        <li><a href="bidStation.html">当前竞价</a></li>
+                                        <li class="active"><a href="endbidStation.html">已结束竞价</a></li>
                                     </ul>
                                 </div>
                                 <div class="tab-container">
@@ -59,11 +59,11 @@
 <script src="../js/api.js"></script>
 <script src="../js/jquery.pagination.js"></script>
 <script>
-    var uesrInfo, state, totalData, timeNum, time;
+    var uesrInfo, state, totalData, timeNum, time, setTime;
     function countTime(){
         $('.countDown').each(function(index) {
             timeNum = $('.bidTimeNum').eq(index).html(); 
-            if(timeNum >= 0) {
+            if(timeNum > 0) {
                 time = formatTime(timeNum);
                 timeNum -- ;
                 $('.bidTimeNum').eq(index).html(timeNum);
@@ -77,7 +77,7 @@
                 $(this).parents('a').find('img').prop('src', '../images/common/jingjiahuise.png')
             }
         });
-        setTimeout("countTime()",1000);
+        setTime = setTimeout("countTime()",1000);
     };
     
     function getRecord(uesrInfo, state, pageNumber, changePage) {
@@ -90,22 +90,21 @@
         }, function (res) {
             var data = JSON.parse(res);
             var str = '';
-            var haveBidTime, bidTimeNum, bidPriceId;
+            var havePayTime, payTimeNum;
             if (data.result && data.result.pageData && data.result.pageData.records) {
                 totalData = data.result.pageData.total;
                 data = data.result.pageData.records;
                 if (data.length > 0) {
                     $.each(data, function (index, item) {
-                        bidPriceId = item.id
-                        if(item.haveBidTime > 0) {
-                            bidTimeNum = item.haveBidTime;
-                            haveBidTime = formatTime(item.haveBidTime);
+                        if(item.havePayTime > 0) {
+                            payTimeNum = item.havePayTime;
+                            havePayTime = formatTime(item.havePayTime);
                         } else {
-                            bidTimeNum = 0;
-                            haveBidTime = '00:00:00';
+                            payTimeNum = 0;
+                            havePayTime = '00:00:00';
                         }
                         str = str + '<li>' +
-                                '<a href="../tradeHall/biddingStation.html?bidPriceId='+ bidPriceId +'">' +
+                                '<a href="../tradeHall/biddingStation.html">' +
                                     '<dl>' +
                                         '<dt class="color-green">' + item.name +'</dt>' + 
                                         '<dd>' + 
@@ -118,8 +117,8 @@
                                     '</dl>' +
                                     '<dl>' +
                                         '<dt>当前价格：<span class="color-green">'+ item.maxBidPrice +' 元</span></dt>' + 
-                                        '<dd>竞价倒计时：<span class="color-green countDown">'+ haveBidTime +'</span></dd>' +
-                                        '<dd class="bidTimeNum" style="display:none">' + bidTimeNum + '</dd>' +
+                                        '<dd>竞价倒计时：<span class="color-green countDown">'+ havePayTime +'</span></dd>' +
+                                        '<dd class="bidTimeNum" style="display:none">' + payTimeNum + '</dd>' +
                                     '</dl>' +
                                     '<dl>' +
                                         '<dt class="color-green">'+ item.money +' 元' +'</dt>' + 
@@ -161,7 +160,7 @@
         uesrInfo = localStorage.getItem('userInfo');
         uesrInfo = JSON.parse(uesrInfo);
         if (uesrInfo && uesrInfo.userId) {
-            getRecord(uesrInfo, 0, 1);
+            getRecord(uesrInfo, 1, 1);
         };
     })
 </script>

@@ -20,7 +20,7 @@
     <div class="wrap">
         <script>
             showHeader(); // 显示头部
-            showNav(true); //显示导航
+            showNav(true, 2); //显示导航
         </script>
         <div class="main packageDetails">
             <!-- 资产包详情 -->
@@ -90,33 +90,6 @@
                     <div class="article-con">
                         <ul class="article-list" id="packageDetails-list">
                         </ul>
-                        <div class="page-navigation">
-                            <ul>
-                                <li class="first-page">
-                                    <img src="../images/common/page-navigation-first.png">
-                                </li>
-                                <li class="prev">
-                                    <img src="../images/common/page-navigation-prev.png">
-                                </li>
-                                <li class="current">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li class="next">
-                                    <img src="../images/common/page-navigation-next.png">
-                                </li>
-                                <li class="last-page">
-                                    <img src="../images/common/page-navigation-last.png">
-                                </li>
-                                <li class="total-num">
-                                    <span>共120条</span>
-                                    <em>到第</em>
-                                    <input type="text" />
-                                    <em>页</em>
-                                    <a class="btn btn-samll">确定</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -141,13 +114,16 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <p>我的余额<span class="color-green price">¥ 12,834.00</span><span class="btn btn-samll">充值</span></p>
+                    <p>我的余额<span class="color-green price">¥ </span><a class="btn btn-samll" href="../personal/recharge.html">充值</a></p>
+                    <div class="form-control" id="payPassword" style="display: none;">
+                        <input class="payPassword" type="password" name="password" placeholder="请输入支付密码">
+                    </div>
                     <div class="btn-groups">
-                        <button class="btn bg-blue">确定购买</button>
+                        <button class="btn bg-blue submitBtn">确定购买</button>
                     </div>
                     <div class="tips">
-                        <input type="checkbox" checked class="agreeCheck" value="true">
-                        阅读并同意<a href="">《电站资产转让协议》</a><a href="">《电站托管协议》</a>
+                        <input type="checkbox" checked class="agreeCheck">
+                        阅读并同意<a href="../agreement/transferAgreement.html">《电站资产转让协议》</a><a href="../agreement/trustAgreement.html">《电站托管协议》</a>
                     </div>
                 </div>
             </div>
@@ -173,133 +149,201 @@
 </body>
 <script src="../js/common.js"></script>
 <script src="../js/api.js"></script>
+<script src="../js/jquery.pagination.js"></script>
 <script>
-    $(function() {
-        // 获取链接地址资产包id
-        var assetPackageId = getUrlParam('assetPackageId');
-        var isPackage = true;  // 判断是否可以打包购买
-        if(assetPackageId && assetPackageId != null) {
-            $.post(getOnSaleStationListByPackageId, {
-                pageNumber: 1,
-                limit: 10,
-                assetPackageId: assetPackageId
-            }, function(res){
-                var data = JSON.parse(res);
-                var packageInfo = data.result;
-                // 资产包详情
-                var pagebaseInfo = {
-                    name: packageInfo.assetPackageInfo.name,
-                    maxRate: packageInfo.assetPackageInfo.maxRate + '%',
-                    minRate: packageInfo.assetPackageInfo.minRate + '%',
-                    price: packageInfo.assetPackageInfo.price,
-                    total: packageInfo.assetPackageInfo.count,
-                    unsoldCount: packageInfo.assetPackageInfo.unsoldCount
-                };
-                var yield = pagebaseInfo.minRate + '~' + pagebaseInfo.maxRate;
-                var soldNum = Math.floor((pagebaseInfo.total - pagebaseInfo.unsoldCount) / (pagebaseInfo.total) * 100); //包內已售
-                var isSold = soldNum + '%';
-                var imgSrc = '';
-                if (soldNum >=0 && soldNum <= 30) {
-                    imgSrc = '../images/common/icon-jd-sm__10.png'
-                } else if(soldNum >30 && soldNum <= 50) {
-                    imgSrc = '../images/common/icon-jd-sm__30.png'
-                } else if(soldNum >50 && soldNum <= 70) {
-                    imgSrc = '../images/common/icon-jd-sm__50.png'
-                } else if (soldNum >70 && soldNum <= 90) {
-                    imgSrc = '../images/common/icon-jd-sm__70.png'
-                } else if (soldNum >90 && soldNum < 100) {
-                    imgSrc = '../images/common/icon-jd-sm__90.png'
-                } else if(soldNum == 100) {
-                    imgSrc = '../images/common/icon-jd-sm__100.png'
-                }
-                $('.titName').append(pagebaseInfo.name);
-                $('.yield').append(yield);
-                $('.use-buy').append(pagebaseInfo.unsoldCount);
-                $('.total-price').append(pagebaseInfo.price);
-                $('.total-count').append(pagebaseInfo.total);
-                $('.sold').append(isSold);
-                $('.soldImg').prop("src", imgSrc);
-                $('.progress-line').children('span').css({
-                    'width': isSold
-                });
-                // 资产包内包含电站
-                var pagebaseList = packageInfo.pageData.records;
-                var str = '';
-                var soldType = '';
-                var imgSrc_1 = '';
-                var urlLink = '../tradeHall/bitepriceBuy.html?stationId=';
-                var stateClass = '';
-                var color = '';
-                var btnText =  '查看详情';
-                $.each(pagebaseList, function(index, item){
-                    console.log(item)
-                    if(item.payType == 0) {  // 一口价
-                        soldType = '一口价';
-                        if(item.state == 0) {
-                            stateClass = 'dz';
-                            color = 'color-green';
-                            imgSrc_1 = '../images/common/ykj.png';
-                            urlLink = urlLink + item.stationId
-                        } else {
-                            stateClass = 'color-disabled';
-                            imgSrc_1 = '../images/common/ykj_disable.png';
-                            urlLink = 'javascript:;';
-                            btnText = '已交易'
-                        }
-                    } else{ // 竞价出售
-                        soldType = '竞价出售';
-                        isPackage = false;
-                        if(item.state == 0) {
-                            stateClass = 'dz';
-                            color = 'color-green';
-                            imgSrc_1 = '../images/common/jingjia.png';
-                            urlLink = urlLink + item.stationId
-                        } else {
-                            stateClass = 'color-disabled';
-                            imgSrc_1 = '../images/common/jingjiahuise.png';
-                            urlLink = 'javascript:;';
-                            btnText = '已交易'
-                        }
+    // 获取链接地址资产包id
+    var assetPackageId = getUrlParam('assetPackageId');
+    var isPackage = true;  // 判断是否可以打包购买
+    var uesrInfo, pagebaseInfo, stationIds, tipsinfo;
+    function powerStation(pageNumber, changePage) {
+        $.post(getOnSaleStationListByPackageId, {
+            pageNumber: pageNumber,
+            limit: 10,
+            assetPackageId: assetPackageId
+        }, function (res) {
+            var data = JSON.parse(res);
+            var packageInfo = data.result;
+            var totalData = data.result.pageData.total;
+            // 资产包详情
+            pagebaseInfo = {
+                name: packageInfo.assetPackageInfo.name,
+                maxRate: packageInfo.assetPackageInfo.maxRate + '%',
+                minRate: packageInfo.assetPackageInfo.minRate + '%',
+                price: packageInfo.assetPackageInfo.price,
+                total: packageInfo.assetPackageInfo.count,
+                unsoldCount: packageInfo.assetPackageInfo.unsoldCount
+            };
+            var yield = pagebaseInfo.minRate + '~' + pagebaseInfo.maxRate;
+            var soldNum = Math.floor((pagebaseInfo.total - pagebaseInfo.unsoldCount) / (pagebaseInfo.total) * 100); //包內已售
+            var isSold = soldNum + '%';
+            var imgSrc = '';
+            if (soldNum >=0 && soldNum <= 30) {
+                imgSrc = '../images/common/icon-jd-sm__10.png'
+            } else if(soldNum >30 && soldNum <= 50) {
+                imgSrc = '../images/common/icon-jd-sm__30.png'
+            } else if(soldNum >50 && soldNum <= 70) {
+                imgSrc = '../images/common/icon-jd-sm__50.png'
+            } else if (soldNum >70 && soldNum <= 90) {
+                imgSrc = '../images/common/icon-jd-sm__70.png'
+            } else if (soldNum >90 && soldNum < 100) {
+                imgSrc = '../images/common/icon-jd-sm__90.png'
+            } else if(soldNum == 100) {
+                imgSrc = '../images/common/icon-jd-sm__100.png'
+            }
+            $('.titName').append(pagebaseInfo.name);
+            $('.yield').append(yield);
+            $('.use-buy').append(pagebaseInfo.unsoldCount);
+            $('.total-price').append(pagebaseInfo.price);
+            $('.total-count').append(pagebaseInfo.total);
+            $('.sold').append(isSold);
+            $('.soldImg').prop("src", imgSrc);
+            $('.progress-line').children('span').css({
+                'width': isSold
+            });
+            // 资产包内包含电站
+            var pagebaseList = packageInfo.pageData.records;
+            var str = '';
+            var soldType = '';
+            var imgSrc_1 = '';
+            var urlLink = '../tradeHall/bitepriceBuy.html?stationId=';
+            var stateClass = '';
+            var color = '';
+            var btnText =  '查看详情';
+            $.each(pagebaseList, function(index, item){
+                if(item.payType == 0) {  // 一口价
+                    soldType = '一口价';
+                    if (index == 0) {
+                        stationIds = item.stationId;
+                    } else {
+                        stationIds = stationIds + ','+ item.stationId
                     }
-                    str = str + '<li class=' + stateClass + '>' +
-                                '<dl>' + 
-                                    '<dt class=' + color + '>' + item.name + '</dt>' + 
-                                    '<dd class="name">' + 
-                                        '<span class="btn btn-samll bg-green">电钻</span>' + 
-                                            item.name + 
-                                    '</dd>' + 
-                                '</dl>' + 
-                                '<dl>' + 
-                                    '<div class="btn-groups"><a class="btn" href=' + urlLink +'>' + btnText + '</a></div>' +
-                                '</dl>' + 
-                                '<dl>' + 
-                                    '<dt>' + '<img src='+ imgSrc_1 + '>'+ '</dt>' + 
-                                    '<dd>'+ soldType +'</dd>' + 
-                                '</dl>' + 
-                                '<dl>' + 
-                                    '<dt class=' + color + '>' + item.price +'</dt>' + 
-                                    '<dd>当前价格</dd>' +
-                                '</dl>' + 
-                                '<dl>' + 
-                                    '<dt class=' + color + '>' + item.rate + '%' +'</dt>' + 
-                                    '<dd>预期年化收益</dd>' +
-                                '</dl>' +   
-                            '</li>';
-                    $('#packageDetails-list').append(str);
-                })
-            })          
-        }
+                    if(item.state == 0) {
+                        stateClass = 'dz';
+                        color = 'color-green';
+                        imgSrc_1 = '../images/common/ykj.png';
+                        urlLink = urlLink + item.stationId
+                    } else {
+                        stateClass = 'color-disabled';
+                        imgSrc_1 = '../images/common/ykj_disable.png';
+                        urlLink = 'javascript:;';
+                        btnText = '已交易'
+                    }
+                } else{ // 竞价出售
+                    soldType = '竞价出售';
+                    isPackage = false;
+                    if(item.state == 0) {
+                        stateClass = 'dz';
+                        color = 'color-green';
+                        imgSrc_1 = '../images/common/jingjia.png';
+                        urlLink = urlLink + item.stationId
+                    } else {
+                        stateClass = 'color-disabled';
+                        imgSrc_1 = '../images/common/jingjiahuise.png';
+                        urlLink = 'javascript:;';
+                        btnText = '已交易'
+                    }
+                }
+                str = str + '<li class=' + stateClass + '>' +
+                            '<dl>' + 
+                                '<dt class=' + color + '>' + item.name + '</dt>' + 
+                                '<dd class="name">' + 
+                                    '<span class="btn btn-samll bg-green">电钻</span>' + 
+                                        item.name + 
+                                '</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<div class="btn-groups"><a class="btn" href=' + urlLink +'>' + btnText + '</a></div>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt>' + '<img src='+ imgSrc_1 + '>'+ '</dt>' + 
+                                '<dd>'+ soldType +'</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class=' + color + '>' + item.price +'</dt>' + 
+                                '<dd>当前价格</dd>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class=' + color + '>' + item.rate + '%' +'</dt>' + 
+                                '<dd>预期年化收益</dd>' +
+                            '</dl>' +   
+                        '</li>';
+            })
+            if (!changePage) {
+                $('#page-navigation').pagination({
+                    keepShowPN: true,
+                    showData: 5,
+                    totalData: totalData,
+                    mode: 'fixed',
+                    count: 4,
+                    jump: true,
+                    coping: true,
+                    homePage: '<<',
+                    endPage: '>>',
+                    prevContent: '<',
+                    nextContent: '>',
+                    isHide: true,
+                    jumpBtn: '确定',
+                    callback: function (api) {
+                        var currentNum = api.getCurrent();
+                        getRecord(currentNum, true);
+                    }
+                });
+            }
+            $('#packageDetails-list').append(str);
+        })
+    };
+    $(function() {
+        powerStation(1);
+        uesrInfo = localStorage.getItem('userInfo');
+        uesrInfo = JSON.parse(uesrInfo);
+        $('.price').append(uesrInfo.money);
         $('#packageBuy-btn').click(function() {
-            if (isPackage) {
-                $('.buyPackageModal').show();
+            if (uesrInfo && uesrInfo.userId) {
+                if (isPackage) {
+                    $('.buyPackageModal').show();
+                } else {
+                    $('.unpackModal').show(); 
+                }
             } else {
-                $('.unpackModal').show(); 
+                location.replace('../login/login.html')
             }
         });
         $('.close').click(function(){
             $('.buyPackageModal').hide(); 
             $('.unpackModal').hide(); 
-        })
+            $('.submitBtn').removeClass('submitPay').html('确定购买');
+            $('#payPassword').hide();
+        });
+        $('.submitBtn').click(function() {
+            var isAgree = $('.agreeCheck').is(":checked");
+            if(isAgree) {
+                $(this).addClass('submitPay').html('确定支付');
+                $('#payPassword').show();
+                if($(this).hasClass('submitPay')) {
+                    var payPassword = $('input[name ="password"]').val();
+                    console.log(payPassword);
+                    $.post(buyStationByYKJ, {
+                        userId: uesrInfo.userId,
+                        token: uesrInfo.token,
+                        payPassword: payPassword,
+                        payMoney: pagebaseInfo.price,
+                        stationId: stationIds,
+                    }, function(res) {
+                        var data = JSON.parse(res);
+                        if (data.result) {
+                            tipsinfo = data.result.data;
+                            messageShow(tipsinfo, true);
+                            window.location.href = "buySuccess.html";
+                        } else {
+                            tipsinfo = data.content;
+                            messageShow(tipsinfo);
+                        }
+                    })
+                }
+            } else {
+                messageShow('请先阅读并统一协议');
+            }
+        });
     })
 </script>
 </html>

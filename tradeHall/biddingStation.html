@@ -20,7 +20,7 @@
     <div class="wrap">
         <script>
             showHeader(); // 显示头部
-            showNav(true); //显示导航
+            showNav(true, 2); //显示导航
         </script>
         <div class="main bidpriceBuy biddingStation">
             <!-- 正在竞价购买电站 -->
@@ -30,36 +30,36 @@
                     <div class="line"></div>
                 </div>
                 <div class="tit">
-                    <h3>
-                        <span class="btn btn-samll bg-green">电站</span>江苏响水市渔光互补项目电站
-                        <span class="subtit">预期年化收益 16.68%</span>
+                    <h3 class="name">
+                        <span class="btn btn-samll bg-green">电站</span>
                     </h3>
                     <div class="line"></div>
                 </div>
                 <div class="biddingStation-con">
-                    <p>剩余竞价时间：<span class="time color-blue">1:29:59</span></p>
+                    <p>剩余竞价时间：<span class="time color-blue"></span></p>
+                    <span class="itmeNum" style="display: none"></span>
                     <p class="tips">竞价结果将在时间结束后公布</p>
                     <div class="price-con cleart">
                         <div class="pull-left">
                             <h4>当前价格</h4>
-                            <p class="color-green">¥ 8,000.00</p>
+                            <p class="color-green currentPrice">¥ </p>
                         </div>
                         <div class="pull-right">
                             <h4>我的价格</h4>
-                            <p class="color-blue">¥ 5,000.00</p>
+                            <p class="color-blue myPrice">¥ </p>
                         </div>
                     </div>
                     <div class="line"></div>
                 </div>
                 <div class="bidpriceBuy-bot">
                     <div class="edit-price">
-                        <span class="minus edit-btn color-blue">-</span>
-                        <span class="price-num color-blue">¥ 620,000.00</span>
-                        <span class="add edit-btn color-blue">+</span>
+                        <span class="minusNum edit-btn color-blue">-</span>
+                        <span class="price-num color-blue">¥ </span>
+                        <span class="addNum edit-btn color-blue">+</span>
                     </div>
                     <p class="tips">最低加价金额为 100.00 元</p>
                     <div class="btn-groups">
-                        <a class="btn dib bg-blue" href="">修改我的竞价</a>
+                        <a class="btn dib bg-blue changeMoney">修改我的竞价</a>
                     </div>
                 </div>
             </div>
@@ -67,5 +67,63 @@
         <script src="../js/footer.js"></script>
     </div>
 </body>
-
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script>
+    var timeNum, time, dataInfo, newMoney;
+    function countTime(){
+        timeNum = $('.itmeNum').html();
+        time = formatTime(timeNum);
+        timeNum -- ;
+        $('.itmeNum').html(timeNum);
+        $('.time').html(time);
+        setTimeout("countTime()",1000);
+    };
+    $(function() {
+        var bidPriceId, haveBidTime;
+        bidPriceId = getUrlParam('bidPriceId'); //获取竞价id
+        uesrInfo = localStorage.getItem('userInfo');
+        uesrInfo = JSON.parse(uesrInfo);
+        if (uesrInfo && uesrInfo.userId) {
+            $.post(getBidPriceInfo, {
+                userId: uesrInfo.userId,
+                token: uesrInfo.token,
+                bidPriceId: bidPriceId
+            }, function(res) {
+                dataInfo = JSON.parse(res);
+                if(dataInfo.result && dataInfo.result.data) {
+                    dataInfo = dataInfo.result.data;
+                    newMoney = dataInfo.money;
+                    $('.name').append(dataInfo.name);
+                    $('.itmeNum').html(dataInfo.haveBidTime);
+                    $('.currentPrice').append(dataInfo.maxBidPrice);
+                    $('.myPrice').append(dataInfo.money);
+                    $('.price-num').append(dataInfo.money);
+                    countTime();
+                }
+            });
+            $('.minusNum').click(function() {
+                if(newMoney > dataInfo.money) {
+                    newMoney = newMoney - 100;
+                    $('.price-num').html('¥ ' + newMoney);
+                }
+            });
+            $('.addNum').click(function() {
+                newMoney = newMoney + 100;
+                $('.price-num').html('¥ ' + newMoney);
+                console.log(dataInfo);
+            });
+            $('.changeMoney').click(function() {
+                $.post(updateBidPrice, {
+                    userId: uesrInfo.userId,
+                    token: uesrInfo.token,
+                    bidPriceId: bidPriceId,
+                    money: newMoney
+                }, function(res) {
+                    location.reload();
+                })
+            })
+        };
+    })
+</script>
 </html>

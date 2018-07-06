@@ -175,7 +175,8 @@
   vertical-align: middle;
 }
 .packageDetails .details-top .main-w .details-top-con .con-box .con-box-top dl:nth-child(1) {
-  text-align: left;
+  text-align: center;
+  padding-right: 80px;
 }
 .packageDetails .details-top .main-w .details-top-con .con-box .con-box-bot {
   font-size: 14px;
@@ -357,6 +358,7 @@
   font-size: 40px;
   line-height: 40px;
   margin: 0 15px;
+  cursor: pointer;
 }
 .biddingStation .bidpriceBuy-bot .edit-price .price-num {
   width: 310px;
@@ -552,6 +554,17 @@
 .buyPackageModal .modal-footer p .btn {
   background: url(../images/common/rectangle.png) no-repeat left center;
   padding: 4px 11px 4px 20px;
+}
+.buyPackageModal .modal-footer .form-control {
+  padding: 0 250px;
+}
+.buyPackageModal .modal-footer .form-control .payPassword {
+  height: 36px;
+  line-height: 36px;
+  font-size: 12px;
+  border-radius: 100px;
+  margin-bottom: 25px;
+  padding-left: 15px;
 }
 .buyPackageModal .modal-footer .btn-groups {
   padding: 0 250px;

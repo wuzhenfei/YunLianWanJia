@@ -15,6 +15,12 @@
                 margin-right: 20px;
                 width: 100px;
                 height: 100px;
+                border-radius: 50%; 
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
             }
             h3{
                 margin-top: 15px;
@@ -40,7 +46,7 @@
             }
         }
         .balance{
-            width: 270px;
+            width: 370px;
             padding: 20px 0 0 35px;
             h4{
                 font-size: 12px;
@@ -109,6 +115,20 @@
                     a{
                         color: #666;
                         display: block;
+                    }
+                    &.hasMessage{
+                        position: relative;
+                        &:after{
+                            content: '';
+                            display: block;
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%;
+                            background: @green;
+                            position: absolute;
+                            top: 8px;
+                            right: 25px;
+                        }
                     }
                     &:nth-child(1){
                         a{
@@ -187,13 +207,16 @@
                     padding-bottom: 10px;
                     border-bottom: 4px solid #eee;
                     font-size: 16px;
-                    color: #666;
                     &.active{
                         font-weight: bold;
                         border-bottom: 4px solid;
                         border-image: linear-gradient(to right, #0396D6, #00C3BF) 30 30;
                         border-image: -webkit-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
                         border-image: -moz-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+                    }
+                    a{
+                        color: #666;
+                        display: block;
                     }
                 }
             }
@@ -279,6 +302,352 @@
                     margin-bottom: 10px;
                     p{
                         color: #999;
+                    }
+                }
+            }
+        }
+        // 竞价电站
+        .bidStation{
+            .bidStation-list{
+                padding: 0 10px;
+                li{
+                    border-bottom: 1px solid #eee;
+                    a{
+                        overflow: hidden;
+                        padding: 30px 20px;
+                        display: block;
+                        dl{
+                            float: left;
+                            color: #666;
+                            dt{
+                                font-size: 18px;
+                                line-height: 36px;
+                                height: 36px;
+                                img{
+                                    margin: 0 auto;
+                                }
+                            }
+                            dd{
+                                height: 24px;
+                                line-height: 24px;
+                                .btn{
+                                    margin-right: 10px;
+                                }
+                            }
+                            &:nth-child(1) {
+                                width: 310px;
+                            }
+                            &:nth-child(2) {
+                                width: 60px;
+                                text-align: center;
+                                margin-right: 30px;
+                            }
+                            &:nth-child(3) {
+                                width: 160px;
+                                dt{
+                                    font-size: 12px;
+                                }
+                                span{
+                                    font-size: 18px;
+                                    font-weight: bold; 
+                                }
+                            }
+                            &:nth-child(4) {
+                                width: 90px;
+                                float: right;
+                                text-align: center;
+                                dt{
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                    &.isEnd{
+                        color: #999!important;
+                        a{
+                            dl{
+                                dt{
+                                    color: #999!important;
+                                    span{
+                                        color: #999!important;
+                                    }
+                                }
+                                dd{
+                                    color: #999!important;
+                                    span{
+                                        color: #999!important;
+                                        &.btn{
+                                            background: #bbb!important;
+                                            color: #fff!important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 收支记录
+        .incomeRecord{
+            .tab-container{
+                .incomeRecord-list{
+                    padding: 15px;
+                    overflow: hidden;
+                    li{
+                        color: #666;
+                        line-height: 30px;
+                        span{
+                            display: inline-block;
+                            &.remark{
+                                width: 320px;
+                            }
+                            &.createtime{
+                                width: 200px;
+                            }
+                            &.money{
+                                float: right;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 充值
+        .recharge-con{
+            .recharge-tit{
+                padding: 0 15px;
+                h3{
+                    font-size: 16px;
+                    color: #666;
+                    line-height: 40px;
+                    border-bottom: 1px solid #eee;
+                    a{
+                        font-size: 12px;
+                    }
+                }
+            }
+            .recharge-con-container{
+                padding: 0 25px;
+                .form-control{
+                    font-size: 14px;
+                    color: #999;
+                    border-bottom: 1px solid #eee;
+                    padding: 25px 0;
+                    display: flex;
+                    line-height: 40px;
+                    span{
+                        font-size: 24px;
+                        margin-left: 25px;
+                    }
+                    a{
+                        margin-left: 25px;
+                    }
+                    .input-text{
+                        display: inline-block;
+                        width: 255px;
+                        height: 36px;
+                        line-height: 36px;
+                        border-radius: 100px;
+                        border: 1px solid #bbb;
+                        padding: 0 15px;
+                        font-size: 14px;
+                        color: #666;
+                    }
+                    input{
+                        display: inline-block;
+                        background: none;
+                        border: none;
+                        height: 26px;
+                        line-height: 26px;
+                        width: 200px;
+                        color: #999;
+                    }
+                    .form-group{
+                        display: inline-block;
+                        margin-left: 25px;
+                        line-height: 28px;
+                        .input-radio{
+                            display: inline-block;
+                            text-align: center;
+                            width: 200px;
+                            img{
+                                margin: 0 auto;
+                            }
+                            h4{
+                                font-size: 16px;
+                                color: #666;
+                                line-height: 40px;
+                            }
+                            input{
+                                width: 16px;
+                                height: 16px;
+                            }
+                        }
+                    }
+                }
+                .btn-groups{
+                    text-align: center;
+                    margin: 30px 0;
+                    .btn{
+                        display: inline-block;
+                        width: 140px;
+                        margin: 0 10px;
+                        font-size: 16px;
+                    }
+                }
+                // 提交状态
+                .payState{
+                    text-align: center;
+                    padding: 35px 70px;
+                    img{
+                        margin: 0 auto;
+                    }
+                    h2{
+                        font-size: 24px;
+                        font-weight: bold;
+                        margin: 15px 0 70px;
+                        color: #999;
+                    }
+                    .tips{
+                        text-align: center;
+                        font-size: 16px;
+                        color: #666;
+                        span{
+                            font-size: 24px;
+                            font-weight: bold;
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        // 系统消息
+        .systemMessage{
+            .recharge-con-container{
+                padding: 0 15px;
+                .messageList{
+                    li{
+                        padding: 28px 0 28px 15px;
+                        border-bottom: 1px solid #eee;
+                        position: relative;
+                        cursor: pointer;
+                        .summary-con{
+                            overflow: hidden;
+                            h2{
+                                font-size: 14px;
+                                .time{
+                                    float: right;
+                                    font-size: 12px;
+                                    color: #666;
+                                }
+                            }
+                            .content{
+                                color: #999;
+                                line-height: 24px;
+                            }
+                        }
+                        &.isRead{
+                            &:after{
+                                background: #bbb;
+                            }
+                        }
+                        &:after{
+                            content: "";
+                            display: block;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            position: absolute;
+                            left: 0;
+                            top: 33px;
+                            background: #FF482A;
+                        }
+                    }
+                }
+            }
+        }
+        // 联系客服
+        .contactUs-con{
+            .recharge-con-container{
+                padding: 35px 0 185px;
+                p{
+                    text-align: center;
+                }
+                .p-tit{
+                    color: #666;
+                    img{
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: -2px 5px 0 0;
+                    }
+                }
+                .p-phone{
+                    font-size: 24px;
+                    color: @blue;
+                    font-weight: bold;
+                    margin: 15px 0 25px;
+                }
+                .p-onTime{
+                    color: #999;
+                }
+            }
+        }
+        // 账户设置
+        .accountSet{
+            min-height: 470px;
+            .recharge-con-container{
+                .form-control{
+                    display: block;
+                    span{
+                        font-size: 14px;
+                    }
+                    .btn{
+                        width: 110px;
+                        padding: 1px;
+                        box-sizing: initial;
+                        -moz-box-sizing: initial;
+                        -webkit-box-sizing: initial;
+                        span{
+                            margin-left: 0;
+                            display: block;
+                            &.active{
+                                background: #fff;
+                                color: @blue;
+                                border-radius: 100px;
+                            }
+                        }
+                    }
+                    .form-group{
+                        margin-left: 0;
+                        .form-control{
+                            padding: 10px 0;
+                            border: none;
+                            .input-code{
+                                width: 125px;
+                                input{
+                                    width: 100%;
+                                }
+                            }
+                            label{
+                                display: inline-block;
+                                width: 80px;
+                            }
+                            .btn{
+                                width: 110px;
+                                font-size: 16px;
+                                display: inline-block;
+                                &.active{
+                                    color: #333;
+                                    background: #ededed;
+                                }
+                            }
+                        }
+                        .btn-groups{
+                            .btn{
+                                margin-left: 95px;
+                            }
+                        }
                     }
                 }
             }

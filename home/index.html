@@ -20,7 +20,7 @@
     <div class="wrap">
         <script>
             showHeader();   // 显示头部
-            showNav(true);  //显示导航
+            showNav(true, 1);  //显示导航
         </script>
         <div class="main">
             <div class="banner">
@@ -162,6 +162,7 @@
         var urlLink = '../tradeHall/packageDetails.html?assetPackageId='
         var soldType = '';  // 一口价和竞价
         $.each(data, function(index, item){
+            var isHot = item.isHot? '<img src="../images/common/hothuo.png">': '';
             if(item.type == 1) {    //资产包
                 var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
                 if (soldNum >=0 && soldNum <= 30) {
@@ -181,7 +182,7 @@
                             '<dl>' + 
                                 '<dt class="color-blue">' + item.name + '</dt>' + 
                                 '<dd class="name">' + 
-                                    '<img src="../images/common/hothuo.png">'+
+                                    isHot +
                                     '<span class="btn btn-samll bg-blue">资产包</span>' + 
                                         item.name + 
                                 '</dd>' + 
@@ -214,7 +215,7 @@
                             '<dl>' + 
                                 '<dt class="color-green">' + item.name + '</dt>' + 
                                 '<dd class="name">' + 
-                                    '<img src="../images/common/hothuo.png">'+
+                                    isHot +
                                     '<span class="btn btn-samll bg-green">电钻</span>' + 
                                         item.name + 
                                 '</dd>' + 

@@ -1,0 +1,163 @@
+@import "./mixin.less";
+.process {
+    padding: 40px 0;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+    .main-w {
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
+        padding: 30px;
+        .tit {
+            margin: 15px 0;
+            h3{
+                font-weight: bold;
+                .subtit {
+                    font-size: 12px;
+                    color: #666;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .transferStation-con{
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            .tips{
+                color: #999;
+                text-align: right;
+                margin-top: 10px;
+                span{
+                    color: #666;
+                }
+            }
+        }
+        .transferStation-bot{
+            text-align: center;
+            h4{
+                font-size: 16px;
+                margin-top: 30px;
+            }
+            input{
+                margin-top: 20px;
+                width: 310px;
+                height: 67px;
+                line-height: 67px;
+                font-size: 36px;
+                color: @blue;
+                font-weight: bold;
+                background: #F0F0F0;
+                border-radius: 8px;
+                border:none;
+                padding: 0 15px;
+                text-align: center;
+            }
+            p{
+                color: #999;
+                line-height: 24px;
+                &.tips{
+                    color: #333;
+                    margin-top: 30px;
+                    font-weight: bold;
+                }
+            }
+            .btn-groups{
+                margin-top: 40px;
+                .btn{
+                    width: 240px;
+                    font-size: 16px;
+                }
+            }
+        }
+
+
+        .current-price {
+            font-size: 14px;
+            margin: 20px 0;
+        }
+        .bidpriceBuy-bot{
+            p{
+                text-align: center;
+                font-size: 14px;
+                color: #666;
+                margin: 25px 0;
+            }
+            .price {
+                font-size: 16px;
+                font-weight: bold;
+                margin: 0 25px;
+            }
+            .btn {
+                background: url(../images/common/rectangle.png) no-repeat left center;
+                padding: 4px 11px 4px 20px;
+            }
+            .tips {
+                font-size: 12px;
+                text-align: center;
+                margin-top: 35px;
+            }
+        }
+    }
+    // 转让电站
+    .process-ul{
+        overflow: hidden;
+        li{
+            width: 33.33333%;
+            text-align: center;
+            float: left;
+            p{
+                color: #666;
+                margin: 20px 0 10px;
+            }
+            h3 {
+                color: #00C3BF;
+                font-size: 30px;
+                font-weight: bold;
+                span{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    // 发布结果
+    .process-result{
+        .img-logo {
+            img{
+                margin: 0 auto;
+            }
+            h2 {
+                text-align: center;
+                font-size: 26px;
+                color: @blue;
+                line-height: 60px;
+                font-weight: bold;
+                &.fail{
+                    color: #999;
+                }
+            }
+        }
+        .tit {
+            margin: 15px 0;
+            h3 {
+                font-weight: bold;
+            }
+        }
+        .tips{
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 40px;
+            a{
+                color: @blue;
+                text-decoration: underline;
+            }
+        }
+        .btn-groups {
+            text-align: center;
+            margin: 45px auto;
+            .btn{
+                width: 240px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+

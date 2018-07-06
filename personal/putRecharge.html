@@ -13,7 +13,7 @@
     <script src="../js/nav.js"></script>
     <script src="../js/personalTop.js"></script>
     <script src="../js/personalLeft.js"></script>
-    <title>个人中心-收支记录</title>
+    <title>个人中心-充值提现记录</title>
 </head>
 
 <body>
@@ -38,8 +38,8 @@
                             <div class="incomeRecord">
                                 <div class="common-tab">
                                     <ul>
-                                        <li class="active">收入记录</li>
-                                        <li>支出记录</li>
+                                        <li class="active">充值记录</li>
+                                        <li>提现记录</li>
                                     </ul>
                                 </div>
                                 <div class="tab-container">
@@ -58,15 +58,15 @@
 <script src="../js/api.js"></script>
 <script src="../js/jquery.pagination.js"></script>
 <script>
-    var uesrInfo, state, totalData;
+    var uesrInfo, orderType, totalData;
 
-    function getRecord(uesrInfo, state, pageNumber, changePage) {
-        $.post(getUserMoneyRecord, {
+    function getRecord(uesrInfo, orderType, pageNumber, changePage) {
+        $.post(getExtractList, {
             userId: uesrInfo.userId,
             token: uesrInfo.token,
             pageNumber: pageNumber,
             limit: 15,
-            state: state
+            orderType: orderType
         }, function (res) {
             var data = JSON.parse(res);
             var str = '';
@@ -75,9 +75,10 @@
                 data = data.result.pageData.records;
                 if (data.length > 0) {
                     $.each(data, function (index, item) {
+                        var orderName = item.orderSource == 1 ? '微信' : '支付宝';
                         str = str + '<li>' +
                             '<span class="money">' + item.money + ' ' + '元' + '</span>' +
-                            '<span class="remark">' + item.remark + '</span>' +
+                            '<span class="remark">' + orderName + '</span>' +
                             '<span class="createtime">' + item.createtime + '</span>' +
                             '</li>'
                     })
@@ -98,12 +99,12 @@
                             jumpBtn: '确定',
                             callback: function (api) {
                                 var currentNum = api.getCurrent();
-                                getRecord(uesrInfo, state, currentNum, true);
+                                getRecord(uesrInfo, orderType, currentNum, true);
                             }
                         });
                     }
                 } else {
-                    str = '<p class="tips">暂无收益</p>';
+                    str = '<p class="tips">暂无记录</p>';
                 }
                 $('.incomeRecord-list').html(str);
             }
@@ -119,11 +120,11 @@
             $(this).click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
                 if (index == 0) {
-                    state = 1
+                    orderType = 1
                 } else {
-                    state = 0
+                    orderType = 2
                 }
-                getRecord(uesrInfo, state, 1);
+                getRecord(uesrInfo, orderType, 1);
             })
         });
     })

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper-4.3.3.min.css">
+    <link rel="stylesheet" href="../css/assetCenter.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/swiper-4.3.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>资产中心-添加新电站</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader(); // 显示头部
+            showNav(true, 3); //显示导航
+        </script>
+        <div class="main addStation">
+            <div class="main-w">
+                <div class="tit">
+                    <h2>添加新电站</h2>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        <label>家庭住址</label>
+                        <span class="input-text">
+                            <input type="text" placeholder="请填写家庭住址" />
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label>联系人</label>
+                        <span class="input-text">
+                            <input type="text" placeholder="请填写联系人" />
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label>联系电话</label>
+                        <span class="input-text">
+                            <input type="text" placeholder="请填写联系电话" />
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label>微信号</label>
+                        <span class="input-text">
+                            <input type="text" placeholder="请填写联系人微信号" />
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label>安装方式</label>
+                        <span class="input-text">
+                            <select>
+                                <option value ="volvo">自购设备</option>
+                                <option value ="saab"></option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label>屋顶照片</label>
+                        <span>添加照片</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/jquery.pagination.js"></script>
+<script>
+    var userInfo;
+    uesrInfo = localStorage.getItem('userInfo');
+    uesrInfo = JSON.parse(uesrInfo);
+    // 用户提交电站
+    function addStation() {
+        // $.post(saveStationInfo, {
+        //     adress: ,
+        //     contact: ,
+        //     wechat: ,
+        //     installType: ,
+        //     imgUrl: ,
+        //     mobile: 
+        // }, function(res) {
+
+        // })
+    }
+    // 获取租赁电站列表信息
+    function getStationList(pageNumber, changePage) {
+        $.post(getUserStationList, {
+            userId: uesrInfo.userId,
+            token: uesrInfo.token,
+            pageNumber: pageNumber,
+            limit: 5,
+        }, function (res) {
+            var str = '';
+            var data = JSON.parse(res);
+            if (data.result.pageData && data.result.pageData.total > 0) {
+                var totalData = data.result.pageData.total
+                data = data.result.pageData.records;
+                $.each(data, function (index, item) {
+                    str = str + '<li>' +
+                        '<dl class="name">' +
+                        '<dt>' + item.name + '</dt>' +
+                        '<dd><span class="btn btn-samll">电站</span>电站名称</dd>' +
+                        '</dl>' +
+                        '<dl>' +
+                        '<div class="btn-groups">' +
+                        '<a class="btn" href="rentStationDetail?stationId=' + item.stationId +
+                        '">查看详情</a>' +
+                        '</div>' +
+                        '</dl>' +
+                        '<dl class="inverterNumber">' +
+                        '<dt>' + item.inverterNumber + ' kWp</dt>' +
+                        '<dd>昨日发电量</dd>' +
+                        '</dl>' +
+                        '<dl class="volume">' +
+                        '<dt>' + item.volume + ' kWp</dt>' +
+                        '<dd>装机容量</dd>' +
+                        '</dl>' +
+                        '<dl class="adress">' +
+                        '<dt>' + item.adress + '</dt>' +
+                        '<dd>并网类型 - ' + item.gridType + '</dd>' +
+                        '</dl>' +
+                        '</li>';
+                });
+                if (!changePage) {
+                    $('#page-navigation').pagination({
+                        keepShowPN: true,
+                        showData: 5,
+                        totalData: totalData,
+                        mode: 'fixed',
+                        count: 4,
+                        jump: true,
+                        coping: true,
+                        homePage: '<<',
+                        endPage: '>>',
+                        prevContent: '<',
+                        nextContent: '>',
+                        isHide: true,
+                        jumpBtn: '确定',
+                        callback: function (api) {
+                            var currentNum = api.getCurrent();
+                            getStationList(currentNum, true);
+                        }
+                    });
+                }
+            } else {
+                str = '<p class="tips">暂无数据！</p>'
+            }
+            $('#assetCenter-list').html(str);
+        })
+    };
+    $(function () {
+        getStationList(1);
+    })
+</script>
+
+</html>

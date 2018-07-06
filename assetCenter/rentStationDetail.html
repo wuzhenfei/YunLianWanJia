@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper-4.3.3.min.css">
+    <link rel="stylesheet" href="../css/assetCenter.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/swiper-4.3.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>资产中心-电站详情</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader(); // 显示头部
+            showNav(true, 3); //显示导航
+        </script>
+        <div class="main stationDetail">
+            <div class="main-w">
+                <div class="title title-noLine">
+                    <h2>电站详情</h2>
+                    <p>PLANT DETAILS</p>
+                </div>
+                <div class="stationDetail-top">
+                    <div class="stationDetail-top-t cleart">
+                        <div class="pull-left">
+                            <div class="tit">
+                                <h3 class="titName">
+                                    <span class="btn btn-samll bg-green">电站</span><span class="name"></span><a class="color-blue editName">点击修改名称</a></h3>
+                                <div class="line"></div>
+                            </div>
+                            <p class="adress"><span>电站位置</span></p>
+                            <p class="area"><span>电站面积</span></p>
+                        </div>
+                        <div class="pull-right">
+                            <ul>
+                                <li class="state">
+                                    <p class="tit">电站状态</p>
+                                    <h3 class="stateName"></h3>
+                                </li>
+                                <li class="alarm">
+                                    <p class="tit">警告信息</p>
+                                    <h3 class="alarmName"></h3>
+                                </li>
+                            </ul>
+                            <div class="state-img">
+                                <img src="">
+                            </div>
+                            <a class="repair color-blue">电站报修</a>
+                        </div>
+                    </div>
+                    <div class="stationDetail-top-b">
+                        <ul>
+                            <li>
+                                <p>装机容量</p>
+                                <h3 class="volume"></h3>
+                            </li>
+                            <li>
+                                <p>前一日发电量</p>
+                                <h3 class="todayGrand"></h3>
+                            </li>
+                            <li>
+                                <p>累计发电量</p>
+                                <h3 class="sumProfit"></h3>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stationDetail-bot">
+                    <div class="label-control">
+                        <label>功率</label>
+                        <span class="power"></span>
+                    </div>
+                    <div class="label-control">
+                        <label>建站时间</label>
+                        <span class="createTime"></span>
+                    </div>
+                    <div class="label-control">
+                        <label>并网类型</label>
+                        <span class="gridType"></span>
+                    </div>
+                    <div class="label-control" style="margin-top: 25px;">
+                        <label>主要设备型号规格</label>
+                        <div class="label-group" id="equipmentInfo">
+                            <div class="label-control">
+                                <label>开发单位</label>
+                                <span class="developmentUnit"></span>
+                            </div>
+                            <div class="label-control">
+                                <label>建设单位</label>
+                                <span class="constructionUnit"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-control" style="margin-top: 25px;">
+                        <label>电价政策</label>
+                        <div class="label-group">
+                            <div class="label-control">
+                                <label>发电国补</label>
+                                <span><i class="countryMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                            </div>
+                            <div class="label-control">
+                                <label>发电省补</label>
+                                <span><i class="provinceMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                            </div>
+                            <div class="label-control">
+                                <label>发电市补</label>
+                                <span><i class="cityMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                            </div>
+                            <div class="label-control">
+                                <label>发电县补/区补</label>
+                                <span><i class="countyMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+    <div class="modal editNameModal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-control">
+                        <input type="text" name="editName" value=""/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-groups">
+                        <button class="btn bg-blue onEditName">确认修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script>
+    var userInfo, equipmentInfo, stationId;
+    uesrInfo = localStorage.getItem('userInfo');
+    uesrInfo = JSON.parse(uesrInfo);
+    stationId = getUrlParam('stationId');
+    // 获取电站详细信息
+    function getStationList() {
+        $.post(getStationInfo, {
+            userId: uesrInfo.userId,
+            token: uesrInfo.token,
+            stationId: stationId
+        }, function (res) {
+            var data = JSON.parse(res);
+            if (data.result) {
+                data = data.result.data;
+                $('.name').html(data.name);
+                $('input[name="editName"]').val(data.name);
+                $('.adress').append(data.adress);
+                $('.area').append(data.area + ' 平方米');
+                $('.volume').html(data.volume + ' kWp');
+                $('.todayGrand').html(data.todayGrand + ' MWh');
+                $('.sumProfit').html(data.sumProfit + ' GWh');
+                if (data.deviceStatue == 0) {
+                    $('.stateName').removeClass('unNormal').html('运转正常');
+                    $('.alarmName').removeClass('isAlarm').html('无警告信息');
+                    $('.state-img img').prop('src', '../images/common/state-normal.png');
+                } else {
+                    $('.stateName').addClass('unNormal').html('运转不正常');
+                    $('.alarmName').addClass('isAlarm').html('新的警告信息');
+                    $('.state-img img').prop('src', '../images/common/state-unnormal.png');
+                }
+                $('.repair').prop('href', 'repairStation.html?stationId=' + stationId)
+                $('.power').html(data.power + 'W');
+                $('.createTime').html(data.createtime);
+                $('.gridType').html(data.gridType);
+                $('.developmentUnit').html(data.developmentUnit);
+                $('.constructionUnit').html(data.constructionUnit);
+                $('.countryMoney').html(data.subsidyInfo.countryMoney);
+                $('.provinceMoney').html(data.subsidyInfo.provinceMoney);
+                $('.cityMoney').html(data.subsidyInfo.cityMoney);
+                $('.countyMoney').html(data.subsidyInfo.countyMoney);
+                $('.year').each(function() {
+                    $(this).html(data.subsidyInfo.year);
+                });
+                equipmentInfo = '';
+                $.each(data.equipment, function(idnex, item) {
+                    equipmentInfo = equipmentInfo + '<div class="label-control">' +
+                                '<label>'+ item.name +'</label>' +
+                                '<span>生产厂家：'+ item.vender +'</span>' +
+                                '<span>规格型号：'+ item.version +'</span>' +
+                                '<span>保质期：'+ item.lengthTime +'年</span>' +
+                            '</div>';
+                })
+                $('#equipmentInfo').append(equipmentInfo);
+            }
+        })
+    };
+    // 修改电站名称
+    function onEditName(name) {
+        $.post(updateStationName, {
+            userId: uesrInfo.userId,
+            token: uesrInfo.token,
+            name: name,
+            stationId: stationId
+        },function(res) {
+            var data = JSON.parse(res);
+            if(data.result.data) {
+                messageShow(data.result.data, true);
+                $('.modal').hide();
+                $('.name').html(name);
+                $('input[name="editName"]').val(name);
+            }
+        })
+    };
+    $(function () {
+        getStationList();
+        $('.onEditName').click(function() {
+            var name = $('input[name="editName"]').val();
+            onEditName(name);
+        });
+        $('.editName').click(function() {
+            $('.modal').show();
+        });
+        $('.modal').click(function() {
+            event.stopPropagation();
+            $(this).hide();
+        });
+        $('.modal-content').click(function(event) {
+            event.stopPropagation(); 
+        });
+    })
+</script>
+
+</html>

@@ -1,0 +1,564 @@
+@import "./mixin.less";
+.main {
+    .tab-header {
+        .main-w{
+            height: 80px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            overflow: hidden;
+            ul {
+                overflow: hidden;
+                padding-top: 33px;
+                width: 850px;
+                float: left;
+                li {
+                    float: left;
+                    width: 50%;
+                    text-align: center;
+                    padding: 0 2px;
+                    a {
+                        padding: 10px 0;
+                        font-size: 16px;
+                        display: block;
+                        color: #666666;
+                        border-bottom: 4px solid #eee;
+                    }
+                    &.current {
+                        a {
+                            font-weight: bold;
+                            border-bottom: 4px solid;
+                            border-image: linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+                            border-image: -webkit-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+                            border-image: -moz-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+                        }
+                    }
+                }
+            }
+            .addStation{
+                float: right;
+                width: 95px;
+                height: 26px;
+                line-height: 26px;
+                margin-top: 40px;
+                span{
+                    font-size: 15px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .assetCenter-con{
+        .main-w{
+            .article-con{
+                padding:25px;
+                .article-list{
+                    li{
+                        padding-left: 100px;
+                        background: url(../images/common/station-bg.png) no-repeat left center;
+                        dl{
+                            dt{
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                color: @green;
+                            }
+                            &:nth-child(1){
+                                width: 170px;
+                                dd{
+                                    .btn{
+                                        background: @green;
+                                    }
+                                }
+                            }
+                            &:nth-child(2){
+                                width: 115px;
+                            }
+                            &:nth-child(3){
+                                width: 160px;
+                                dd{
+                                    padding-left: 20px;
+                                    background: url(../images/common/fdl.png) no-repeat 40px center;
+                                    &.dd-profit{
+                                        background: url(../images/common/money.png) no-repeat 45px center;
+                                    }
+                                }
+                            }
+                            &:nth-child(4){
+                                width: 130px;
+                                dd{
+                                    padding-left: 20px;
+                                    background: url(../images/common/zjrl.png) no-repeat 30px center;
+                                }
+                            }
+                            &:nth-child(5){
+                                width: 300px;
+                                text-align: left;
+                                dt{
+                                    font-size: 12px;
+                                    color: #666;
+                                    background: url(../images/common/adress.png) no-repeat left center;
+                                    padding-left: 20px;
+                                }
+                                dd{
+                                    background: url(../images/common/bwlx.png) no-repeat left center;
+                                    padding-left: 20px;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 电站详情
+.stationDetail{
+    padding-top:25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+    .stationDetail-top{
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+        padding:10px 20px 20px;
+        .stationDetail-top-t{
+            .pull-left{
+                .tit{
+                    .editName{
+                        font-size: 12px;
+                        text-decoration: underline;
+                    }
+                }
+                p{
+                    font-size: 14px;
+                    color: #666;
+                    line-height: 35px;
+                    margin: 15px 0;
+                    padding-left: 20px;
+                    span{
+                        color: #999;
+                        margin-right: 40px;
+                    }
+                    &.adress{
+                        margin-bottom: 0;
+                        background: url(../images/common/adress.png) no-repeat left center;
+                    }
+                    &.area{
+                        margin-top: 0;
+                        background: url(../images/common/area.png) no-repeat left center;
+                    }
+                }
+            }
+            .pull-right{
+                width: 520px;
+                padding-top: 25px;
+                position: relative;
+                ul{
+                    overflow: hidden;
+                    li{
+                        float: left;
+                        width: 50%;
+                        text-align: center;
+                        p{
+                            font-size: 14px;
+                            color: #666;
+                            position: relative;
+                            &:after{
+                                content: '';
+                                display: block;
+                                width: 10px;
+                                height: 10px;
+                                position: absolute;
+                                background: #bbb;
+                                left: 85px;
+                                top:5px;
+                                border-radius: 50%;
+                            }
+                        }
+                        h3{
+                            font-size: 24px;
+                            font-weight: bold;
+                            &.unNormal{
+                                color: #F5A623;
+                            }
+                            &.isAlarm{
+                                color: #FF492A;
+                            }
+                        }
+                        &.state{
+                            color: @blue;
+                            p{
+                                &:after{
+                                    background: @blue;
+                                }
+                            }
+                        }
+                        &.alarm{
+                            color: @green;
+                            p{
+                                &:after{
+                                    background: @green;
+                                }
+                            }
+                        }
+                    }
+                }
+                .state-img{
+                    img{
+                        margin: 15px auto 0;
+                    }
+                }
+                .repair{
+                    position: absolute;
+                    right: 0;
+                    top: 15px;
+                    text-decoration: underline;
+                }
+            }
+        }
+        .stationDetail-top-b{
+            border-top:1px solid #eee;
+            ul{
+                overflow: hidden;
+                li{
+                    width: 33.33333%;
+                    text-align: center;
+                    float: left;
+                    p{
+                        color: #666;
+                        margin: 20px 0 10px;
+                    }
+                    h3{
+                        color: @green;
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+    .stationDetail-mid{
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+        padding:10px 20px 20px;
+        margin-top: 20px;
+        ul{
+            overflow: hidden;
+            li{
+                width: 33.33333%;
+                text-align: center;
+                float: left;
+                p{
+                    color: #666;
+                    margin: 20px 0 10px;
+                }
+                h3{
+                    color: @green;
+                    font-size: 30px;
+                }
+            }
+        }
+        .tips{
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top:1px solid #eee;
+            .p-text{
+                background: url(../images/common/ask-icon.png) no-repeat left 2px;
+                padding-left: 15px;
+                margin-bottom: 10px;
+                color: #999;
+            }
+        }
+    }
+    .stationDetail-bot{
+        margin-top: 20px;
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+        padding:10px 20px 35px;
+        .label-control{
+            font-size: 14px;
+            line-height: 45px;
+            overflow: hidden;
+            label{
+                color: #999;
+                width: 115px;
+                display: inline-block;
+            }
+            span{
+                color: #666;
+                i{
+                    font-style: normal;
+                }
+            }
+            .label-group{
+                padding-left: 40px;
+                .label-control{
+                    font-size: 12px;
+                    line-height: 32px;
+                    overflow: hidden;
+                    label{
+                        float: left;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+                    span{
+                        margin-right: 65px;
+                    }
+                }
+            }
+            // 电站图片
+            .station-img{
+                overflow: hidden;
+                margin: 0 -5px;
+                li{
+                    width: 33.33333%;
+                    float: left;
+                    padding: 0 5px;
+                    margin-bottom: 10px;
+                    img{
+                        width: 100%;
+                        height: 155px;
+                    }
+                }
+            }
+            // 售电合同
+            .contract-img{
+                overflow: hidden;
+                margin: 0 -5px;
+                li{
+                    width: 25%;
+                    float: left;
+                    padding: 0 5px;
+                    margin-bottom: 10px;
+                    img{
+                        width: 100%;
+                        height: 300px;
+                    }
+                }
+            }
+        }
+    }
+    // 转让电站
+    .stationDetail-btn{
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+        padding:30px 20px 30px;
+        margin-top: 20px;
+        .btn-groups{
+            text-align: center;
+            .btn{
+                width: 240px;
+                font-size: 16px;
+                background: @blue;
+            }
+        }
+    }
+}
+
+// 电站报修
+.repairStation{
+    .title{
+        padding-bottom: 0;
+        .line{
+            height: 1px;
+            width: 80%;
+            background: #eee;
+            margin-top: 15px; 
+        }
+    }
+    .tit{
+        h3{
+            line-height: 70px;
+        }
+    }
+    .stationDetail-top{
+        padding-bottom: 0;
+    }
+    .stationDetail-bot{
+        .form-control{
+            padding: 25px 0;
+            textarea{
+                width: 100%;
+                font-size: 14px;
+                line-height: 28px;
+                color: #999;
+                resize: none;
+                height: auto;
+                border:none;
+                background: none;
+                font-family: "Microsoft Yahei, SimSun, Helvetica";
+                &:focus{
+                    outline-style: none;
+                }
+            }
+        }
+        .btn-groups{
+            text-align: center;
+            .btn{
+                width: 240px;
+                font-size: 16px;
+                margin: 0 auto;
+                background: @blue;
+            }
+        }
+    }
+}
+
+// 修改电站名称模态框
+.editNameModal{
+    .modal-dialog{
+        .modal-content{
+            width: 500px;
+            height: 230px;
+            margin-left: -250px;
+            .modal-body{
+                padding: 25px 0 45px;
+                .form-control{
+                    padding: 0 50px;
+                    input{
+                        border:none;
+                        border-bottom:2px solid #eee;
+                        padding: 15px 0;
+                        color: #999;
+                        font-size: 16px;
+                    }
+                }
+            }
+            .btn-groups{
+                padding: 0 100px;
+            }
+        }
+    }
+}
+
+//
+.addStation{
+    padding-top:25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+    .main-w{
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+        padding:10px 40px 20px;
+        .tit{
+            h2{
+                font-size: 22px;
+                border-bottom:1px solid #eee;
+                line-height: 45px;
+            }
+        }
+        .form-group{
+            .form-control{
+                font-size: 14px;
+                color: #666;
+                border-bottom: 1px solid #eee;
+                padding: 25px 0;
+                display: flex;
+                line-height: 40px;
+                label{
+                    width: 95px;
+                    display: inline-block;
+                }
+                .input-text {
+                    display: inline-block;
+                    width: 500px;
+                    height: 36px;
+                    line-height: 36px;
+                    border-radius: 100px;
+                    border: 1px solid #bbb;
+                    padding: 0 15px;
+                    font-size: 14px;
+                    color: #666;
+                    input {
+                        background: none;
+                        border: none;
+                        height: 26px;
+                        line-height: 26px;
+                        width: 100%;
+                        color: #999;
+                    }
+                }
+            }
+        }
+    }
+} 
+
+// 选择出售方式
+.transferModal{
+    .modal-dialog {
+        .modal-content {
+            width: 500px;
+            margin-left: -250px;
+            height: 330px;
+            .modal-header{
+                border-bottom: none;
+            }
+            .modal-body{
+                h4{
+                    text-align: center;
+                    color: #999;
+                    font-size: 14px;
+                }
+                .transfer-type{
+                    overflow: hidden;
+                    li{
+                        width: 50%;
+                        float: left;
+                        text-align: center;
+                        a{
+                            display: block;
+                        }
+                        img{
+                            display: block;
+                            margin: 50px auto;
+                        }
+                        h4{
+                            font-size: 14px;
+                            color: #333;
+                            line-height: 28px;
+                        }
+                        p{
+                            font-size: 12px;
+                            color: #999;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// 无法转让
+.untransferModal {
+    .modal-dialog {
+        .modal-content {
+            width: 500px;
+            margin-left: -250px;
+            height: 400px;
+            .modal-body {
+                margin-bottom: 20px;
+                img {
+                    margin: 0 auto;
+                }
+                h3 {
+                    font-size: 26px;
+                    color: #999;
+                    font-weight: bold;
+                    text-align: center;
+                    line-height: 90px;
+                }
+            }
+            .modal-footer {
+                border-top: 1px solid #eee;
+                margin: 0 -20px;
+                padding: 0 50px;
+                p {
+                    font-size: 14px;
+                    color: #999;
+                    text-align: center;
+                    line-height: 70px
+                }
+                .btn-groups {
+                    padding: 0 100px;
+                    .btn {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+

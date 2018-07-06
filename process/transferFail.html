@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/process.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>发布失败</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader(); // 显示头部
+            showNav(true, 3); //显示导航
+        </script>
+        <div class="main process">
+            <!-- 发布失败 -->
+            <div class="main-w process-result">
+                <div class="img-logo">
+                    <img src="../images/common/unpack.png">
+                    <h2 class="fail">发布失败</h2>
+                </div>
+                <div class="tit__1">
+                    <h2>发布转让失败</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="tit">
+                    <h3 class="name">
+                        <span class="btn btn-samll bg-green">电站</span>
+                    </h3>
+                    <div class="line"></div>
+                </div>
+                <p class="tips">抱歉，发布失败。如有问题请 <a href="../personal/contactUs.html">联系客服</a></p>
+                <div class="btn-groups">
+                    <a class="btn dib bg-blue goBack">返回查看电站详情</a>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script>
+    var name, stationId;
+    name = getUrlParam('name');
+    stationId = getUrlParam('stationId')
+    $(function() {
+        $('.name').append(name);
+        $('.goBack').prop('href', '../assetCenter/investmentStationDetail.html?stationId=' +stationId)
+    })
+</script>
+</html>

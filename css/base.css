@@ -45,6 +45,12 @@ input:focus,
 select:focus {
   outline: none;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 60px white  inset;
+  -webkit-text-fill-color: #878787;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

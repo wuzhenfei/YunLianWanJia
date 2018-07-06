@@ -13,7 +13,7 @@
     <script src="../js/nav.js"></script>
     <script src="../js/personalTop.js"></script>
     <script src="../js/personalLeft.js"></script>
-    <title>个人中心-收支记录</title>
+    <title>个人中心-系统消息</title>
 </head>
 
 <body>
@@ -30,20 +30,22 @@
                 <div class="main-w cleart">
                     <div class="pull-left">
                         <script>
-                            personalLeft();
+                            personalLeft(3);
                         </script>
                     </div>
                     <div class="pull-right">
                         <div class="personal-con" id="personalCon">
-                            <div class="incomeRecord">
-                                <div class="common-tab">
-                                    <ul>
-                                        <li class="active">收入记录</li>
-                                        <li>支出记录</li>
-                                    </ul>
+                            <div class="recharge-con systemMessage">
+                                <div class="recharge-tit">
+                                    <h3>
+                                        <a class="color-blue pull-right" id="sign">全部标记为已读</a>
+                                        <span>系统消息</span>
+                                    </h3>
                                 </div>
-                                <div class="tab-container">
-                                    <ul class="incomeRecord-list"></ul>
+                                <div class="recharge-con-container">
+                                    <ul class="messageList">
+                                        <li>暂无消息！</li>
+                                    </ul>
                                 </div>
                                 <div id="page-navigation"></div>
                             </div>
@@ -55,18 +57,18 @@
         <script src="../js/footer.js"></script>
     </div>
 </body>
+<script src="../js/common.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/jquery.pagination.js"></script>
 <script>
-    var uesrInfo, state, totalData;
-
-    function getRecord(uesrInfo, state, pageNumber, changePage) {
-        $.post(getUserMoneyRecord, {
+    var uesrInfo, totalData, stateClass;
+    var tipsinfo = '';
+    function getMessage(uesrInfo, pageNumber, changePage) {
+        $.post(getMessageList, {
             userId: uesrInfo.userId,
             token: uesrInfo.token,
             pageNumber: pageNumber,
-            limit: 15,
-            state: state
+            limit: 5,
         }, function (res) {
             var data = JSON.parse(res);
             var str = '';
@@ -75,16 +77,21 @@
                 data = data.result.pageData.records;
                 if (data.length > 0) {
                     $.each(data, function (index, item) {
-                        str = str + '<li>' +
-                            '<span class="money">' + item.money + ' ' + '元' + '</span>' +
-                            '<span class="remark">' + item.remark + '</span>' +
-                            '<span class="createtime">' + item.createtime + '</span>' +
+                        stateClass = ''
+                        if(item.state) {
+                            stateClass = 'isRead';
+                        };
+                        str = str + '<li class=' + stateClass + '>' +
+                                '<div class="summary-con">' +
+                                    '<h2 class="tit"><span class="time pull-right">' + item.createtime + '</span>'+ item.title +'</h2>' +
+                                    '<p class="content">'+ item.content +'</p>' + 
+                                '</div>' +
                             '</li>'
                     })
                     if (!changePage) {
                         $('#page-navigation').pagination({
                             keepShowPN: true,
-                            showData: 15,
+                            showData: 5,
                             totalData: totalData,
                             mode: 'fixed',
                             count: 4,
@@ -98,14 +105,14 @@
                             jumpBtn: '确定',
                             callback: function (api) {
                                 var currentNum = api.getCurrent();
-                                getRecord(uesrInfo, state, currentNum, true);
+                                getMessage(uesrInfo, currentNum, true);
                             }
                         });
                     }
                 } else {
-                    str = '<p class="tips">暂无收益</p>';
+                    str = '<p class="tips">暂无记录</p>';
                 }
-                $('.incomeRecord-list').html(str);
+                $('.messageList').html(str);
             }
         })
     };
@@ -113,19 +120,16 @@
         uesrInfo = localStorage.getItem('userInfo');
         uesrInfo = JSON.parse(uesrInfo);
         if (uesrInfo && uesrInfo.userId) {
-            getRecord(uesrInfo, 1, 1);
+            getMessage(uesrInfo, 1);
         };
-        $('.common-tab ul li').each(function (index) {
-            $(this).click(function () {
-                $(this).addClass('active').siblings().removeClass('active');
-                if (index == 0) {
-                    state = 1
-                } else {
-                    state = 0
-                }
-                getRecord(uesrInfo, state, 1);
+        $('#sign').click(function() {
+            $.post(setAllRead, {
+                userId: uesrInfo.userId,
+                token: uesrInfo.token,
+            }, function(res) {
+                location.reload();
             })
-        });
+        })
     })
 </script>
 

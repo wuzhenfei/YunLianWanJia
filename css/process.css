@@ -1,0 +1,171 @@
+/**
+ *  布局
+ */
+/**
+ *  字体
+ */
+/**
+ *  图像
+ */
+/**
+ *  动效
+ */
+/**
+ *  功能
+ */
+/**
+ *  图形
+ */
+/**
+ *  组件
+ */
+.process {
+  padding: 40px 0;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
+}
+.process .main-w {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
+  padding: 30px;
+}
+.process .main-w .tit {
+  margin: 15px 0;
+}
+.process .main-w .tit h3 {
+  font-weight: bold;
+}
+.process .main-w .tit h3 .subtit {
+  font-size: 12px;
+  color: #666;
+  margin-left: 10px;
+}
+.process .main-w .transferStation-con {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.process .main-w .transferStation-con .tips {
+  color: #999;
+  text-align: right;
+  margin-top: 10px;
+}
+.process .main-w .transferStation-con .tips span {
+  color: #666;
+}
+.process .main-w .transferStation-bot {
+  text-align: center;
+}
+.process .main-w .transferStation-bot h4 {
+  font-size: 16px;
+  margin-top: 30px;
+}
+.process .main-w .transferStation-bot input {
+  margin-top: 20px;
+  width: 310px;
+  height: 67px;
+  line-height: 67px;
+  font-size: 36px;
+  color: #0396D6;
+  font-weight: bold;
+  background: #F0F0F0;
+  border-radius: 8px;
+  border: none;
+  padding: 0 15px;
+  text-align: center;
+}
+.process .main-w .transferStation-bot p {
+  color: #999;
+  line-height: 24px;
+}
+.process .main-w .transferStation-bot p.tips {
+  color: #333;
+  margin-top: 30px;
+  font-weight: bold;
+}
+.process .main-w .transferStation-bot .btn-groups {
+  margin-top: 40px;
+}
+.process .main-w .transferStation-bot .btn-groups .btn {
+  width: 240px;
+  font-size: 16px;
+}
+.process .main-w .current-price {
+  font-size: 14px;
+  margin: 20px 0;
+}
+.process .main-w .bidpriceBuy-bot p {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin: 25px 0;
+}
+.process .main-w .bidpriceBuy-bot .price {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 25px;
+}
+.process .main-w .bidpriceBuy-bot .btn {
+  background: url(../images/common/rectangle.png) no-repeat left center;
+  padding: 4px 11px 4px 20px;
+}
+.process .main-w .bidpriceBuy-bot .tips {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 35px;
+}
+.process .process-ul {
+  overflow: hidden;
+}
+.process .process-ul li {
+  width: 33.33333%;
+  text-align: center;
+  float: left;
+}
+.process .process-ul li p {
+  color: #666;
+  margin: 20px 0 10px;
+}
+.process .process-ul li h3 {
+  color: #00C3BF;
+  font-size: 30px;
+  font-weight: bold;
+}
+.process .process-ul li h3 span {
+  font-size: 14px;
+}
+.process .process-result .img-logo img {
+  margin: 0 auto;
+}
+.process .process-result .img-logo h2 {
+  text-align: center;
+  font-size: 26px;
+  color: #0396D6;
+  line-height: 60px;
+  font-weight: bold;
+}
+.process .process-result .img-logo h2.fail {
+  color: #999;
+}
+.process .process-result .tit {
+  margin: 15px 0;
+}
+.process .process-result .tit h3 {
+  font-weight: bold;
+}
+.process .process-result .tips {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 40px;
+}
+.process .process-result .tips a {
+  color: #0396D6;
+  text-decoration: underline;
+}
+.process .process-result .btn-groups {
+  text-align: center;
+  margin: 45px auto;
+}
+.process .process-result .btn-groups .btn {
+  width: 240px;
+  font-size: 16px;
+}
