@@ -7,10 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/swiper-4.3.3.min.css">
     <link rel="stylesheet" href="../css/tradeHall.css">
     <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/swiper-4.3.3.min.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/nav.js"></script>
     <title>交易大厅-转让中心</title>
@@ -262,33 +260,7 @@
                                 </dl>
                             </li>
                         </ul>
-                        <div class="page-navigation">
-                            <ul>
-                                <li class="first-page">
-                                    <img src="../images/common/page-navigation-first.png">
-                                </li>
-                                <li class="prev">
-                                    <img src="../images/common/page-navigation-prev.png">
-                                </li>
-                                <li class="current">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li class="next">
-                                    <img src="../images/common/page-navigation-next.png">
-                                </li>
-                                <li class="last-page">
-                                    <img src="../images/common/page-navigation-last.png">
-                                </li>
-                                <li class="total-num">
-                                    <span>共120条</span>
-                                    <em>到第</em>
-                                    <input type="text" />
-                                    <em>页</em>
-                                    <a class="btn btn-samll">确定</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <div id="page-navigation"></div>
                     </div>
                 </div>
             </div>
@@ -296,5 +268,54 @@
         <script src="../js/footer.js"></script>
     </div>
 </body>
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/jquery.pagination.js"></script>
+<script>
+    var dataList, pageTotal;
+    // 获取列表信息
+    function getDataList(currentNum, changePage) {
+        $.post(getOnSaleStationListByPayType, {
+            pageNumber: currentNum, 
+            limit:2
+        }, function(res) {
+            var data = JSON.parse(res);
+            if(data && data.result.pageData) {
+                var str = '';
+                dataList = data.result.pageData.records;
+                pageTotal = data.result.pageData.total;
+                $.each(dataList, function(index, item){
+                    str = str + '<li>' +
 
+                        '</li>'
+                })
+                if (!changePage) {
+                    $('#page-navigation').pagination({
+                        keepShowPN: true,
+                        showData: 2,
+                        totalData: pageTotal,
+                        mode: 'fixed',
+                        count: 4,
+                        jump: true,
+                        coping: true,
+                        homePage: '<<',
+                        endPage: '>>',
+                        prevContent: '<',
+                        nextContent: '>',
+                        isHide: true,
+                        jumpBtn: '确定',
+                        callback: function (api) {
+                            var currentNum = api.getCurrent();
+                            getDataList(currentNum, true);
+                        }
+                    });
+                }
+            }
+            console.log(data);
+        })
+    };
+    $(function() {
+        getDataList(1);
+    });
+</script>
 </html>

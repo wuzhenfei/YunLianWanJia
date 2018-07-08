@@ -25,6 +25,8 @@ var getSellListByNum = apiUrl + '/powerStation/getSellListByNum';
 
 // 交易大厅-- 全部新品
 var getOnSaleAssetPackageList = apiUrl + '/powerStation/getOnSaleAssetPackageList';
+// 交易大厅--转让中心，竞价电站，一口价电站列表
+var getOnSaleStationListByPayType = apiUrl + '/powerStation/getOnSaleStationListByPayType';
 // 交易大厅-- 资产包详情
 var getOnSaleStationListByPackageId = apiUrl + '/powerStation/getOnSaleStationListByPackageId';
 // 打包购买电站和一口价购买电站

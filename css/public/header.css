@@ -48,6 +48,9 @@ header .pull-right a {
 header .pull-right a.registerbtn {
   margin-right: 35px;
 }
+header .pull-right a em {
+  font-style: normal;
+}
 header .pull-right span {
   opacity: 0.8;
   filter: alpha(opacity=80);
@@ -55,7 +58,4 @@ header .pull-right span {
 }
 header .pull-right span.notice {
   margin-right: 35px;
-}
-header .pull-right span.notice em {
-  font-style: normal;
 }

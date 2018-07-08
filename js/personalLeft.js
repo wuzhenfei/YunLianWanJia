@@ -59,7 +59,7 @@ function personalLeft(isCurrent) {
     document.writeln('  <ul>');
     document.writeln('      <li class=' + isRevenueRecord +'><a href=' + revenueRecordUrl + '>收益记录</a></li>');
     document.writeln('      <li class=' + isBidStation +'><a href=' + bidStationUrl + '>竞价电站</a></li>');
-    document.writeln('      <li class=' + isSystemMessage + ' '+'id="messageMenu"><a href=' + systemMessageUrl + '>系统消息</a></li>');
+    document.writeln('      <li id="messageMenu" class=' + isSystemMessage + '><a href=' + systemMessageUrl + '>系统消息</a></li>');
     document.writeln('      <li class=' + isContactUs +'><a href=' + contactUsUrl + '>联系客服</a></li>');
     document.writeln('      <li class=' + isAccountSet +'><a href=' + accountSetUrl + '>账户设置</a></li>');
     document.writeln('   </ul>');
