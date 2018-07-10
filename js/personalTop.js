@@ -15,7 +15,7 @@ function personalTop() {
     uesrInfo = JSON.parse(uesrInfo);
     imgUrl = '../images/common/default-personal.png';
     name = '您好，请<a href="../login/login.html">登录</a>';
-    userMoney = '0.00';
+    userMoney = localStorage.getItem('userMoney');
     colorBlue = '';
     colorGreen = '';
     editProfileUrl = '../login/login.html';
@@ -24,11 +24,10 @@ function personalTop() {
     putForwardUrl = '../login/login.html';
     if(uesrInfo && uesrInfo.userId) {
         imgUrl = uesrInfo.imgUrl;
-        userMoney = uesrInfo.userMoney;
         name = uesrInfo.name + ', 您好';
         colorBlue = 'color-blue';
         colorGreen = 'color-green';
-        editProfileUrl = '/';
+        editProfileUrl = 'myInformation.html';
         incomeRecordUrl = 'incomeRecord.html';
         rechargeUrl = 'recharge.html';
         putForwardUrl = 'putForward.html';
@@ -40,7 +39,7 @@ function personalTop() {
     document.writeln('              <img src='+ imgUrl +'>');
     document.writeln('          </div>');
     document.writeln('          <h3 class="name">'+ name +'</h3>');
-    document.writeln('          <p class="editInfo '+ colorBlue +'"><a href='+ editProfileUrl +'>编辑资料</a></p>');
+    document.writeln('          <p class="editInfo '+ colorBlue +'"><a href='+ editProfileUrl +'>个人资料</a></p>');
     document.writeln('      </div>');
     document.writeln('      <div class="balance pull-left">');
     document.writeln('          <h4><img class="dib" src="../images/common/balance-icon.png"/>可用余额</h4>');

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/tradeHall.css">
+    <link rel="stylesheet" href="../css/process.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>交易大厅-竞价成功</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader(); // 显示头部
+            showNav(true); //显示导航
+        </script>
+        <div class="main bidpriceBuy bidpriceSucess process">
+            <!-- 竞价成功 -->
+            <div class="main-w">
+                <div class="tit__1">
+                    <h2>电站已竞价成功</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="tit">
+                    <h3 class="name">
+                        <span class="btn btn-samll bg-green">电站</span>
+                    </h3>
+                    <div class="line"></div>
+                </div>
+                <div class="bidpriceSucess-con">
+                    <div class="bidpriceSucess-logo">
+                        <img src="../images/common/bid-success.png">
+                        <h3>恭喜您竞价成功！</h3>
+                    </div>
+                    <p>抵扣保证金 <span class="bond"></span> 元后，您需支付</p>
+                    <p class="price money color-blue">¥ </p>
+                    <div class="line"></div>
+                    <p class="time">剩余支付时间：<span class="color-blue userTime">59:59</span></p>
+                    <span class="itmeNum" style="display: none"></span>
+                    <p class="tips">若未在规定时间内支付，则扣除保证金。请尽快支付</p>
+                </div>
+                <div class="line"></div>
+                <div class="bidpriceBuy-bot">
+                    <p>我的余额<span class="color-green price userMoney">¥ </span><a class="btn btn-samll" href="../personal/recharge.html">充值</a></p>
+                    <div class="form-control" id="payPassword">
+                        <input class="payPassword" type="password" name="password" placeholder="请输入支付密码">
+                    </div>
+                    <div class="btn-groups">
+                        <a class="btn dib bg-blue submitBtn">确认支付</a>
+                    </div>
+                    <div class="tips">
+                        <input type="checkbox" checked class="agreeCheck" value="true">
+                        阅读并同意<a href="../agreement/transferAgreement.html">《电站资产转让协议》</a><a href="../agreement/trustAgreement.html">《电站托管协议》</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script>
+    var timeNum, time, dataInfo, userMoney;
+    function countTime(){
+        timeNum = $('.itmeNum').html();
+        time = formatTime(timeNum);
+        timeNum -- ;
+        $('.itmeNum').html(timeNum);
+        $('.userTime').html(time);
+        setTimeout("countTime()",1000);
+    };
+    $(function() {
+        var bidPriceId, haveBidTime, money, stationId, powerSellId;
+        bidPriceId = getUrlParam('bidPriceId'); //获取竞价id
+        uesrInfo = localStorage.getItem('userInfo');
+        uesrInfo = JSON.parse(uesrInfo);
+        if (uesrInfo && uesrInfo.userId) {
+            $.post(getBidPriceInfo, {
+                userId: uesrInfo.userId,
+                token: uesrInfo.token,
+                bidPriceId: bidPriceId
+            }, function(res) {
+                dataInfo = JSON.parse(res);
+                if(dataInfo.result && dataInfo.result.data) {
+                    userMoney =dataInfo.result.userMoney;
+                    dataInfo = dataInfo.result.data;
+                    money = dataInfo.money;
+                    stationId = dataInfo.stationId;
+                    powerSellId = dataInfo.powerSellId;
+                    $('.name').append(dataInfo.name);
+                    $('.itmeNum').html(dataInfo.havePayTime);
+                    $('.bond').html(dataInfo.bond);
+                    $('.money').append(dataInfo.money);
+                    $('.userMoney').append(userMoney);
+                    countTime();
+                }
+            });
+        };
+        $('.submitBtn').click(function() {
+            var isAgree = $('.agreeCheck').is(":checked");
+            if(isAgree) {
+                var payPassword = $('input[name ="password"]').val();
+                $.post(tranBuyStationByJJ, {
+                    userId: uesrInfo.userId,
+                    token: uesrInfo.token,
+                    payPassword: payPassword,
+                    payMoney: money,
+                    stationId: stationId,
+                    powerSellId: powerSellId
+                }, function(res) {
+                    var data = JSON.parse(res);
+                    if(data.result) {
+                        location.href = 'buySuccess.html?type=1&name=' + name;
+                    } else {
+                        location.href = 'buyFail.html?name=' + name + '&stationId='+ stationId;
+                    }
+                })
+            } else {
+                messageShow('请先阅读并同意协议');
+            }
+        })
+    })
+</script>
+</html>

@@ -68,20 +68,21 @@
 </body>
 <script src="../js/api.js"></script>
 <script>
-    var uesrInfo;
+    var uesrInfo, userMoney;
     $(function () {
         uesrInfo = localStorage.getItem('userInfo');
         uesrInfo = JSON.parse(uesrInfo);
+        userMoney = localStorage.getItem('userMoney')
         if (uesrInfo && uesrInfo.userId) {
             // 可用余额
-            $('#userPrice').html(uesrInfo.userMoney + '元');
+            $('#userPrice').html(userMoney + '元');
         };
         $('#btnAlipay').click(function () {
             var stateType = '充值成功';
             var str = '<div class="payState">' +
                 '<img src="../images/common/buySuccess-logo.png">' +
                 '<h2 class="color-blue">' + stateType + '</h2>' +
-                '<p class="tips">当前可用余额<span class="color-green">' + uesrInfo.userMoney + '元' +
+                '<p class="tips">当前可用余额<span class="color-green">' + userMoney + '元' +
                 '</span></p>'
             '</div>';
             stateType = '充值失败';

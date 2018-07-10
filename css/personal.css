@@ -332,7 +332,7 @@
   margin-right: 30px;
 }
 .personal .personal-con .bidStation .bidStation-list li a dl:nth-child(3) {
-  width: 160px;
+  width: 200px;
 }
 .personal .personal-con .bidStation .bidStation-list li a dl:nth-child(3) dt {
   font-size: 12px;
@@ -399,6 +399,10 @@
 }
 .personal .personal-con .recharge-con .recharge-tit h3 a {
   font-size: 12px;
+}
+.personal .personal-con .recharge-con .recharge-tit h3 a#editBtn {
+  padding-left: 20px;
+  background: url(../images/common/edit-active.png) no-repeat left center;
 }
 .personal .personal-con .recharge-con .recharge-con-container {
   padding: 0 25px;
@@ -607,4 +611,83 @@
 }
 .personal .personal-con .accountSet .recharge-con-container .form-control .form-group .btn-groups .btn {
   margin-left: 95px;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control label {
+  display: inline-block;
+  width: 60px;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control .editImg {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control .editImg::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  z-index: 20;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control .editImg .upImg {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 100;
+  cursor: pointer;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control .editImg .upImg .addImg {
+  margin: 0;
+  line-height: 20px;
+  font-size: 12px;
+  line-height: 100px;
+  color: #fff;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control .editImg .upImg .file {
+  width: 100%;
+  height: 100px;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control img {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control .btn {
+  width: 60px;
+  display: inline-block;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .form-control .btn.active {
+  background: #fff;
+  border: 1px solid #bbb;
+  color: #999;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .btn-groups {
+  text-align: center;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .btn-groups .btn {
+  box-sizing: initial;
+  -moz-box-sizing: initial;
+  -webkit-box-sizing: initial;
+  padding: 1px;
+}
+.personal .personal-con#information .recharge-con .recharge-con-container .btn-groups .btn.cancleBtn span {
+  display: block;
+  background: #fff;
+  color: #0396D6;
+  border-radius: 100px;
 }

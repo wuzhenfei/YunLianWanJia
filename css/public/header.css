@@ -45,9 +45,6 @@ header .pull-right a {
   filter: alpha(opacity=80);
   color: #fff;
 }
-header .pull-right a.registerbtn {
-  margin-right: 35px;
-}
 header .pull-right a em {
   font-style: normal;
 }

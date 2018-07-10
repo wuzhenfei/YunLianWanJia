@@ -25,7 +25,7 @@ function showNav(notShowMenu, isCurrent) {
     document.writeln('    <div class="main-w cleart">');
     document.writeln('        <div class="pull-left">');
     document.writeln('            <div class="logo">');
-    document.writeln('                <img src="../images/common/logo.png">');
+    document.writeln('                <a href="../home/index.html"><img src="../images/common/logo.png"></a>');
     document.writeln('            </div>');
     document.writeln('        </div>');
     document.writeln('        <div class="pull-right">');

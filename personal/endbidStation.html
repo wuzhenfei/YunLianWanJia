@@ -59,66 +59,60 @@
 <script src="../js/api.js"></script>
 <script src="../js/jquery.pagination.js"></script>
 <script>
-    var uesrInfo, state, totalData, timeNum, time, setTime;
-    function countTime(){
-        $('.countDown').each(function(index) {
-            timeNum = $('.bidTimeNum').eq(index).html(); 
-            if(timeNum > 0) {
-                time = formatTime(timeNum);
-                timeNum -- ;
-                $('.bidTimeNum').eq(index).html(timeNum);
-                $(this).html(time);
-            } else {
-                $('.bidTimeNum').eq(index).html(0);
-                $(this).parents('li').addClass('isEnd');
-                $(this).parents('a').prop('href', 'javascript:;').click(function() {
-                    messageShow('当前竞价已结束', true);
-                })
-                $(this).parents('a').find('img').prop('src', '../images/common/jingjiahuise.png')
-            }
-        });
-        setTime = setTimeout("countTime()",1000);
-    };
-    
-    function getRecord(uesrInfo, state, pageNumber, changePage) {
+    var uesrInfo, totalData, stateName, isEndClass, imgUrl, urlLink;
+    function getRecord(uesrInfo, pageNumber, changePage) {
         $.post(getBidPriceList, {
             userId: uesrInfo.userId,
             token: uesrInfo.token,
             pageNumber: pageNumber,
             limit: 5,
-            state: state
+            state: 1
         }, function (res) {
             var data = JSON.parse(res);
             var str = '';
-            var havePayTime, payTimeNum;
             if (data.result && data.result.pageData && data.result.pageData.records) {
                 totalData = data.result.pageData.total;
                 data = data.result.pageData.records;
                 if (data.length > 0) {
                     $.each(data, function (index, item) {
-                        if(item.havePayTime > 0) {
-                            payTimeNum = item.havePayTime;
-                            havePayTime = formatTime(item.havePayTime);
+                        if(item.state == 1) {
+                            if(item.succState == 0) {
+                                stateName = '待支付';
+                                isEndClass = ''
+                                imgUrl = '../images/common/jingjia.png';
+                                urlLink = '../process/bidpriceSucess.html?bidPriceId='+ item.id
+                            } else if(item.succState == 1) {
+                                stateName = '竞价成功';
+                                isEndClass = 'isEnd';
+                                imgUrl = '../images/common/jingjiahuise.png';
+                                urlLink = 'javascript:;'
+                            } else {
+                                stateName = '竞价失败';
+                                isEndClass = 'isEnd';
+                                imgUrl = '../images/common/jingjiahuise.png';
+                                urlLink = 'javascript:;'
+                            }
                         } else {
-                            payTimeNum = 0;
-                            havePayTime = '00:00:00';
+                            stateName = '竞价失败';
+                            isEndClass = 'isEnd';
+                            imgUrl = '../images/common/jingjiahuise.png';
+                            urlLink = 'javascript:;'
                         }
-                        str = str + '<li>' +
-                                '<a href="../tradeHall/biddingStation.html">' +
+                        str = str + '<li class='+ isEndClass +'>' +
+                                '<a href='+ urlLink +'>' +
                                     '<dl>' +
                                         '<dt class="color-green">' + item.name +'</dt>' + 
                                         '<dd>' + 
-                                            '<span class="btn btn-samll bg-green">电钻</span>' + item.name +
+                                            '<span class="btn btn-samll bg-green">电钻</span>电站名称' +
                                         '</dd>' +
                                     '</dl>' +
                                     '<dl>' +
-                                        '<dt class="img-icon"><img src="../images/common/jingjia.png"></dt>' + 
-                                        '<dd>正在竞价</dd>' +
+                                        '<dt class="img-icon"><img src='+ imgUrl +'></dt>' + 
+                                        '<dd>'+ stateName +'</dd>' +
                                     '</dl>' +
                                     '<dl>' +
                                         '<dt>当前价格：<span class="color-green">'+ item.maxBidPrice +' 元</span></dt>' + 
-                                        '<dd>竞价倒计时：<span class="color-green countDown">'+ havePayTime +'</span></dd>' +
-                                        '<dd class="bidTimeNum" style="display:none">' + payTimeNum + '</dd>' +
+                                        '<dd>竞价时间：<span class="color-green">'+ item.createtime +'</span></dd>' +
                                     '</dl>' +
                                     '<dl>' +
                                         '<dt class="color-green">'+ item.money +' 元' +'</dt>' + 
@@ -127,7 +121,7 @@
                                 '</a>' +
                             '</li>'
                     })
-                    if (!changePage) {
+                    if (!changePage && totalData > 0) {
                         $('#page-navigation').pagination({
                             keepShowPN: true,
                             showData: 5,
@@ -144,7 +138,7 @@
                             jumpBtn: '确定',
                             callback: function (api) {
                                 var currentNum = api.getCurrent();
-                                getRecord(uesrInfo, state, currentNum, true);
+                                getRecord(uesrInfo, currentNum, true);
                             }
                         });
                     }
@@ -152,7 +146,6 @@
                     str = '<li><a>暂无内容</a></li>';
                 }
                 $('.bidStation-list').html(str);
-                countTime();
             }
         })
     };
@@ -160,7 +153,7 @@
         uesrInfo = localStorage.getItem('userInfo');
         uesrInfo = JSON.parse(uesrInfo);
         if (uesrInfo && uesrInfo.userId) {
-            getRecord(uesrInfo, 1, 1);
+            getRecord(uesrInfo, 1);
         };
     })
 </script>

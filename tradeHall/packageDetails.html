@@ -154,7 +154,7 @@
     // 获取链接地址资产包id
     var assetPackageId = getUrlParam('assetPackageId');
     var isPackage = true;  // 判断是否可以打包购买
-    var uesrInfo, pagebaseInfo, stationIds, tipsinfo;
+    var uesrInfo, pagebaseInfo, stationIds, tipsinfo,name;
     function powerStation(pageNumber, changePage) {
         $.post(getOnSaleStationListByPackageId, {
             pageNumber: pageNumber,
@@ -177,6 +177,7 @@
             var soldNum = Math.floor((pagebaseInfo.total - pagebaseInfo.unsoldCount) / (pagebaseInfo.total) * 100); //包內已售
             var isSold = soldNum + '%';
             var imgSrc = '';
+            name = pagebaseInfo.name;
             if (soldNum >=0 && soldNum <= 30) {
                 imgSrc = '../images/common/icon-jd-sm__10.png'
             } else if(soldNum >30 && soldNum <= 50) {
@@ -205,11 +206,10 @@
             var str = '';
             var soldType = '';
             var imgSrc_1 = '';
-            var urlLink = '../tradeHall/bitepriceBuy.html?stationId=';
             var stateClass = '';
-            var color = '';
             var btnText =  '查看详情';
             $.each(pagebaseList, function(index, item){
+                var urlLink = '../assetCenter/baseStationDetail.html?stationId=' + item.stationId;
                 if(item.payType == 0) {  // 一口价
                     soldType = '一口价';
                     if (index == 0) {
@@ -218,12 +218,9 @@
                         stationIds = stationIds + ','+ item.stationId
                     }
                     if(item.state == 0) {
-                        stateClass = 'dz';
-                        color = 'color-green';
                         imgSrc_1 = '../images/common/ykj.png';
-                        urlLink = urlLink + item.stationId
                     } else {
-                        stateClass = 'color-disabled';
+                        stateClass = 'disable';
                         imgSrc_1 = '../images/common/ykj_disable.png';
                         urlLink = 'javascript:;';
                         btnText = '已交易'
@@ -232,23 +229,19 @@
                     soldType = '竞价出售';
                     isPackage = false;
                     if(item.state == 0) {
-                        stateClass = 'dz';
-                        color = 'color-green';
                         imgSrc_1 = '../images/common/jingjia.png';
-                        urlLink = urlLink + item.stationId
                     } else {
-                        stateClass = 'color-disabled';
+                        stateClass = 'disable';
                         imgSrc_1 = '../images/common/jingjiahuise.png';
                         urlLink = 'javascript:;';
                         btnText = '已交易'
                     }
                 }
-                str = str + '<li class=' + stateClass + '>' +
+                str = str + '<li class="dz '+ stateClass +'">' +
                             '<dl>' + 
-                                '<dt class=' + color + '>' + item.name + '</dt>' + 
+                                '<dt>' + item.name + '</dt>' + 
                                 '<dd class="name">' + 
-                                    '<span class="btn btn-samll bg-green">电钻</span>' + 
-                                        item.name + 
+                                    '<span class="btn btn-samll">电站</span>电站名称' + 
                                 '</dd>' + 
                             '</dl>' + 
                             '<dl>' + 
@@ -259,11 +252,11 @@
                                 '<dd>'+ soldType +'</dd>' + 
                             '</dl>' + 
                             '<dl>' + 
-                                '<dt class=' + color + '>' + item.price +'</dt>' + 
+                                '<dt>' + item.price +'</dt>' + 
                                 '<dd>当前价格</dd>' +
                             '</dl>' + 
                             '<dl>' + 
-                                '<dt class=' + color + '>' + item.rate + '%' +'</dt>' + 
+                                '<dt>' + item.rate + '%' +'</dt>' + 
                                 '<dd>预期年化收益</dd>' +
                             '</dl>' +   
                         '</li>';
@@ -295,8 +288,9 @@
     $(function() {
         powerStation(1);
         uesrInfo = localStorage.getItem('userInfo');
+        var userMoney = localStorage.getItem('userMoney');
         uesrInfo = JSON.parse(uesrInfo);
-        $('.price').append(uesrInfo.money);
+        $('.price').append(userMoney);
         $('#packageBuy-btn').click(function() {
             if (uesrInfo && uesrInfo.userId) {
                 if (isPackage) {
@@ -332,8 +326,7 @@
                         var data = JSON.parse(res);
                         if (data.result) {
                             tipsinfo = data.result.data;
-                            messageShow(tipsinfo, true);
-                            window.location.href = "buySuccess.html";
+                            window.location.href = '../process/buySuccess.html?type=0&name=' + name;
                         } else {
                             tipsinfo = data.content;
                             messageShow(tipsinfo);
@@ -341,7 +334,7 @@
                     })
                 }
             } else {
-                messageShow('请先阅读并统一协议');
+                messageShow('请先阅读并同意协议');
             }
         });
     })

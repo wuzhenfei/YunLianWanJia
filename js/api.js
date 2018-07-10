@@ -1,4 +1,5 @@
 var apiUrl = 'http://shareworld.cn/front';
+var apiUrl1 = 'http://shareworld.cn';
 
 /** 
  * 登录注册
@@ -19,7 +20,7 @@ var getPasswordCode = apiUrl + '/resPassword/getMobileCode';
 var setPassword = apiUrl + '/app/setPassword'; 
 
 // 电站详情
-var getStationInfo = apiUrl + '/powerStation/getStationInfo';
+var getbaseStationInfo = apiUrl + '/powerStation/getStationInfo';
 // 首页推荐列表
 var getSellListByNum = apiUrl + '/powerStation/getSellListByNum';
 
@@ -31,6 +32,12 @@ var getOnSaleStationListByPayType = apiUrl + '/powerStation/getOnSaleStationList
 var getOnSaleStationListByPackageId = apiUrl + '/powerStation/getOnSaleStationListByPackageId';
 // 打包购买电站和一口价购买电站
 var buyStationByYKJ = apiUrl + '/transaction/buyStationByYKJ';
+// 一口价和竞价购买页面信息
+var getBuyPageInfo = apiUrl + '/powerStation/getBuyPageInfo';
+// 是否已经参与竞价
+var isHaveBidPriceInfo = apiUrl + '/bidPrice/isHaveBidPriceInfo';
+// 参与竞价
+var buyStationByJJ = apiUrl + '/bidPrice/buyStationByJJ';
 
 /** 
  * 资产中心
@@ -81,6 +88,16 @@ var isHaveNoRead = apiUrl + '/sysMessageUser/isHaveNoRead';
 var setAllRead = apiUrl + '/sysMessageUser/setAllRead'; 
 // 竞价信息
 var getBidPriceInfo = apiUrl + '/bidPrice/getBidPriceInfo'; 
+// 竞价购买
+var tranBuyStationByJJ = apiUrl + '/transaction/buyStationByJJ'; 
 // 修改竞价价格
 var updateBidPrice = apiUrl + '/bidPrice/updateBidPrice'; 
+// 修改用户信息
+var updateUserInfo = apiUrl + '/userInfo/updateUserInfo'; 
+
+
+// 电站上传图片
+var getOSSfile = apiUrl1 + '/publicinterface/getOSSfile/stationImg';
+// 上传头像
+var getUserImg = apiUrl1 + '/publicinterface/getOSSfile/userImg';
 

@@ -7,66 +7,54 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/swiper-4.3.3.min.css">
-    <link rel="stylesheet" href="../css/tradeHall.css">
+    <link rel="stylesheet" href="../css/process.css">
     <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/swiper-4.3.3.min.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/nav.js"></script>
-    <title>交易大厅-购买成功</title>
+    <title>购买成功</title>
 </head>
 
 <body>
     <div class="wrap">
         <script>
             showHeader(); // 显示头部
-            showNav(true); //显示导航
+            showNav(true, 2); //显示导航
         </script>
-        <div class="main buySuccess">
-            <!-- 购买成功 -->
-            <div class="main-w">
+        <div class="main process">
+            <!-- 发布成功 -->
+            <div class="main-w process-result">
                 <div class="img-logo">
                     <img src="../images/common/buySuccess-logo.png">
                     <h2>购买成功</h2>
                 </div>
                 <div class="tit__1">
-                    <h2>您已成功购买资产包</h2>
+                    <h2 class="typeName"></h2>
                     <div class="line"></div>
                 </div>
                 <div class="tit">
-                    <h3>
-                        <span class="btn btn-samll bg-blue">资产包</span>北京市大屯路电站资产包
-                        <span class="subtit"><img src="../images/common/userfull-dz.png">包含12个电站</span>
+                    <h3 class="name">
+                        <span class="btn btn-samll">电站</span>
                     </h3>
-                </div>
-                <div class="tit__1">
-                    <h2>您已成功购买电站</h2>
                     <div class="line"></div>
-                </div>
-                <div class="tit">
-                    <h3>
-                        <span class="btn btn-samll bg-green">电站</span>江苏响水市渔光互补项目电站
-                        <span class="subtit">预期年化收益 16.68%</span>
-                    </h3>
                 </div>
                 <div class="btn-groups">
-                    <a class="btn dib bg-blue" href="">查看我的资产</a>
+                    <a class="btn dib bg-blue" href="../assetCenter/investmentStation.html">查看我的资产</a>
                 </div>
                 <div class="buyProcess">
                     <ul>
                         <li class="active">
                             <h3>成功购买
-                                <span>江苏响水120MW渔光互补电站项目</span>
+                                <span class="name"></span>
                             </h3>
-                            <p class="time">2018.02.02</p>
+                            <p class="startTime"></p>
                         </li>
                         <li>
                             <h3>开始计算收益</h3>
-                            <p class="time">2018.02.02</p>
+                            <p class="startTime"></p>
                         </li>
                         <li>
                             <h3>收益到账</h3>
-                            <p class="time">2018.02.03</p>
+                            <p class="endTime"></p>
                         </li>
                     </ul>
                 </div>
@@ -75,5 +63,25 @@
         <script src="../js/footer.js"></script>
     </div>
 </body>
-
+<script src="../js/common.js"></script>
+<script>
+    var name, type;
+    name = getUrlParam('name');
+    type = getUrlParam('type');
+    if(type == 0) {
+        $('.typeName').html('您已成功购买资产包');
+        $('.name').find('.btn').addClass('bg-blue').html('资产包')
+    } else {
+        $('.typeName').html('您已成功购买电站');
+        $('.name').find('.btn').addClass('bg-green').html('电站')
+    }
+    $(function() {
+        var nowTime = new Date();
+        var startTime = nowTime.getFullYear() + '.' + (nowTime.getMonth() + 1) + '.' + nowTime.getDate();
+        var endTime = nowTime.getFullYear() + '.' + (nowTime.getMonth() + 1) + '.' + (nowTime.getDate() + 1);
+        $('.startTime').html(startTime);
+        $('.endTime').html(endTime);
+        $('.name').append(name);
+    })
+</script>
 </html>

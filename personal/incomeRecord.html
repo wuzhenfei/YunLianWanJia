@@ -81,7 +81,7 @@
                             '<span class="createtime">' + item.createtime + '</span>' +
                             '</li>'
                     })
-                    if (!changePage) {
+                    if (!changePage && totalData > 0) {
                         $('#page-navigation').pagination({
                             keepShowPN: true,
                             showData: 15,
@@ -117,6 +117,7 @@
         };
         $('.common-tab ul li').each(function (index) {
             $(this).click(function () {
+                $('.incomeRecord-list').html('<p class="tips">暂无收益</p>');
                 $(this).addClass('active').siblings().removeClass('active');
                 if (index == 0) {
                     state = 1

@@ -79,7 +79,7 @@
   background: #eee;
 }
 .main .hot-product .main-w .hot-product-list li .hot-product-box h2 {
-  font-size: 28px;
+  font-size: 25px;
   line-height: 45px;
 }
 .main .hot-product .main-w .hot-product-list li .hot-product-box .tips {
@@ -129,12 +129,36 @@
   right: 0;
   top: 0;
 }
-.main .all-product .article-con {
+.main .tradeHall-con .main-w .article-con {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
   background: #fff;
 }
-.main .all-product .article-con .article-list li {
+.main .tradeHall-con .main-w .article-con .article-list li {
   margin: 0;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.dz dl dt {
+  color: #00C3BF;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.dz dl dd .btn {
+  background: #00C3BF;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.zcb dl dt {
+  color: #0396D6;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.zcb dl dd .btn {
+  background: #0396D6;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.disable dl dt {
+  color: #999;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.disable dl dd {
+  color: #999;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.disable dl dd .btn {
+  background: #bbb;
+}
+.main .tradeHall-con .main-w .article-con .article-list li.disable dl .btn-groups .btn {
+  background: #bbb;
 }
 .packageDetails {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
@@ -228,6 +252,24 @@
   margin: 0;
   padding: 30px 0;
 }
+.packageDetails .details-bot .main-w .article-list li.dz dl dt {
+  color: #00C3BF;
+}
+.packageDetails .details-bot .main-w .article-list li.dz dl dd .btn {
+  background: #00C3BF;
+}
+.packageDetails .details-bot .main-w .article-list li.disable dl dt {
+  color: #999;
+}
+.packageDetails .details-bot .main-w .article-list li.disable dl dd {
+  color: #999;
+}
+.packageDetails .details-bot .main-w .article-list li.disable dl dd .btn {
+  background: #bbb;
+}
+.packageDetails .details-bot .main-w .article-list li.disable dl .btn-groups .btn {
+  background: #bbb;
+}
 .bidpriceBuy {
   padding: 40px 0;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06) inset;
@@ -235,6 +277,7 @@
 .bidpriceBuy .main-w {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
   padding: 30px;
+  background: #fff;
 }
 .bidpriceBuy .main-w .tit {
   margin: 15px 0;

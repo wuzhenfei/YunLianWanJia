@@ -7,10 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/swiper-4.3.3.min.css">
+    <link rel="stylesheet" href="../css/imgUp.css">
     <link rel="stylesheet" href="../css/assetCenter.css">
     <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/swiper-4.3.3.min.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/nav.js"></script>
     <title>资产中心-添加新电站</title>
@@ -31,40 +30,59 @@
                     <div class="form-control">
                         <label>家庭住址</label>
                         <span class="input-text">
-                            <input type="text" placeholder="请填写家庭住址" />
+                            <input type="text" name="adress" placeholder="请填写家庭住址" />
                         </span>
                     </div>
                     <div class="form-control">
                         <label>联系人</label>
                         <span class="input-text">
-                            <input type="text" placeholder="请填写联系人" />
+                            <input type="text" name="contact" placeholder="请填写联系人" />
                         </span>
                     </div>
                     <div class="form-control">
                         <label>联系电话</label>
                         <span class="input-text">
-                            <input type="text" placeholder="请填写联系电话" />
+                            <input type="text" name="mobile" placeholder="请填写联系电话" />
                         </span>
                     </div>
                     <div class="form-control">
                         <label>微信号</label>
                         <span class="input-text">
-                            <input type="text" placeholder="请填写联系人微信号" />
+                            <input type="text" name="wechat" placeholder="请填写联系人微信号" />
                         </span>
                     </div>
                     <div class="form-control">
                         <label>安装方式</label>
-                        <span class="input-text">
-                            <select>
-                                <option value ="volvo">自购设备</option>
-                                <option value ="saab"></option>
-                            </select>
-                        </span>
+                        <dl class="select">
+                            <dt class="cur">自购设备</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <a href="#">自购设备</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">租赁设备</a>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
                     </div>
                     <div class="form-control">
                         <label>屋顶照片</label>
-                        <span>添加照片</span>
+                        <div class="z_file upImg">
+                            <span class="btn btn-samll addImg">添加照片</span>
+                            <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple="">
+                        </div>
                     </div>
+                    <div class="z_photo upimg-div cleart">
+                    </div>
+                </div>
+                <div class="btn-groups">
+                    <button class="btn submitBtn">提交</button>
+                </div>
+                <div class="tips">
+                    <input type="checkbox" checked class="agreeCheck" value="true">
+                    阅读并同意<a href="../agreement/trustAgreement.html">《电站托管协议》</a>
                 </div>
             </div>
         </div>
@@ -73,92 +91,97 @@
 </body>
 <script src="../js/common.js"></script>
 <script src="../js/api.js"></script>
-<script src="../js/jquery.pagination.js"></script>
+<script src="../js/imgPlugin.js"></script>
 <script>
-    var userInfo;
-    uesrInfo = localStorage.getItem('userInfo');
-    uesrInfo = JSON.parse(uesrInfo);
+    var userInfo, stationId, imgUrl;
+    var imgUrl = new Array();
+    var installType = 0
+    var imgStr = '';
+    userInfo = localStorage.getItem('userInfo');
+    userInfo = JSON.parse(userInfo);
+    stationId = userInfo.userId;
     // 用户提交电站
-    function addStation() {
-        // $.post(saveStationInfo, {
-        //     adress: ,
-        //     contact: ,
-        //     wechat: ,
-        //     installType: ,
-        //     imgUrl: ,
-        //     mobile: 
-        // }, function(res) {
-
-        // })
-    }
-    // 获取租赁电站列表信息
-    function getStationList(pageNumber, changePage) {
-        $.post(getUserStationList, {
-            userId: uesrInfo.userId,
-            token: uesrInfo.token,
-            pageNumber: pageNumber,
-            limit: 5,
-        }, function (res) {
-            var str = '';
-            var data = JSON.parse(res);
-            if (data.result.pageData && data.result.pageData.total > 0) {
-                var totalData = data.result.pageData.total
-                data = data.result.pageData.records;
-                $.each(data, function (index, item) {
-                    str = str + '<li>' +
-                        '<dl class="name">' +
-                        '<dt>' + item.name + '</dt>' +
-                        '<dd><span class="btn btn-samll">电站</span>电站名称</dd>' +
-                        '</dl>' +
-                        '<dl>' +
-                        '<div class="btn-groups">' +
-                        '<a class="btn" href="rentStationDetail?stationId=' + item.stationId +
-                        '">查看详情</a>' +
-                        '</div>' +
-                        '</dl>' +
-                        '<dl class="inverterNumber">' +
-                        '<dt>' + item.inverterNumber + ' kWp</dt>' +
-                        '<dd>昨日发电量</dd>' +
-                        '</dl>' +
-                        '<dl class="volume">' +
-                        '<dt>' + item.volume + ' kWp</dt>' +
-                        '<dd>装机容量</dd>' +
-                        '</dl>' +
-                        '<dl class="adress">' +
-                        '<dt>' + item.adress + '</dt>' +
-                        '<dd>并网类型 - ' + item.gridType + '</dd>' +
-                        '</dl>' +
-                        '</li>';
-                });
-                if (!changePage) {
-                    $('#page-navigation').pagination({
-                        keepShowPN: true,
-                        showData: 5,
-                        totalData: totalData,
-                        mode: 'fixed',
-                        count: 4,
-                        jump: true,
-                        coping: true,
-                        homePage: '<<',
-                        endPage: '>>',
-                        prevContent: '<',
-                        nextContent: '>',
-                        isHide: true,
-                        jumpBtn: '确定',
-                        callback: function (api) {
-                            var currentNum = api.getCurrent();
-                            getStationList(currentNum, true);
-                        }
-                    });
-                }
+    function addStation(data) {
+        $.post(saveStationInfo, data, function (res) {
+            var data = JSON.parse(res)
+            if(data.result) {
+                location.href = '../process/addSuccess.html'
             } else {
-                str = '<p class="tips">暂无数据！</p>'
+                messageShow('发布失败！');
             }
-            $('#assetCenter-list').html(str);
         })
     };
     $(function () {
-        getStationList(1);
+        $(".select").each(function () {
+            var s = $(this);
+            var z = parseInt(s.css("z-index"));
+            var dt = $(this).children("dt");
+            var dd = $(this).children("dd");
+            var _show = function () {
+                dd.slideDown(200);
+                dt.addClass("cur");
+                s.css("z-index", z + 1);
+            }; //展开效果
+            var _hide = function () {
+                dd.slideUp(200);
+                dt.removeClass("cur");
+                s.css("z-index", z);
+            }; //关闭效果
+            dt.click(function () {
+                dd.is(":hidden") ? _show() : _hide();
+            });
+            dd.find("a").click(function () {
+                dt.html($(this).html());
+                if($(this).html() == '自购设备') {
+                    installType = 0
+                } else {
+                    installType = 1
+                }
+                _hide();
+            }); //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+            $("body").click(function (i) {
+                !$(i.target).parents(".select").first().is(s) ? _hide() : "";
+            });
+        });
+        $("#file").takungaeImgup({
+            formData: {
+                stationId: stationId
+            },
+            url: getOSSfile,
+            success: function (data) {
+                imgUrl.push(data.result.filePath);
+                $('.close-upimg').each(function (index) {
+                    $(this).click(function () {
+                        imgUrl.splice(index, 1);
+                    })
+                });
+
+            }
+        });
+        $('.submitBtn').click(function () {
+            var isAgree = $('.agreeCheck').is(":checked");
+            if(isAgree) {
+                imgStr = imgUrl.join();
+                var obj = new Object();
+                var adress = $('input[name="adress"]').val();
+                var contact = $('input[name="contact"]').val();
+                var wechat = $('input[name="wechat"]').val();
+                var mobile = $('input[name="mobile"]').val();
+                obj = {
+                    userId: userInfo.userId,
+                    token: userInfo.token,
+                    adress: adress,
+                    contact: contact,
+                    wechat: wechat,
+                    installType: installType,
+                    imgUrl: imgStr,
+                    mobile: mobile
+                }
+                addStation(obj);
+            } else {
+                messageShow('请先阅读并同意协议');
+            }
+        })
     })
 </script>
 

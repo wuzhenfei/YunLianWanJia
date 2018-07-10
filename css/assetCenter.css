@@ -269,7 +269,7 @@
 }
 .stationDetail .stationDetail-bot .label-control label {
   color: #999;
-  width: 115px;
+  width: 135px;
   display: inline-block;
 }
 .stationDetail .stationDetail-bot .label-control span {
@@ -335,6 +335,79 @@
   width: 240px;
   font-size: 16px;
   background: #0396D6;
+}
+.stationDetail.baseDetail .stationDetail-top {
+  position: relative;
+}
+.stationDetail.baseDetail .stationDetail-top .stationDetail-top-b .article-list li {
+  width: 100%;
+  float: none;
+  margin: 0;
+  border: none;
+  padding: 50px 20px 30px;
+}
+.stationDetail.baseDetail .stationDetail-top .stationDetail-top-b .article-list li dt {
+  font-size: 30px;
+  color: #00C3BF;
+  height: 38px;
+  line-height: 38px;
+}
+.stationDetail.baseDetail .stationDetail-top .stationDetail-top-b .article-list li dt img {
+  margin: 0 auto;
+}
+.stationDetail.baseDetail .stationDetail-top .stationDetail-top-b .article-list li:hover {
+  background: none;
+}
+.stationDetail.baseDetail .stationDetail-top .stationDetail-top-b .article-list li dl .btn-groups .btn {
+  width: 200px;
+  font-size: 16px;
+}
+.stationDetail.baseDetail .stationDetail-top .stationDetail-top-b .article-list li dl:nth-child(4) {
+  width: 215px;
+}
+.stationDetail.baseDetail .stationDetail-top .hot-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.stationDetail.baseDetail .stationDetail-bot .tab-header {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 25px;
+}
+.stationDetail.baseDetail .stationDetail-bot .tab-header ul li {
+  font-size: 14px;
+  color: #666;
+  padding: 10px 30px;
+  display: inline-block;
+  cursor: pointer;
+}
+.stationDetail.baseDetail .stationDetail-bot .tab-header ul li.current {
+  font-weight: bold;
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+  border-image: -webkit-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+  border-image: -moz-linear-gradient(to right, #0396D6, #00C3BF) 30 30;
+}
+.stationDetail.baseDetail .stationDetail-bot .label-control label img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.stationDetail.baseDetail .stationDetail-bot .tips {
+  background: url(../images/common/ask-icon.png) no-repeat left 4px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  color: #999;
+  font-size: 12px;
+}
+.stationDetail.baseDetail .stationDetail-bot .tips p {
+  line-height: 20px;
+}
+.stationDetail.baseDetail .stationDetail-bot #investorInfo {
+  padding-left: 20px;
+}
+.stationDetail.baseDetail .stationDetail-bot #investorInfo .time {
+  margin-right: 100px;
 }
 .repairStation .title {
   padding-bottom: 0;
@@ -441,6 +514,71 @@
   line-height: 26px;
   width: 100%;
   color: #999;
+}
+.addStation-con .main-w .form-group .form-control .upImg {
+  position: relative;
+  cursor: pointer;
+}
+.addStation-con .main-w .form-group .form-control .upImg .addImg {
+  width: 65px;
+  background: #00C3BF;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 0;
+  cursor: pointer;
+}
+.addStation-con .main-w .form-group .form-control .select {
+  position: relative;
+  z-index: 200;
+}
+.addStation-con .main-w .form-group .form-control .select dt {
+  display: inline-block;
+  width: 140px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 100px;
+  border: 1px solid #bbb;
+  padding: 0 15px;
+  font-size: 14px;
+  color: #999;
+  background: #fcfcfb url(../images/common/select.png) no-repeat right 20px center;
+  cursor: pointer;
+  z-index: 99;
+}
+.addStation-con .main-w .form-group .form-control .select dd {
+  position: absolute;
+  left: 0;
+  top: 37px;
+  border: 1px solid #bbb;
+  width: 140px;
+  background: #fff;
+  display: none;
+}
+.addStation-con .main-w .form-group .form-control .select dd ul li {
+  padding: 0 10px;
+}
+.addStation-con .main-w .form-group .form-control .select dd ul li a {
+  color: #999;
+}
+.addStation-con .main-w .btn-groups {
+  text-align: center;
+  margin: 30px 0 20px;
+}
+.addStation-con .main-w .btn-groups .btn {
+  width: 240px;
+  font-size: 16px;
+  background: #0396D6;
+}
+.addStation-con .main-w .tips {
+  text-align: center;
+}
+.addStation-con .main-w .tips .agreeCheck {
+  width: 12px;
+  height: 15px;
+  vertical-align: middle;
+}
+.addStation-con .main-w .tips a {
+  color: #0396D6;
 }
 .transferModal .modal-dialog .modal-content {
   width: 500px;

@@ -9,8 +9,9 @@ function showHeader(isLogin) {
                 userId: userInfo.userId
             },function(res){
                 var data = JSON.parse(res);
+                window.localStorage.setItem('userMoney', data.result.userMoney);
                 if(data.result.newMessageCount > 0) {
-                    noticeCount = data.result.newMessageCount;
+                    noticeCount = data.result.count;
                     document.getElementById('noticeCount').innerHTML = noticeCount;
                 }
             });
@@ -27,21 +28,21 @@ function showHeader(isLogin) {
     if (!isLogin) {
         document.writeln('          <span><a class="notice" href="../personal/systemMessage.html">消息(<em id="noticeCount">'+ noticeCount +'</em>)</a></span>');
         if(userInfo && userInfo.userId) {
-            document.writeln('          <span><a href="../personal/revenueRecord.html">' + userInfo.name + '</a></span>');
+            document.writeln('          <a href="../personal/revenueRecord.html">' + userInfo.name + '</a>');
+        } else {
+            document.writeln('          <a class="loginbtn" href="../login/login.html ">登录</a>');
+        }
+        document.writeln('          <span>|</span>');
+        if(userInfo && userInfo.userId) {
             document.writeln('          <a class="loginOut" id="loginOut">退出</a>');
             document.getElementById('loginOut').onclick = function() {
                 localStorage.clear();
                 location.reload();
             }
         } else {
-            document.writeln('          <a class="loginbtn" href="../login/login.html ">登录</a>');
+            document.writeln('          <a class="registerbtn" href="../login/register.html ">注册</a>');
         }
-        document.writeln('          <span>|</span>');
-        document.writeln('          <a class="registerbtn" href="../login/register.html ">注册</a>');
     }
-    document.writeln('          <a href=" ">关于我们</a>');
-    document.writeln('          <span>|</span>');
-    document.writeln('          <a href=" ">帮助中心</a>');
     document.writeln('      </div>');
     document.writeln('  </div>');
     document.writeln('</div>');

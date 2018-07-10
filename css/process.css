@@ -26,6 +26,7 @@
 .process .main-w {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04);
   padding: 30px;
+  background: #fff;
 }
 .process .main-w .tit {
   margin: 15px 0;
@@ -112,6 +113,64 @@
   text-align: center;
   margin-top: 35px;
 }
+.process .main-w .bidprice-current-price p span {
+  color: #0396D6;
+  font-size: 24px;
+  font-weight: bold;
+}
+.process .main-w .bidpriceBuy-con {
+  text-align: center;
+}
+.process .main-w .bidpriceBuy-con p {
+  font-size: 16px;
+  line-height: 32px;
+  color: #666;
+}
+.process .main-w .bidpriceBuy-con p.curPrice {
+  font-size: 36px;
+  color: #0396D6;
+  font-weight: bold;
+  margin: 20px 0 40px;
+}
+.process .main-w .bidpriceBuy-con p.bondPrice {
+  font-size: 36px;
+  color: #0396D6;
+  font-weight: bold;
+  margin: 20px 0 40px;
+}
+.process .main-w .bidpriceBuy-con .line {
+  height: 1px;
+  background: #eee;
+  width: 80%;
+  margin: 30px auto 0;
+}
+.process .main-w .bidpriceBuy-bot {
+  text-align: center;
+}
+.process .main-w .bidpriceBuy-bot .btn-groups {
+  margin-top: 25px;
+}
+.process .main-w .bidpriceBuy-bot .btn-groups .btn {
+  width: 240px;
+  font-size: 16px;
+  padding: 0;
+}
+.process .main-w .bidpriceBuy-bot .form-control .payPassword {
+  height: 36px;
+  line-height: 36px;
+  font-size: 12px;
+  border-radius: 100px;
+  padding-left: 15px;
+  width: 240px;
+}
+.process .main-w .bidpriceBuy-bot .tips .agreeCheck {
+  width: 12px;
+  height: 15px;
+  vertical-align: middle;
+}
+.process .main-w .bidpriceBuy-bot .tips a {
+  color: #0396D6;
+}
 .process .process-ul {
   overflow: hidden;
 }
@@ -168,4 +227,48 @@
 .process .process-result .btn-groups .btn {
   width: 240px;
   font-size: 16px;
+}
+.process .process-result .buyProcess ul li {
+  position: relative;
+  font-size: 14px;
+  color: #999;
+  padding: 0 0 35px 30px;
+}
+.process .process-result .buyProcess ul li h3 {
+  line-height: 30px;
+}
+.process .process-result .buyProcess ul li:before {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  content: '';
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: #D3D3D3;
+  border-radius: 50%;
+}
+.process .process-result .buyProcess ul li:after {
+  position: absolute;
+  left: 10px;
+  top: -15px;
+  content: '';
+  display: block;
+  width: 2px;
+  height: 120px;
+  background: #D3D3D3;
+}
+.process .process-result .buyProcess ul li.active {
+  color: #666;
+}
+.process .process-result .buyProcess ul li.active:before {
+  background: #0396D6;
+}
+.process .process-result .buyProcess ul li.active:after {
+  background: #0396D6;
+  top: 20px;
+  height: 50px;
+}
+.process .process-result .buyProcess ul li:last-child:after {
+  display: none;
 }

@@ -59,7 +59,7 @@
                             background: #eee;
                         }
                         h2 {
-                            font-size: 28px;
+                            font-size: 25px;
                             line-height: 45px;
                         }
                         .tips {
@@ -111,13 +111,58 @@
             }
         }
     }
-    .all-product {
-        .article-con {
-            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
-            background: #fff;
-            .article-list {
-                li {
-                    margin: 0;
+    // 列表样式
+    .tradeHall-con{
+        .main-w{ 
+            .article-con {
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
+                background: #fff;
+                .article-list {
+                    li {
+                        margin: 0;
+                        &.dz{
+                            dl{
+                                dt{
+                                    color: @green;
+                                }
+                                dd{
+                                    .btn{
+                                        background: @green;
+                                    }
+                                }
+                            }
+                        }
+                        &.zcb{
+                            dl{
+                                dt{
+                                    color: @blue;
+                                }
+                                dd{
+                                    .btn{
+                                        background: @blue;
+                                    }
+                                }
+                            }
+                        }
+                        &.disable{
+                            dl{
+                                dt{
+                                    color: #999;
+                                }
+                                dd{
+                                    color: #999;
+                                    .btn{
+                                        background: #bbb;
+                                    }
+                                }
+                                .btn-groups{
+                                    .btn{
+                                        background: #bbb;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -219,6 +264,36 @@
                 li {
                     margin: 0;
                     padding: 30px 0;
+                    &.dz{
+                        dl{
+                            dt{
+                                color: @green;
+                            }
+                            dd{
+                                .btn{
+                                    background: @green;
+                                }
+                            }
+                        }
+                    }
+                    &.disable{
+                        dl{
+                            dt{
+                                color: #999;
+                            }
+                            dd{
+                                color: #999;
+                                .btn{
+                                    background: #bbb;
+                                }
+                            }
+                            .btn-groups{
+                                .btn{
+                                    background: #bbb;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -232,6 +307,7 @@
     .main-w{
         box-shadow: 0 2px 6px 0 rgba(0,0,0,0.04);
         padding: 30px;
+        background: #fff;
         .tit{
             margin: 15px 0;
             h3{

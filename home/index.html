@@ -66,22 +66,26 @@
                             </a>
                         </li>
                         <li>
-                            <div class="box">
-                                <div class="box-img">
-                                    <img src="../images/home/entry_img__3__icon.png">
+                            <a href="../assetCenter/rentStation.html">
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img src="../images/home/entry_img__3__icon.png">
+                                    </div>
+                                    <h3>资产管理</h3>
+                                    <p>租赁投资 随心管理</p>
                                 </div>
-                                <h3>资产管理</h3>
-                                <p>租赁投资 随心管理</p>
-                            </div>
+                            </a>
                         </li>
                         <li>
-                            <div class="box">
-                                <div class="box-img">
-                                    <img src="../images/home/entry_img__4__icon.png">
+                            <a href="../personal/revenueRecord.html">
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img src="../images/home/entry_img__4__icon.png">
+                                    </div>
+                                    <h3>实时收益</h3>
+                                    <p>每日/累计 了然清晰</p>
                                 </div>
-                                <h3>实时收益</h3>
-                                <p>每日/累计 了然清晰</p>
-                            </div>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -104,16 +108,18 @@
             </div>
             <!-- 添加电站 -->
             <div class="add-station">
-                <div class="main-w">
-                    <div class="title">
-                        <h2>添加电站</h2>
-                        <p>ADD POWER STATION</p>
+                <a href="../assetCenter/addStation.html">
+                    <div class="main-w">
+                        <div class="title">
+                            <h2>添加电站</h2>
+                            <p>ADD POWER STATION</p>
+                        </div>
+                        <div class="add-station__text">
+                            <p>点击添加自己的电站</p>
+                            <p>即刻随心管理</p>
+                        </div>
                     </div>
-                    <div class="add-station__text">
-                        <p>点击添加自己的电站</p>
-                        <p>即刻随心管理</p>
-                    </div>
-                </div>
+                </a>
             </div>
             <!-- 关于我们 -->
             <div class="about-us">
@@ -131,7 +137,6 @@
                                 <p>云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。</p>
                                 <p>公司介绍代替文字云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事。</p>
                                 <p>云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究。</p>
-                                <a class="details" href="">查看更多 >></a>
                             </div>
                         </div>
                         <div class="pull-right">
@@ -148,6 +153,7 @@
 </body>
 <script src="../js/api.js"></script>
 <script language="javascript">
+    var urlLink;
     var swiperBanner = new Swiper('.swiper-banner', {
         pagination: {
             el: '.swiper-pagination-banner',
@@ -159,11 +165,11 @@
         var recommendList = $('#recommendList');
         var str = '';
         var imgSrc = '';
-        var urlLink = '../tradeHall/packageDetails.html?assetPackageId='
         var soldType = '';  // 一口价和竞价
         $.each(data, function(index, item){
             var isHot = item.isHot? '<img src="../images/common/hothuo.png">': '';
             if(item.type == 1) {    //资产包
+                urlLink = '../tradeHall/packageDetails.html?assetPackageId=' + item.id
                 var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
                 if (soldNum >=0 && soldNum <= 30) {
                     imgSrc = '../images/common/icon-jd__10.png'
@@ -183,12 +189,11 @@
                                 '<dt class="color-blue">' + item.name + '</dt>' + 
                                 '<dd class="name">' + 
                                     isHot +
-                                    '<span class="btn btn-samll bg-blue">资产包</span>' + 
-                                        item.name + 
+                                    '<span class="btn btn-samll bg-blue">资产包</span>资产包名称' +
                                 '</dd>' + 
                             '</dl>' + 
                             '<dl>' + 
-                                '<div class="btn-groups"><a class="btn" href=' + urlLink + item.id +'>查看详情</a></div>' +
+                                '<div class="btn-groups"><a class="btn" href=' + urlLink + '>查看详情</a></div>' +
                             '</dl>' + 
                             '<dl>' + 
                                 '<dt>' + '<img src='+ imgSrc + '>'+ '</dt>' + 
@@ -204,6 +209,7 @@
                             '</dl>' +   
                         '</li>';
             } else {    // 电站
+                urlLink = '../assetCenter/baseStationDetail.html?stationId=' + item.id
                 if(item.payType == 0) {  // 一口价
                     soldType = '一口价';
                     imgSrc = '../images/common/ykj.png'
@@ -216,12 +222,11 @@
                                 '<dt class="color-green">' + item.name + '</dt>' + 
                                 '<dd class="name">' + 
                                     isHot +
-                                    '<span class="btn btn-samll bg-green">电钻</span>' + 
-                                        item.name + 
+                                    '<span class="btn btn-samll bg-green">电钻</span>电站名称' +  
                                 '</dd>' + 
                             '</dl>' + 
                             '<dl>' + 
-                                '<div class="btn-groups"><a class="btn" href=' + urlLink + item.id +'>查看详情</a></div>' +
+                                '<div class="btn-groups"><a class="btn" href=' + urlLink +'>查看详情</a></div>' +
                             '</dl>' + 
                             '<dl>' + 
                                 '<dt>' + '<img src='+ imgSrc + '>'+ '</dt>' + 

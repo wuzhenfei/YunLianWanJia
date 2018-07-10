@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper-4.3.3.min.css">
+    <link rel="stylesheet" href="../css/assetCenter.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/swiper-4.3.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>资产中心-电站详情</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader(); // 显示头部
+            showNav(true, 2); //显示导航
+        </script>
+        <div class="main stationDetail baseDetail">
+            <div class="main-w">
+                <div class="title title-noLine">
+                    <h2>电站详情</h2>
+                    <p>PLANT DETAILS</p>
+                </div>
+                <div class="stationDetail-top">
+                    <div class="stationDetail-top-t cleart">
+                        <div class="pull-left">
+                            <div class="tit">
+                                <h3 class="titName">
+                                    <span class="btn btn-samll bg-green">电站</span>
+                                    <span class="name"></span>
+                                </h3>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stationDetail-top-b">
+                        <ul class="article-list">
+                            <li>
+                                <dl>
+                                    <dt class="rate"></dt>
+                                    <dd>预期年化收益率</dd>
+                                </dl>
+                                <dl>
+                                    <div class="btn-groups">
+                                        <a class="btn buyStation">立即购买</a>
+                                    </div>
+                                </dl>
+                                <dl>
+                                    <dt>
+                                        <img class="imgIcon">
+                                    </dt>
+                                    <dd class="payType"></dd>
+                                </dl>
+                                <dl>
+                                    <dt class="price">￥</dt>
+                                    <dd>当前价格</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="hot-icon">
+                        <img src="../images/common/new.png">
+                    </span>
+                </div>
+                <div class="stationDetail-bot">
+                    <div class="tab-header">
+                        <ul>
+                            <li class="current">基本信息</li>
+                            <li>收益信息</li>
+                            <li>投资人信息</li>
+                            <li>承租人信息</li>
+                        </ul>
+                    </div>
+                    <div class="tab-container">
+                        <div class="label-control">
+                            <label><img src="../images/common/adress.png">电站位置</label>
+                            <span class="adress"></span>
+                        </div>
+                        <div class="label-control">
+                            <label><img src="../images/common/area.png">电站面积</label>
+                            <span class="area"></span>
+                        </div>
+                        <div class="label-control">
+                            <label><img src="../images/common/zjrl.png">装机容量</label>
+                            <span class="volume"></span>
+                        </div>
+                        <div class="label-control">
+                            <label><img src="../images/common/zjrl.png">实时发电量</label>
+                            <span class="todayGrand"></span>
+                        </div>
+                        <div class="label-control">
+                            <label><img src="../images/common/zjrl.png">功率</label>
+                            <span class="power"></span>
+                        </div>
+                        <div class="label-control">
+                            <label>电站图片信息</label>
+                            <ul class="station-img">
+                            </ul>
+                        </div>
+                        <div class="label-control" style="margin-top: 25px;">
+                            <label>售电合同</label>
+                            <ul class="contract-img">
+                            </ul>
+                        </div>
+                        <div class="label-control" style="margin-top: 25px;">
+                            <label>主要设备型号规格</label>
+                            <div class="label-group" id="equipmentInfo">
+                                <div class="label-control">
+                                    <label>开发单位</label>
+                                    <span class="developmentUnit"></span>
+                                </div>
+                                <div class="label-control">
+                                    <label>建设单位</label>
+                                    <span class="constructionUnit"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="label-control" style="margin-top: 25px;">
+                            <label>平均用电电价</label>
+                            <span class="avgPrice"> RMB/kWh</span>
+                        </div>
+                        <div class="label-control">
+                            <label>脱硫上网电价</label>
+                            <span class="tuliuPrice"> RMB/kWh</span>
+                        </div>
+                        <div class="label-control" style="margin-top: 25px;">
+                            <label>电价政策</label>
+                            <div class="label-group">
+                                <div class="label-control">
+                                    <label>发电国补</label>
+                                    <span><i class="countryMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                                </div>
+                                <div class="label-control">
+                                    <label>发电省补</label>
+                                    <span><i class="provinceMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                                </div>
+                                <div class="label-control">
+                                    <label>发电市补</label>
+                                    <span><i class="cityMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                                </div>
+                                <div class="label-control">
+                                    <label>发电县补/区补</label>
+                                    <span><i class="countyMoney"></i> RMB/kWh  <i class="year"></i>年</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-container" style="display: none;">
+                        <div class="label-control">
+                            <label>预期年化收益率</label>
+                            <span class="rate"></span>
+                        </div>
+                        <div class="label-control">
+                            <label>电站前一日发电收益</label>
+                            <span class="net_income">￥ </span>
+                            <div class="tips">
+                                <p>收益计算说明：本收益依据项目当地的发电收入、电价以及扣除居民收益和托管费用后计算得出的现金流收入，收益仅供参考。</p>
+                                <p>其中居民收益为每W每年0.15元人民币；托管费用为每W每年0.2元人民币。</p>
+                            </div>
+                        </div>
+                        <div class="label-control">
+                            <label>电站自用统筹收益</label>
+                            <span class="selfUseProfit">￥ </span>
+                            <div class="tips">
+                                <p>电站自用统筹收益增加说明：因电站采用自发自用余电上网模式，居民自用电部分金额须在当地供电公司出具电费结算单后进行计算。</p>
+                                <p>自用统筹收益的计算方式为：居民自用电量X(居民用电电价-当地脱硫电价)。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-container" style="display: none;">
+                        <div id="investorInfo">
+                        </div>
+                    </div>
+                    <div class="tab-container" style="display: none;">
+                        <div class="label-control">
+                            <label>承租人</label>
+                            <span class="userName"></span>
+                        </div>
+                        <div class="label-control">
+                            <label>家庭住址</label>
+                            <span class="userAddress"></span>
+                        </div>
+                        <div class="label-control">
+                            <label>身份证号</label>
+                            <span class="idNumber"></span>
+                        </div>
+                        <div class="label-control">
+                            <label>电站并网时间</label>
+                            <span class="gridTime"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/api.js"></script>
+<script>
+    var userInfo, equipmentInfo, investorInfo, stationId;
+    uesrInfo = localStorage.getItem('userInfo');
+    uesrInfo = JSON.parse(uesrInfo);
+    stationId = getUrlParam('stationId');
+    $('.buyStation').prop('href', '../process/bitepriceBuy.html?stationId=' + stationId);
+    // 是否参与竞价
+    function isHaveBid() {
+        $.post(isHaveBidPriceInfo, {
+            userId: uesrInfo.userId,
+            token: uesrInfo.token,
+            stationId: stationId
+        }, function(res) {
+            var data = JSON.parse(res);
+            if(data.result.bidPriceId!=''){
+                $('.buyStation').prop('href', '../process/biddingStation.html?bidPriceId=' + data.result.bidPriceId);
+            } else {
+                $('.buyStation').prop('href', '../process/bidpriceBuy.html?stationId=' + stationId);
+            }
+        })
+    }
+    // 获取电站详细信息
+    function getStationList() {
+        $.post(getbaseStationInfo, {
+            userId: uesrInfo.userId,
+            token: uesrInfo.token,
+            stationId: stationId
+        }, function (res) {
+            var data = JSON.parse(res);
+            if (data.result) {
+                data = data.result.data;
+                if(data.payType == 0) {
+                    $('.payType').html('一口价');
+                    $('.imgIcon').prop('src', '../images/common/ykj.png')
+                } else {
+                    $('.payType').html('竞价');
+                    $('.imgIcon').prop('src', '../images/common/jingjia.png');
+                    isHaveBid();
+                }
+                $('.name').html(data.name);
+                $('.rate').html(data.rate + '%');
+                $('.price').append(data.price);
+                $('.adress').append(data.adress);
+                $('.area').append(data.area + ' 平方米');
+                $('.volume').html(data.volume + ' kWp');
+                $('.todayGrand').html(data.todayGrand + ' MWh');
+                $('.power').html(data.power + 'W');
+                $('.developmentUnit').html(data.developmentUnit);
+                $('.constructionUnit').html(data.constructionUnit);
+                $('.countryMoney').html(data.subsidyInfo.countryMoney);
+                $('.provinceMoney').html(data.subsidyInfo.provinceMoney);
+                $('.cityMoney').html(data.subsidyInfo.cityMoney);
+                $('.countyMoney').html(data.subsidyInfo.countyMoney);
+                $('.year').each(function() {
+                    $(this).html(data.subsidyInfo.year);
+                });
+                $('.avgPrice').prepend(data.powerPriceInfo.avgPrice);
+                $('.tuliuPrice').prepend(data.powerPriceInfo.tuliuPrice);
+                $('.net_income').append(data.profitInfo.net_income);
+                $('.selfUseProfit').append(data.selfUseProfit);
+                $('.userName').html(data.userName);
+                $('.userAddress').html(data.userAddress);
+                $('.idNumber').html(data.idNumber);
+                $('.gridTime').html(data.gridTime);
+                equipmentInfo = '';
+                // 设备配置
+                $.each(data.equipment, function(idnex, item) {
+                    equipmentInfo = equipmentInfo + '<div class="label-control">' +
+                                '<label>'+ item.name +'</label>' +
+                                '<span>生产厂家：'+ item.vender +'</span>' +
+                                '<span>规格型号：'+ item.version +'</span>' +
+                                '<span>保质期：'+ item.lengthTime +'年</span>' +
+                            '</div>';
+                });
+                $('#equipmentInfo').append(equipmentInfo);
+                // 电站合同
+                var imageUrl = data.imageUrl.split(';');
+                var imageUrlStr = '';
+                $.each(imageUrl, function(index, item) {
+                    if(item && item!= '') {
+                        imageUrlStr = imageUrlStr + '<li><img src='+ item +'></li>'
+                    }
+                });
+                $('.station-img').append(imageUrlStr);
+                // 合同图片
+                var contractImages = data.contractImageUrl.split(';');
+                var contractImgStr = '';
+                $.each(contractImages, function(index, item) {
+                    if(item && item!= '') {
+                        contractImgStr = contractImgStr + '<li><img src='+ item +'></li>'
+                    }
+                });
+                $('.contract-img').append(contractImgStr);
+                // 投资人信息
+                investorInfo = '';
+                var typeName;
+                $.each(data.investorInfo, function(index, item) {
+                    if(item.type == 1) {
+                        typeName = '买入'
+                    } else {
+                        typeName = '卖出'
+                    }
+                    investorInfo = investorInfo +   '<div class="label-control">' +
+                                                        '<label>'+ item.userName +'</label>' +
+                                                        '<span class="time">'+ item.createtime +'</span>' +
+                                                        '<span class="soldType">'+ typeName +'</span>' +
+                                                    '</div>';
+                })
+                $('#investorInfo').html(investorInfo);
+            }
+        })
+    };
+    $(function () {
+        getStationList();
+        $('.tab-header ul li').each(function(index){
+            $(this).click(function() {
+                $(this).siblings().removeClass('current');
+                $(this).addClass('current');
+                $('.tab-container').hide().eq(index).show();
+            })
+        })
+    })
+</script>
+
+</html>

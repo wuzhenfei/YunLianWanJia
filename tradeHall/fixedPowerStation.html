@@ -11,7 +11,7 @@
     <script src="../js/jquery-1.11.3.min.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/nav.js"></script>
-    <title>交易大厅-转让中心</title>
+    <title>交易大厅-一口价电站</title>
 </head>
 
 <body>
@@ -27,35 +27,35 @@
                         <li>
                             <a href="newProducts.html">新品中心</a>
                         </li>
-                        <li class="current">
+                        <li>
                             <a href="transferCenter.html">转让中心</a>
                         </li>
                         <li>
                             <a href="bidPowerStation.html">竞价电站</a>
                         </li>
-                        <li>
+                        <li class="current">
                             <a href="fixedPowerStation.html">一口价电站</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <!-- 最新转让 -->
+            <!-- 热门一口价 -->
             <div class="hot-product">
                 <div class="main-w">
                     <div class="title title-noLine">
-                        <h2>最新转让</h2>
-                        <p>NEW TRANSFER</p>
+                        <h2>热门一口价</h2>
+                        <p>NEW PRICE</p>
                     </div>
                     <ul class="hot-product-list" id="hot-product-list">
                     </ul>
                 </div>
             </div>
-            <!-- 所有转让 -->
+            <!-- 所有一口价 -->
             <div class="tradeHall-con">
                 <div class="main-w">
                     <div class="title title-noLine">
-                        <h2>所有转让</h2>
-                        <p>ALL TRANSFER</p>
+                        <h2>所有一口价</h2>
+                        <p>ALL PRICE</p>
                     </div>
                     <div class="article-con">
                         <ul class="article-list" id="article-list">
@@ -77,6 +77,7 @@
     function getHotDataList() {
         $.post(getOnSaleStationListByPayType, {
             pageNumber: 1, 
+            payType: 0,
             limit:4
         }, function(res) {
             var data = JSON.parse(res);
@@ -124,6 +125,7 @@
     // 获取列表信息
     function getDataList(currentNum, changePage) {
         $.post(getOnSaleStationListByPayType, {
+            payType: 0,
             pageNumber: currentNum, 
             limit:5
         }, function(res) {
@@ -139,6 +141,10 @@
                     } else {
                         transferType = '竞价'
                         transferIcon = '../images/common/jingjia.png'
+                    }
+                    if(item.powerSellState == 0) {
+
+                    } else {
                     }
                     str = str + '<li class="dz">' +
                             '<dl>' +
