@@ -100,7 +100,11 @@
                     if(data.result) {
                         location.href = 'buySuccess.html?type=1&name=' + name;
                     } else {
-                        location.href = 'buyFail.html?type=1&name=' + name + '&stationId='+ stationId;
+                        if(data.code == '0003' || data.code == '0002') {
+                            messageShow(data.content);
+                        } else {
+                            location.href = 'buyFail.html?type=1&name=' + name + '&stationId='+ stationId;
+                        }
                     }
                 })
             } else {

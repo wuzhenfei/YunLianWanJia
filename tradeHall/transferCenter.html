@@ -83,41 +83,45 @@
             if(data && data.result.pageData) {
                 var str = '';
                 var hotDataList = data.result.pageData.records;
-                $.each(hotDataList, function(index, item){
-                    if(item.payType ==0) {
-                        transferType = '一口价';
-                        transferIcon = '../images/common/ykj.png'
-                    } else {
-                        transferType = '竞价'
-                        transferIcon = '../images/common/jingjia.png'
-                    }
-                    if(index > 4) return;
-                    str = str + '<li>' +
-                                    '<div class="hot-product-box">' +
-                                        '<p><span class="btn btn-samll bg-green">电站</span></p>' +
-                                        '<h3>'+ item.name +'</h3>' +
-                                        '<div class="line"></div>' +
-                                        '<h2 class="color-green">'+ item.rate +'%</h2>' +
-                                        '<p class="tips">预期年化收益率</p>' +
-                                        '<div class="icon-img">' +
-                                            '<img src='+ transferIcon +'>' +
-                                            '<p class="color-green">'+ transferType +'</p>' +
+                if(hotDataList.length > 0) {
+                    $.each(hotDataList, function(index, item){
+                        if(item.payType ==0) {
+                            transferType = '一口价';
+                            transferIcon = '../images/common/ykj.png'
+                        } else {
+                            transferType = '竞价'
+                            transferIcon = '../images/common/jingjia.png'
+                        }
+                        if(index > 4) return;
+                        str = str + '<li>' +
+                                        '<div class="hot-product-box">' +
+                                            '<p><span class="btn btn-samll bg-green">电站</span></p>' +
+                                            '<h3>'+ item.name +'</h3>' +
+                                            '<div class="line"></div>' +
+                                            '<h2 class="color-green">'+ item.rate +'%</h2>' +
+                                            '<p class="tips">预期年化收益率</p>' +
+                                            '<div class="icon-img">' +
+                                                '<img src='+ transferIcon +'>' +
+                                                '<p class="color-green">'+ transferType +'</p>' +
+                                            '</div>' +
+                                            '<p class="num">当前价格：' +
+                                                '<span class="color-green">￥'+ item.price +'</span>' +
+                                            '</p>' +
+                                            '<div class="btn-groups">' +
+                                                '<a href="../assetCenter/baseStationDetail.html?payType='+ item.payType + '&powerSellState='+ item.powerSellState + '&stationId='+ item.stationId + '" class="btn dib">查看详情</a>' +
+                                            '</div>' +
+                                            '<span class="hot-icon">' +
+                                                '<img src="../images/common/new.png">' +
+                                            '</span>' +
                                         '</div>' +
-                                        '<p class="num">当前价格：' +
-                                            '<span class="color-green">￥'+ item.price +'</span>' +
-                                        '</p>' +
-                                        '<div class="btn-groups">' +
-                                            '<a href="../assetCenter/baseStationDetail.html?payType='+ item.payType + '&powerSellState='+ item.powerSellState + '&stationId='+ item.stationId + '" class="btn dib">查看详情</a>' +
-                                        '</div>' +
-                                        '<span class="hot-icon">' +
-                                            '<img src="../images/common/new.png">' +
-                                        '</span>' +
-                                    '</div>' +
-                                '</li>';
-                    
-                    
-                })
-                $('#hot-product-list').html(str);
+                                    '</li>';
+                        
+                        
+                    })
+                    $('#hot-product-list').html(str);
+                } else {
+                    $('#hot-product-list').html('<img src="../images/common/unpack.png"/ class="noInformation">');
+                }
             }
         })
     };
@@ -132,65 +136,68 @@
                 var str = '';
                 dataList = data.result.pageData.records;
                 pageTotal = data.result.pageData.total;
-                $.each(dataList, function(index, item){
-                    if(item.payType ==0) {
-                        transferType = '一口价';
-                        transferIcon = '../images/common/ykj.png'
-                    } else {
-                        transferType = '竞价'
-                        transferIcon = '../images/common/jingjia.png'
-                    }
-                    str = str + '<li class="dz">' +
-                            '<dl>' +
-                                '<dt>'+ item.name +'</dt>' +
-                                '<dd><span class="btn btn-samll">电站</span>电站名称</dd>' +
-                            '</dl>' +
-                            '<dl>' +
-                                '<div class="btn-groups">' +
-                                    '<a  href="../assetCenter/baseStationDetail.html?payType='+ item.payType + '&powerSellState='+ item.powerSellState + '&stationId='+ item.stationId + '" class="btn">立即购买</a>' +
-                                '</div>' +
-                            '</dl>' +
-                            '<dl>' +
-                                '<dt>' +
-                                    '<img src='+ transferIcon +'>' +
-                                '</dt>' +
-                                '<dd>'+ transferType +'</dd>' +
-                            '</dl>' +
-                            '<dl>' +
-                                '<dt>'+ item.price +'</dt>' +
-                                '<dd>当前价格</dd>' +
-                            '</dl>' +
-                            '<dl>' +
-                                '<dt>'+ item.rate +'%</dt>' +
-                                '<dd>预期年化收益</dd>' +
-                            '</dl>' +
-                        '</li>';
-
-                })
-                $('#article-list').html(str);
-                if (!changePage && pageTotal > 0) {
-                    $('#page-navigation').pagination({
-                        keepShowPN: true,
-                        showData: 5,
-                        totalData: pageTotal,
-                        mode: 'fixed',
-                        count: 4,
-                        jump: true,
-                        coping: true,
-                        homePage: '<<',
-                        endPage: '>>',
-                        prevContent: '<',
-                        nextContent: '>',
-                        isHide: true,
-                        jumpBtn: '确定',
-                        callback: function (api) {
-                            var currentNum = api.getCurrent();
-                            getDataList(currentNum, true);
+                if(pageTotal > 0) {
+                    $.each(dataList, function(index, item){
+                        if(item.payType ==0) {
+                            transferType = '一口价';
+                            transferIcon = '../images/common/ykj.png'
+                        } else {
+                            transferType = '竞价'
+                            transferIcon = '../images/common/jingjia.png'
                         }
-                    });
+                        str = str + '<li class="dz">' +
+                                '<dl>' +
+                                    '<dt>'+ item.name +'</dt>' +
+                                    '<dd><span class="btn btn-samll">电站</span>电站名称</dd>' +
+                                '</dl>' +
+                                '<dl>' +
+                                    '<div class="btn-groups">' +
+                                        '<a  href="../assetCenter/baseStationDetail.html?payType='+ item.payType + '&powerSellState='+ item.powerSellState + '&stationId='+ item.stationId + '" class="btn">立即购买</a>' +
+                                    '</div>' +
+                                '</dl>' +
+                                '<dl>' +
+                                    '<dt>' +
+                                        '<img src='+ transferIcon +'>' +
+                                    '</dt>' +
+                                    '<dd>'+ transferType +'</dd>' +
+                                '</dl>' +
+                                '<dl>' +
+                                    '<dt>'+ item.price +'</dt>' +
+                                    '<dd>当前价格</dd>' +
+                                '</dl>' +
+                                '<dl>' +
+                                    '<dt>'+ item.rate +'%</dt>' +
+                                    '<dd>预期年化收益</dd>' +
+                                '</dl>' +
+                            '</li>';
+
+                    })
+                    $('#article-list').html(str);
+                    if (!changePage && pageTotal > 0) {
+                        $('#page-navigation').pagination({
+                            keepShowPN: true,
+                            showData: 5,
+                            totalData: pageTotal,
+                            mode: 'fixed',
+                            count: 4,
+                            jump: true,
+                            coping: true,
+                            homePage: '<<',
+                            endPage: '>>',
+                            prevContent: '<',
+                            nextContent: '>',
+                            isHide: true,
+                            jumpBtn: '确定',
+                            callback: function (api) {
+                                var currentNum = api.getCurrent();
+                                getDataList(currentNum, true);
+                            }
+                        });
+                    }
+                } else {
+                    $('#article-list').html('<img src="../images/common/unpack.png"/ class="noInformation">');
                 }
             }
-            console.log(data);
         })
     };
     $(function() {

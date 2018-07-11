@@ -16,6 +16,9 @@ function personalTop() {
     imgUrl = '../images/common/default-personal.png';
     name = '您好，请<a href="../login/login.html">登录</a>';
     userMoney = localStorage.getItem('userMoney');
+    if(!userMoney||userMoney ==''){
+        userMoney = '0.00';
+    }
     colorBlue = '';
     colorGreen = '';
     editProfileUrl = '../login/login.html';

@@ -102,11 +102,14 @@
                     powerSellId: powerSellId
                 }, function(res) {
                     var data = JSON.parse(res);
-                    console.log(data)
                     if(data.result) {
                         location.href = 'biddingStation.html?bidPriceId=' + data.result.bidPriceId;
                     } else {
-                        location.href = 'buyFail.html?name=' + name + '&stationId='+ stationId;
+                        if(data.code == '0003' || data.code == '0002') {
+                            messageShow(data.content);
+                        } else {
+                            location.href = 'buyFail.html?name=' + name + '&stationId='+ stationId;
+                        }  
                     }
                 })
             } else {

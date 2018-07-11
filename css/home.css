@@ -36,6 +36,8 @@
 }
 .main .quick-entry {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
+  position: relative;
+  z-index: 10;
 }
 .main .quick-entry ul {
   overflow: hidden;
@@ -44,8 +46,14 @@
 .main .quick-entry ul li {
   float: left;
   width: 25%;
-  height: 130px;
+  height: 140px;
   padding: 0 15px;
+}
+.main .quick-entry ul li a {
+  display: block;
+}
+.main .quick-entry ul li a:hover {
+  box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.4);
 }
 .main .quick-entry ul li .box {
   height: 100%;
@@ -66,19 +74,29 @@
 }
 .main .quick-entry ul li:nth-child(1) .box {
   background: url(../images/home/entry_img__1.png) no-repeat center;
-  background-size: cover;
+  background-size: 100%;
 }
 .main .quick-entry ul li:nth-child(2) .box {
   background: url(../images/home/entry_img__2.png) no-repeat center;
-  background-size: cover;
+  background-size: 100%;
 }
 .main .quick-entry ul li:nth-child(3) .box {
   background: url(../images/home/entry_img__3.png) no-repeat center;
-  background-size: cover;
+  background-size: 100%;
 }
 .main .quick-entry ul li:nth-child(4) .box {
   background: url(../images/home/entry_img__4.png) no-repeat center;
-  background-size: cover;
+  background-size: 100%;
+}
+.main .quick-entry ul li:hover {
+  overflow: visible;
+}
+.main .quick-entry ul li:hover .box {
+  transition: all 0.2s ease 0s;
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
+  -o-transition: all 0.2s ease 0s;
+  background-size: 103%;
 }
 .main .hot-recommend {
   background: #f3f7f9 url(../images/home/hot-recommend__bg.png) no-repeat center bottom;
@@ -93,12 +111,23 @@
   line-height: 40px;
   color: #999;
 }
-.main .add-station {
-  background: url(../images/home/add-station__img.png) no-repeat center;
-  min-height: 295px;
-}
-.main .add-station .main-w {
+.main .add-station .main-w a {
+  height: 230px;
+  display: block;
   padding: 15px 25px 0;
+  width: 100%;
+  overflow: hidden;
+  background: url(../images/home/add-station__img.png) no-repeat center;
+  background-size: 100%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.06);
+}
+.main .add-station .main-w a:hover {
+  transition: all 0.2s ease 0s;
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
+  -o-transition: all 0.2s ease 0s;
+  background-size: 103%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 .main .add-station .main-w .title h2 {
   color: #fff;
@@ -127,6 +156,7 @@
 .main .about-us .main-w {
   background: #fff;
   padding: 15px 25px 30px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.04);
 }
 .main .about-us .main-w .about-us__con .pull-left {
   width: 50%;
@@ -145,4 +175,19 @@
   font-size: 12px;
   color: #0396D6;
   line-height: 15px;
+}
+.main .about-us .main-w .about-us__con .img-box {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+.main .about-us .main-w .about-us__con .img-box:hover {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.main .about-us .main-w .about-us__con .img-box:hover img {
+  transition: all 0.2s ease 0s;
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
+  -o-transition: all 0.2s ease 0s;
+  transform: scale(1.02);
 }

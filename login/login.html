@@ -65,7 +65,7 @@
                     if(data.result) {
                         var userInfo = JSON.stringify(data.result);
                         localStorage.setItem('userInfo', userInfo);
-                        window.location.href = "../home/index.html";
+                        history.go(-1);
                     } else {
                         tipsinfo = data.content;
                         messageShow(tipsinfo);

@@ -109,7 +109,6 @@
             $('.addNum').click(function() {
                 newMoney = newMoney + 100;
                 $('.price-num').html('¥ ' + newMoney);
-                console.log(dataInfo);
             });
             $('.changeMoney').click(function() {
                 $.post(updateBidPrice, {

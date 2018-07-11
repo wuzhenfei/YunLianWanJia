@@ -49,36 +49,36 @@
                                             <div class="input-radio">
                                                 <img src="../images/common/zhifubao.png">
                                                 <h4>支付宝账号</h4>
-                                                <input type="radio" checked name="alipay" id="alipay" value="alipay">
+                                                <input type="radio" checked name="alipay" id="alipay" value="0">
                                             </div>
                                             <div class="input-radio">
                                                 <img src="../images/common/weixin.png">
                                                 <h4>支付宝账号</h4>
-                                                <input type="radio" name="weChat" id="weChat" value="weChat">
+                                                <input type="radio" name="alipay" id="weChat" value="1">
                                             </div>
                                         </form>
                                     </div>
                                     <div class="form-control">
                                         <label>请输入提现账号</label>
                                         <span class="input-text">
-                                            <input type="text" placeholder="请输入要提现到的账号" />
+                                            <input type="text" name="userNo" placeholder="请输入要提现到的账号" />
                                         </span>
                                     </div>
                                     <div class="form-control">
                                         <label>请输入账号持有人姓名</label>
                                         <span class="input-text">
-                                            <input type="text" placeholder="请输入账号持有人的姓名" />
+                                            <input type="text" name="userName" placeholder="请输入账号持有人的姓名" />
                                         </span>
                                     </div>
                                     <div class="form-control">
                                         <label>可提现金额</label>
                                         <span class="color-green" id="userPrice">00.00 元</span>
-                                        <a class="color-blue">全部提现</a>
+                                        <a class="color-blue allPull">全部提现</a>
                                     </div>
                                     <div class="form-control">
                                         <label>提现金额</label>
                                         <span class="input-text">
-                                            <input type="text" placeholder="请输入要提现的金额数量" />元</span>
+                                            <input type="text" name="money" placeholder="请输入要提现的金额数量" />元</span>
                                     </div>
                                     <div class="btn-groups">
                                         <a class="btn" id="submitBtn">确认提现</a>
@@ -95,30 +95,50 @@
 </body>
 <script src="../js/api.js"></script>
 <script>
-    var uesrInfo;
+    var uesrInfo,userMoney, orderSource, userName, money, userNo, stateType, str;
+    function getExtractInfo(data){
+        $.post(saveExtractInfo, data, function(res) {
+            var data = JSON.parse(res);
+            if(data.result) {
+                data = data.result
+                localStorage.setItem('userMoney', data.userMoney);
+                location.href="putForwardSuccess.html";
+            } else {
+                stateType = '提现失败';
+                str = '<div class="payState">' +
+                        '<img src="../images/common/unpack.png">' +
+                        '<h2>提现失败</h2>' +
+                        '<p class="tips">抱歉，提现失败。如有问题请 <a class="color-blue" href="contactUs.html">联系客服</a></p>'
+                    '</div>';
+            }
+            $('.recharge-tit').find('span').html(stateType);
+            $('.recharge-con-container').html(str);
+        })
+    };
     $(function () {
         uesrInfo = localStorage.getItem('userInfo');
         uesrInfo = JSON.parse(uesrInfo);
+        userMoney = localStorage.getItem('userMoney');
         if (uesrInfo && uesrInfo.userId) {
             // 可用余额
-            $('#userPrice').html(uesrInfo.userMoney + '元');
+            $('#userPrice').html(userMoney + '元');
         };
+        $('.allPull').click(function() {
+            $('input[name = "money"]').val(userMoney);
+        });
         $('#submitBtn').click(function () {
-            var stateType = '提现成功';
-            var str = '<div class="payState">' +
-                '<img src="../images/common/buySuccess-logo.png">' +
-                '<h2 class="color-blue">' + stateType + '</h2>' +
-                '<p class="tips">当前可用余额<span class="color-green">' + uesrInfo.userMoney + '元' +
-                '</span></p>'
-            '</div>';
-            stateType = '提现失败';
-            str = '<div class="payState">' +
-                '<img src="../images/common/unpack.png">' +
-                '<h2>' + stateType + '</h2>' +
-                '<p class="tips">抱歉，提现失败。如有问题请 <a class="color-blue" href="contactUs.html">联系客服</a></p>'
-            '</div>';
-            $('.recharge-tit').find('span').html(stateType);
-            $('.recharge-con-container').html(str);
+            userName = $('input[name = "userName"]').val();
+            money = $('input[name = "money"]').val();
+            userNo = $('input[name = "userNo"]').val();
+            orderSource = $('input[name="alipay"]:checked').val();
+            getExtractInfo({
+                userId: uesrInfo.userId,
+                token: uesrInfo.token,
+                userName: userName,
+                money: money,
+                orderSource: orderSource,
+                userNo: userNo
+            });
         });
     })
 </script>

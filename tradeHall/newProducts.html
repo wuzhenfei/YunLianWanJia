@@ -85,46 +85,50 @@
             if(data && data.result.pageData) {
                 var str = '';
                 var hotDataList = data.result.pageData.records;
-                $.each(hotDataList, function(index, item){
-                    var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
-                    urlLink = 'packageDetails?assetPackageId=' + item.id;
-                    if (soldNum >=0 && soldNum <= 30) {
-                        imgSrc = '../images/common/icon-jd-sm__10.png'
-                    } else if(soldNum >30 && soldNum <= 50) {
-                        imgSrc = '../images/common/icon-jd-sm__30.png'
-                    } else if(soldNum >50 && soldNum <= 70) {
-                        imgSrc = '../images/common/icon-jd-sm__50.png'
-                    } else if (soldNum >70 && soldNum <= 90) {
-                        imgSrc = '../images/common/icon-jd-sm__70.png'
-                    } else if (soldNum >90 && soldNum < 100) {
-                        imgSrc = '../images/common/icon-jd-sm__90.png'
-                    } else if(soldNum == 100) {
-                        imgSrc = '../images/common/icon-jd-sm__100.png'
-                    }
-                    if(index > 4) return;
-                    str = str + '<li>' +
-                            '<div class="hot-product-box">' +
-                                '<p><span class="btn btn-samll bg-blue">资产包</span></p>' +
-                                '<h3>'+ item.name +'</h3>' +
-                                '<div class="line"></div>' +
-                                '<h2 class="color-blue">'+ item.minRate +'% ~ '+ item.maxRate +'%</h2>' +
-                                '<p class="tips">预期年化收益率</p>' +
-                                '<p class="num">总电站数目：<span class="color-blue">'+ item.count +'</span></p>' +
-                                '<div class="progress">' +
-                                    '<div class="progress-line"> <span style="width: '+ soldNum +'%"></span></div>' +
-                                     '<div class="progress-icon">' +
-                                       '<img src='+ imgSrc +'>' +
-                                        '<span>'+ soldNum +'%</span>' +
+                if( hotDataList.length > 0) {
+                    $.each(hotDataList, function(index, item){
+                        var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
+                        urlLink = 'packageDetails.html?assetPackageId=' + item.id;
+                        if (soldNum >=0 && soldNum <= 30) {
+                            imgSrc = '../images/common/icon-jd-sm__10.png'
+                        } else if(soldNum >30 && soldNum <= 50) {
+                            imgSrc = '../images/common/icon-jd-sm__30.png'
+                        } else if(soldNum >50 && soldNum <= 70) {
+                            imgSrc = '../images/common/icon-jd-sm__50.png'
+                        } else if (soldNum >70 && soldNum <= 90) {
+                            imgSrc = '../images/common/icon-jd-sm__70.png'
+                        } else if (soldNum >90 && soldNum < 100) {
+                            imgSrc = '../images/common/icon-jd-sm__90.png'
+                        } else if(soldNum == 100) {
+                            imgSrc = '../images/common/icon-jd-sm__100.png'
+                        }
+                        if(index > 4) return;
+                        str = str + '<li>' +
+                                '<div class="hot-product-box">' +
+                                    '<p><span class="btn btn-samll bg-blue">资产包</span></p>' +
+                                    '<h3>'+ item.name +'</h3>' +
+                                    '<div class="line"></div>' +
+                                    '<h2 class="color-blue">'+ item.minRate +'% ~ '+ item.maxRate +'%</h2>' +
+                                    '<p class="tips">预期年化收益率</p>' +
+                                    '<p class="num">总电站数目：<span class="color-blue">'+ item.count +'</span></p>' +
+                                    '<div class="progress">' +
+                                        '<div class="progress-line"> <span style="width: '+ soldNum +'%"></span></div>' +
+                                        '<div class="progress-icon">' +
+                                        '<img src='+ imgSrc +'>' +
+                                            '<span>'+ soldNum +'%</span>' +
+                                        '</div>' +
                                     '</div>' +
+                                    '<div class="btn-groups">' +
+                                        '<a href='+ urlLink +' class="btn dib">查看详情</a>' +
+                                    '</div>' +
+                                    '<span class="hot-icon"><img src="../images/common/hot.png"></span>' + 
                                 '</div>' +
-                                '<div class="btn-groups">' +
-                                    '<a href='+ urlLink +' class="btn dib">查看详情</a>' +
-                                '</div>' +
-                                '<span class="hot-icon"><img src="../images/common/hot.png"></span>' + 
-                            '</div>' +
-                        '</li>';   
-                })
-                $('#hot-product-list').html(str);
+                            '</li>';   
+                    })
+                    $('#hot-product-list').html(str);
+                } else {
+                    $('#hot-product-list').html('<img src="../images/common/unpack.png"/ class="noInformation">');
+                }
             }
         })
     };
@@ -140,75 +144,78 @@
                 var str = '';
                 dataList = data.result.pageData.records;
                 pageTotal = data.result.pageData.total;
-                $.each(dataList, function(index, item){
-                    className = '';
-                    urlLink = 'packageDetails?assetPackageId=' + item.id
-                    var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
-                    var btnTxt = '立即购买';
-                    if (soldNum >=0 && soldNum <= 30) {
-                        imgSrc = '../images/common/icon-jd__10.png'
-                    } else if(soldNum >30 && soldNum <= 50) {
-                        imgSrc = '../images/common/icon-jd__30.png'
-                    } else if(soldNum >50 && soldNum <= 70) {
-                        imgSrc = '../images/common/icon-jd__50.png'
-                    } else if (soldNum >70 && soldNum <= 90) {
-                        imgSrc = '../images/common/icon-jd__70.png'
-                    } else if (soldNum >90 && soldNum < 100) {
-                        imgSrc = '../images/common/icon-jd__90.png'
-                    } else if(soldNum == 100) {
-                        imgSrc = '../images/common/icon-jd__100.png';
-                        className = 'disable';
-                        btnTxt = '已售罄';
-                        urlLink = 'javascript:;'
-                    }
-                    str = str + '<li class="zcb '+ className +'">' +
-                                    '<dl>' +
-                                        '<dt>'+ item.name +'</dt>' +
-                                        '<dd><span class="btn btn-samll">资产包</span>资产包名称</dd>' +
-                                    '</dl>' +
-                                    '<dl>' +
-                                        '<div class="btn-groups">' +
-                                            '<a class="btn" href='+ urlLink +'>'+ btnTxt +'</a>' +
-                                        '</div>' +
-                                    '</dl>' +
-                                    '<dl>' +
-                                       ' <dt><img src='+ imgSrc +'></dt>' +
-                                        '<dd>包内已售 '+ soldNum +'%</dd>' +
-                                    '</dl>' +
-                                    '<dl>' +
-                                        '<dt>'+ item.count +'</dt>' +
-                                        '<dd>总电站数</dd>' +
-                                    '</dl>' +
-                                    '<dl>' +
-                                        '<dt>'+ item.minRate +'% ~ '+ item.maxRate +'%</dt>' +
-                                        '<dd>预期年化收益</dd>' +
-                                    '</dl>' +
-                                '</li>';
-                })
-                $('#article-list').html(str);
-                if (!changePage && pageTotal > 0) {
-                    $('#page-navigation').pagination({
-                        keepShowPN: true,
-                        showData: 5,
-                        totalData: pageTotal,
-                        mode: 'fixed',
-                        count: 4,
-                        jump: true,
-                        coping: true,
-                        homePage: '<<',
-                        endPage: '>>',
-                        prevContent: '<',
-                        nextContent: '>',
-                        isHide: true,
-                        jumpBtn: '确定',
-                        callback: function (api) {
-                            var currentNum = api.getCurrent();
-                            getDataList(currentNum, true);
+                if(pageTotal > 0) {
+                    $.each(dataList, function(index, item){
+                        className = '';
+                        urlLink = 'packageDetails?assetPackageId=' + item.id
+                        var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
+                        var btnTxt = '立即购买';
+                        if (soldNum >=0 && soldNum <= 30) {
+                            imgSrc = '../images/common/icon-jd__10.png'
+                        } else if(soldNum >30 && soldNum <= 50) {
+                            imgSrc = '../images/common/icon-jd__30.png'
+                        } else if(soldNum >50 && soldNum <= 70) {
+                            imgSrc = '../images/common/icon-jd__50.png'
+                        } else if (soldNum >70 && soldNum <= 90) {
+                            imgSrc = '../images/common/icon-jd__70.png'
+                        } else if (soldNum >90 && soldNum < 100) {
+                            imgSrc = '../images/common/icon-jd__90.png'
+                        } else if(soldNum == 100) {
+                            imgSrc = '../images/common/icon-jd__100.png';
+                            className = 'disable';
+                            btnTxt = '已售罄';
+                            urlLink = 'javascript:;'
                         }
-                    });
+                        str = str + '<li class="zcb '+ className +'">' +
+                                        '<dl>' +
+                                            '<dt>'+ item.name +'</dt>' +
+                                            '<dd><span class="btn btn-samll">资产包</span>资产包名称</dd>' +
+                                        '</dl>' +
+                                        '<dl>' +
+                                            '<div class="btn-groups">' +
+                                                '<a class="btn" href='+ urlLink +'>'+ btnTxt +'</a>' +
+                                            '</div>' +
+                                        '</dl>' +
+                                        '<dl>' +
+                                        ' <dt><img src='+ imgSrc +'></dt>' +
+                                            '<dd>包内已售 '+ soldNum +'%</dd>' +
+                                        '</dl>' +
+                                        '<dl>' +
+                                            '<dt>'+ item.count +'</dt>' +
+                                            '<dd>总电站数</dd>' +
+                                        '</dl>' +
+                                        '<dl>' +
+                                            '<dt>'+ item.minRate +'% ~ '+ item.maxRate +'%</dt>' +
+                                            '<dd>预期年化收益</dd>' +
+                                        '</dl>' +
+                                    '</li>';
+                    })
+                    $('#article-list').html(str);
+                    if (!changePage && pageTotal > 0) {
+                        $('#page-navigation').pagination({
+                            keepShowPN: true,
+                            showData: 5,
+                            totalData: pageTotal,
+                            mode: 'fixed',
+                            count: 4,
+                            jump: true,
+                            coping: true,
+                            homePage: '<<',
+                            endPage: '>>',
+                            prevContent: '<',
+                            nextContent: '>',
+                            isHide: true,
+                            jumpBtn: '确定',
+                            callback: function (api) {
+                                var currentNum = api.getCurrent();
+                                getDataList(currentNum, true);
+                            }
+                        });
+                    }
+                } else {
+                    $('#article-list').html('<img src="../images/common/unpack.png"/ class="noInformation">');
                 }
             }
-            console.log(data);
         })
     };
     $(function() {

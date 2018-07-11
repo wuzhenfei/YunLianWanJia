@@ -93,7 +93,7 @@
                         tipsinfo = data.result.message;
                         localStorage.setItem('userInfo', userInfo);
                         var userInfo = JSON.stringify(data.result);
-                        window.location.href = "../home/index.html";
+                        location.href = "payPassword.html";
                     } else {
                         tipsinfo = data.content;
                         messageShow(tipsinfo);

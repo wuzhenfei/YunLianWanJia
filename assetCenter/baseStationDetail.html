@@ -205,11 +205,15 @@
 <script src="../js/common.js"></script>
 <script src="../js/api.js"></script>
 <script>
-    var userInfo, equipmentInfo, investorInfo, stationId;
+    var uesrInfo, equipmentInfo, investorInfo, stationId;
     uesrInfo = localStorage.getItem('userInfo');
     uesrInfo = JSON.parse(uesrInfo);
     stationId = getUrlParam('stationId');
-    $('.buyStation').prop('href', '../process/bitepriceBuy.html?stationId=' + stationId);
+    if(uesrInfo && uesrInfo.userId) {
+        $('.buyStation').prop('href', '../process/bitepriceBuy.html?stationId=' + stationId);
+    } else {
+        $('.buyStation').prop('href', '../login/login.html');
+    }
     // 是否参与竞价
     function isHaveBid() {
         $.post(isHaveBidPriceInfo, {
@@ -228,8 +232,6 @@
     // 获取电站详细信息
     function getStationList() {
         $.post(getbaseStationInfo, {
-            userId: uesrInfo.userId,
-            token: uesrInfo.token,
             stationId: stationId
         }, function (res) {
             var data = JSON.parse(res);
@@ -241,7 +243,9 @@
                 } else {
                     $('.payType').html('竞价');
                     $('.imgIcon').prop('src', '../images/common/jingjia.png');
-                    isHaveBid();
+                    if(uesrInfo && uesrInfo.userId) {
+                        isHaveBid();
+                    }
                 }
                 $('.name').html(data.name);
                 $('.rate').html(data.rate + '%');

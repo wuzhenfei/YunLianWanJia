@@ -53,9 +53,12 @@
 <script src="../js/api.js"></script>
 <script src="../js/jquery.pagination.js"></script>
 <script>
-    var userInfo;
+    var uesrInfo;
     uesrInfo = localStorage.getItem('userInfo');
     uesrInfo = JSON.parse(uesrInfo);
+    if(uesrInfo == null || uesrInfo.userId ==null) {
+        location.href = '../login/login.html';
+    }
     // 获取租赁电站列表信息
     function getStationList(pageNumber, changePage) {
         $.post(getUserStationList, {
@@ -77,7 +80,7 @@
                                 '</dl>' +
                                 '<dl>' +
                                     '<div class="btn-groups">' +
-                                        '<a class="btn" href="rentStationDetail?stationId='+ item.stationId +'">查看详情</a>' +
+                                        '<a class="btn" href="rentStationDetail.html?stationId='+ item.stationId +'">查看详情</a>' +
                                     '</div>' +
                                 '</dl>' +
                                 '<dl class="inverterNumber">' +
@@ -116,13 +119,15 @@
                         });
                     }
             } else {
-                str= '<p class="tips">暂无数据！</p>'
+                str= '<img src="../images/common/unpack.png"/ class="noInformation">'
             }
             $('#assetCenter-list').html(str);
         })
     };
     $(function() {
-        getStationList(1);
+        if(uesrInfo && uesrInfo.userId) {
+            getStationList(1);
+        }
     })
 </script>
 </html>

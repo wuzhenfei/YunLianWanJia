@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper-4.3.3.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/swiper-4.3.3.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>首页</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            showHeader();   // 显示头部
+            showNav(true, 1);  //显示导航
+        </script>
+        <div class="main">
+            <div class="banner">
+                <div class="swiper-container swiper-banner">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="../images/home/banner.png" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="../images/home/banner.png" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="../images/home/banner.png" />
+                        </div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination swiper-pagination-banner"></div>
+                </div>
+            </div>
+            <div class="quick-entry">
+                <div class="main-w">
+                    <ul>
+                        <li>
+                            <a href="../tradeHall/newProducts.html">
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img src="../images/home/entry_img__1__icon.png">
+                                    </div>
+                                    <h3>资产包</h3>
+                                    <p>电站打包 轻松购买</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../tradeHall/transferCenter.html">
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img src="../images/home/entry_img__2__icon.png">
+                                    </div>
+                                    <h3>竞价/一口价</h3>
+                                    <p>在线竞拍 灵活转让</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../assetCenter/rentStation.html">
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img src="../images/home/entry_img__3__icon.png">
+                                    </div>
+                                    <h3>资产管理</h3>
+                                    <p>租赁投资 随心管理</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../personal/revenueRecord.html">
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img src="../images/home/entry_img__4__icon.png">
+                                    </div>
+                                    <h3>实时收益</h3>
+                                    <p>每日/累计 了然清晰</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 热门推荐 -->
+            <div class="hot-recommend">
+                <div class="main-w">
+                    <div class="title">
+                        <h2>热门推荐
+                            <span class="btn btn-samll bg-blue">资产包</span>
+                            <em></em>
+                            <span class="btn btn-samll bg-green">电站</span>
+                        </h2>
+                        <p>HOT RECOMMENDED</p>
+                    </div>
+                    <ul class="article-list" id="recommendList">
+                    </ul>
+                    <div class="tips">· 热门推荐每日随机发布更新 ·</div>
+                </div>
+            </div>
+            <!-- 添加电站 -->
+            <div class="add-station">
+                <a href="../assetCenter/addStation.html">
+                    <div class="main-w">
+                        <div class="title">
+                            <h2>添加电站</h2>
+                            <p>ADD POWER STATION</p>
+                        </div>
+                        <div class="add-station__text">
+                            <p>点击添加自己的电站</p>
+                            <p>即刻随心管理</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- 关于我们 -->
+            <div class="about-us">
+                <div class="main-w">
+                    <div class="title">
+                        <h2>关于我们</h2>
+                        <p>ABOUT US</p>
+                    </div>
+                    <div class="about-us__con cleart">
+                        <div class="pull-left">
+                            <div class="logo">
+                                <img src="../images/common/about_logo.png">
+                            </div>
+                            <div class="text-p">
+                                <p>云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。</p>
+                                <p>公司介绍代替文字云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事。</p>
+                                <p>云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究、投资开发，并提供系统安装咨询、现场勘查、设计施工、并网、运营等一站式服务。云联万家专业从事新能源技术研究。</p>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div class="img-box">
+                                <img src="../images/home/about-us_img.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/footer.js"></script>
+    </div>
+</body>
+<script src="../js/api.js"></script>
+<script language="javascript">
+    var urlLink;
+    var swiperBanner = new Swiper('.swiper-banner', {
+        pagination: {
+            el: '.swiper-pagination-banner',
+        },
+    });
+    $.post(getSellListByNum, {num: 5} ,function(res){
+        var recommendInfo = JSON.parse(res);
+        var data = recommendInfo.result.data;
+        var recommendList = $('#recommendList');
+        var str = '';
+        var imgSrc = '';
+        var soldType = '';  // 一口价和竞价
+        $.each(data, function(index, item){
+            var isHot = item.isHot? '<img src="../images/common/hothuo.png">': '';
+            if(item.type == 1) {    //资产包
+                urlLink = '../tradeHall/packageDetails.html?assetPackageId=' + item.id
+                var soldNum = Math.floor((item.count - item.unsoldCount) / (item.count) * 100); //包內已售
+                if (soldNum >=0 && soldNum <= 30) {
+                    imgSrc = '../images/common/icon-jd__10.png'
+                } else if(soldNum >30 && soldNum <= 50) {
+                    imgSrc = '../images/common/icon-jd__30.png'
+                } else if(soldNum >50 && soldNum <= 70) {
+                    imgSrc = '../images/common/icon-jd__50.png'
+                } else if (soldNum >70 && soldNum <= 90) {
+                    imgSrc = '../images/common/icon-jd__70.png'
+                } else if (soldNum >90 && soldNum < 100) {
+                    imgSrc = '../images/common/icon-jd__90.png'
+                } else if(soldNum == 100) {
+                    imgSrc = '../images/common/icon-jd__100.png'
+                }
+                str = str + '<li class="zcb">'+
+                            '<dl>' + 
+                                '<dt class="color-blue">' + item.name + '</dt>' + 
+                                '<dd class="name">' + 
+                                    isHot +
+                                    '<span class="btn btn-samll bg-blue">资产包</span>资产包名称' +
+                                '</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<div class="btn-groups"><a class="btn" href=' + urlLink + '>查看详情</a></div>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt>' + '<img src='+ imgSrc + '>'+ '</dt>' + 
+                                '<dd>包内已售 '+ soldNum +'%'+ '</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-blue">'+ item.count +'</dt>' + 
+                                '<dd>总电站数</dd>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-blue">'+ item.minRate +'%'+ '~' + item.maxRate +'%' + '</dt>' + 
+                                '<dd>预期年化收益</dd>' +
+                            '</dl>' +   
+                        '</li>';
+            } else {    // 电站
+                urlLink = '../assetCenter/baseStationDetail.html?stationId=' + item.id
+                if(item.payType == 0) {  // 一口价
+                    soldType = '一口价';
+                    imgSrc = '../images/common/ykj.png'
+                } else{ // 竞价出售
+                    soldType = '竞价出售';
+                    imgSrc = '../images/common/jingjia.png'
+                }
+                str = str + '<li class="dz">'+
+                            '<dl>' + 
+                                '<dt class="color-green">' + item.name + '</dt>' + 
+                                '<dd class="name">' + 
+                                    isHot +
+                                    '<span class="btn btn-samll bg-green">电钻</span>电站名称' +  
+                                '</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<div class="btn-groups"><a class="btn" href=' + urlLink +'>查看详情</a></div>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt>' + '<img src='+ imgSrc + '>'+ '</dt>' + 
+                                '<dd>'+ soldType +'</dd>' + 
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-green">'+ item.price +'</dt>' + 
+                                '<dd>当前价格</dd>' +
+                            '</dl>' + 
+                            '<dl>' + 
+                                '<dt class="color-green">'+ item.rate + '%' +'</dt>' + 
+                                '<dd>预期年化收益</dd>' +
+                            '</dl>' +   
+                        '</li>';
+            }
+            
+        })
+        recommendList.append(str);
+    })
+</script>
+
+</html>

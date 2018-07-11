@@ -105,7 +105,7 @@
                             haveBidTime = '00:00:00';
                         }
                         str = str + '<li>' +
-                                '<a href="../tradeHall/biddingStation.html?bidPriceId='+ bidPriceId +'">' +
+                                '<a href="../process/biddingStation.html?bidPriceId='+ bidPriceId +'">' +
                                     '<dl>' +
                                         '<dt class="color-green">' + item.name +'</dt>' + 
                                         '<dd>' + 
@@ -150,7 +150,7 @@
                         });
                     }
                 } else {
-                    str = '<li><a>暂无内容</a></li>';
+                    str = '<img src="../images/common/unpack.png"/ class="noInformation">';
                 }
                 $('.bidStation-list').html(str);
                 countTime();

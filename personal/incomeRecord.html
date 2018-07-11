@@ -65,7 +65,7 @@
             userId: uesrInfo.userId,
             token: uesrInfo.token,
             pageNumber: pageNumber,
-            limit: 15,
+            limit: 10,
             state: state
         }, function (res) {
             var data = JSON.parse(res);
@@ -84,7 +84,7 @@
                     if (!changePage && totalData > 0) {
                         $('#page-navigation').pagination({
                             keepShowPN: true,
-                            showData: 15,
+                            showData: 10,
                             totalData: totalData,
                             mode: 'fixed',
                             count: 4,
@@ -103,7 +103,7 @@
                         });
                     }
                 } else {
-                    str = '<p class="tips">暂无收益</p>';
+                    str = '<img src="../images/common/unpack.png"/ class="noInformation">';
                 }
                 $('.incomeRecord-list').html(str);
             }
@@ -117,7 +117,6 @@
         };
         $('.common-tab ul li').each(function (index) {
             $(this).click(function () {
-                $('.incomeRecord-list').html('<p class="tips">暂无收益</p>');
                 $(this).addClass('active').siblings().removeClass('active');
                 if (index == 0) {
                     state = 1

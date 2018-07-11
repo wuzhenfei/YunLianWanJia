@@ -1,9 +1,16 @@
 function showNav(notShowMenu, isCurrent) {
-    var isHome, isTradingHall, isAssetCenter, isPersonalCenter;
+    var isHome, isTradingHall, isAssetCenter, isPersonalCenter, userInfo, rentStationUrl;
+    userInfo = localStorage.getItem('userInfo');
+    userInfo = JSON.parse(userInfo);
     isHome = '';
     isTradingHall = '';
     isAssetCenter = '';
     isPersonalCenter = '';
+    if(userInfo && userInfo.userId) {
+        rentStationUrl = '../assetCenter/rentStation.html';
+    } else {
+        rentStationUrl = '../login/login.html'
+    }
     switch (isCurrent) {
         case 1:
             isHome = 'current';
@@ -35,7 +42,7 @@ function showNav(notShowMenu, isCurrent) {
     } else {
         document.writeln('                <li class='+ isHome +'><a href="../home/index.html">首页</a></li>');
         document.writeln('                <li class='+ isTradingHall +'><a href="../tradeHall/newProducts.html">交易大厅</a></li>');
-        document.writeln('                <li class='+ isAssetCenter +'><a href="../assetCenter/rentStation.html">资产中心</a></li>');
+        document.writeln('                <li class='+ isAssetCenter +'><a href='+ rentStationUrl +'>资产中心</a></li>');
         document.writeln('                <li class='+ isPersonalCenter +'><a href="../personal/revenueRecord.html">个人中心</a></li>');
     }
     document.writeln('            </ul>');

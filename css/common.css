@@ -377,3 +377,7 @@
   width: 240px;
   background: #0396D6;
 }
+.noInformation {
+  margin: 0px auto;
+  padding: 50px 0;
+}

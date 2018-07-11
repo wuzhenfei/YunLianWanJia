@@ -166,7 +166,6 @@
                         }
                     },
                     error: function (e) {
-                        console.log(e);
                         obj.remove();
                         var err = "上传失败，请联系管理员！";
                         $("#imguploadFinish").val(false);

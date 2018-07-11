@@ -315,7 +315,6 @@
                 $('#payPassword').show();
                 if($(this).hasClass('submitPay')) {
                     var payPassword = $('input[name ="password"]').val();
-                    console.log(payPassword);
                     $.post(buyStationByYKJ, {
                         userId: uesrInfo.userId,
                         token: uesrInfo.token,

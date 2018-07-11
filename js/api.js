@@ -18,6 +18,9 @@ var register = apiUrl + '/app/register';
 var getPasswordCode = apiUrl + '/resPassword/getMobileCode'; 
 // 找回密码
 var setPassword = apiUrl + '/app/setPassword'; 
+// 修改支付密码
+var setPayPassword = apiUrl + '/userInfo/setPayPassword'; 
+
 
 // 电站详情
 var getbaseStationInfo = apiUrl + '/powerStation/getStationInfo';
@@ -94,7 +97,8 @@ var tranBuyStationByJJ = apiUrl + '/transaction/buyStationByJJ';
 var updateBidPrice = apiUrl + '/bidPrice/updateBidPrice'; 
 // 修改用户信息
 var updateUserInfo = apiUrl + '/userInfo/updateUserInfo'; 
-
+// 提现金额
+var saveExtractInfo = apiUrl + '/userPutforwardRecord/saveExtractInfo'; 
 
 // 电站上传图片
 var getOSSfile = apiUrl1 + '/publicinterface/getOSSfile/stationImg';

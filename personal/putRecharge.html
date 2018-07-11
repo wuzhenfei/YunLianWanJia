@@ -65,7 +65,7 @@
             userId: uesrInfo.userId,
             token: uesrInfo.token,
             pageNumber: pageNumber,
-            limit: 15,
+            limit: 10,
             orderType: orderType
         }, function (res) {
             var data = JSON.parse(res);
@@ -85,7 +85,7 @@
                     if (!changePage) {
                         $('#page-navigation').pagination({
                             keepShowPN: true,
-                            showData: 15,
+                            showData: 10,
                             totalData: totalData,
                             mode: 'fixed',
                             count: 4,
@@ -104,7 +104,7 @@
                         });
                     }
                 } else {
-                    str = '<p class="tips">暂无记录</p>';
+                    str = '<img src="../images/common/unpack.png"/ class="noInformation">';
                 }
                 $('.incomeRecord-list').html(str);
             }

@@ -99,7 +99,11 @@
     var imgStr = '';
     userInfo = localStorage.getItem('userInfo');
     userInfo = JSON.parse(userInfo);
-    stationId = userInfo.userId;
+    if(userInfo && userInfo.userId) {
+        stationId = userInfo.userId;
+    } else {
+        location.href = '../login/login.html';
+    }
     // 用户提交电站
     function addStation(data) {
         $.post(saveStationInfo, data, function (res) {
